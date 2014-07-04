@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Character</title>
+  <script language="javascript" type="text/javascript" src="/jquery.1.11.1.js"></script>
+  <script language="javascript" type="text/javascript" src="/app.js"></script>
+  <script language="javascript" type="text/javascript" src="/skills_dynamic_forms.js"></script>
+  <link rel="stylesheet" href="/sr4.css" />
+</head>
+<body>
+
+<div id = "character-name"><%= @character.name %></div>
+
+<ul class="char-nav">
+  <li><a href = "#skills">Skills</a></li>
+  <li> | </li>
+  <li><a href = "#qualities">Qualities</a></li>
+  <li> | </li>
+  <li><a href = "#gear">Gear</a></li>
+  <li> | </li>
+  <li><a href = "#connections">Connections</a></li>
+</ul>
+
+<div class = "content">
+
+<ul class = "character-details">
+<li><%= "Metatype: #{@character.metatype.name}" %></li>
+<li><%= "Metatype special: #{@character.metatype.special_ability}" %></li>
+<ul class = "barscilwe">
+  <li><%= "Body: #{@character.body}" %>
+  <li><%= "Agility: #{@character.agility}" %>
+  <li><%= "Strength: #{@character.strength}" %>
+  <li><%= "Reaction: #{@character.reaction}" %>
+  <li><%= "Charisma: #{ @character.charisma}" %>
+  <li><%= "Intuition: #{ @character.intuition}" %>
+  <li><%= "Logic: #{@character.logic}" %>
+  <li><%= "Willpower: #{@character.willpower}" %>
+  <li><%= "Edge: #{@character.edge}" %>
+</ul>
+<li><%= "Physical damage track: #{8 + (@character.body.to_f/2).ceil}" %></li>
+<li><%= "Stun damage track: #{8 + (@character.willpower.to_f/2).ceil}" %></li>
+<li><%= "Initiative: #{@character.reaction + @character.intuition}"%></li>
+<li><%= "Initiative passes: #{@character.initiative_passes}" %></li>
+<li><%= "Nuyen: #{@character.nuyen}" %></li>
+<li><%= "Essence: #{@character.essence}" %></li>
+<li><%= "Magic/Resonance: #{@character.magic}" %></li>
+<li><%= "Bio: #{@character.bio}" %></li>
+</ul>
+
+
+<h3><a name="skills">Skills: </h3>
+<ul>
+  <% @character.character_skills.each do |characterskill| %>
+
+    <li><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating}, Specialization: #{characterskill.specialization}" %></li>
+
+  <% end %>
+</ul>
+
+<div class = "editing-characters">
+<p>Add a skill:</p>
+    <form action= <%= "/addskill/#{@character.id}" %> method="post">
+      <label for="skillname">Name: </label>
+      <input type="text" name="skillname" id="skillname" />
+      <label for="skillrating">Rating: </label>
+      <input type="text" name="skillrating" id="skillrating" />
+      <label for="skillspecialization">Specialization: </label>
+      <input type="text" name="skillspecialization" id="skillspecialization" />
+      <label for="skillgroup">Skill group: </label>
+      <input type="text" name="skillgroup" id="skillgroup" />
+      <label for="skilldefault">Default: </label>
+      <input type="text" name="skilldefault" id="skilldefault" />
+      <input class="submit-button" type="submit"  value="Submit"/>
+    </form>
+  </div>
+
+<form action= <%= "/delete-skill/#{@character.id}" %> method = 'post' >
+Skill select:
+  <select name = "deletable-skill">
+    <% @character.character_skills.each do |characterskill| %>
+      <option><%= characterskill.skill.name %></option>
+    <% end %>
+  </select>
+  <input class="delete-button" type="submit"  value="Delete"/>
+</form>
+
+<h3><a name = "qualities">Qualities: </h3>
+<ul>
+  <% @character.character_qualities.each do |characterquality| %>
+
+    <li><%= "#{characterquality.quality.name}: #{characterquality.quality.description} Rating: #{characterquality.affect_rating} #{characterquality.quality.affected_stat} " %></li>
+
+  <% end %>
+</ul>
+
+<div class = "editing-characters">
+  <p>Add a quality:</p>
+    <form action= <%= "/addquality/#{@character.id}" %> method="post">
+      <label for="qname">Name: </label>
+      <input type="text" name="qname" id="qname" />
+
+      <label for="qdescription">Description: </label>
+      <input type="text" name="qdescription" id="qdescription" />
+
+      <label for="qaffect">Affected stat, if any: </label>
+      <input type="text" name="qaffect" id="qaffect" />
+
+      <label for="qrating">Affect rating, if any: </label>
+      <input type="text" name="qrating" id="qrating" />
+
+      <input  class="submit-button" type="submit"  value="Submit"/>
+    </form>
+</div>
+
+<form action= <%= "/delete-quality/#{@character.id}" %> method = 'post' >
+Quality select:
+  <select name = "deletable-quality">
+    <% @character.character_qualities.each do |characterquality| %>
+      <option><%= characterquality.quality.name%></option>
+    <% end %>
+  </select>
+  <input class="delete-button" type="submit"  value="Delete"/>
+</form>
+
+<h3><a name = "gear">Gear: </h3>
+
+<h5><a name = "weapons">&nbsp;Weapons: </h5>
+
+<ul>
+  <% if @character.character_weapons[0] != nil %>
+    <% @character.character_weapons.each do |characterweapon| %>
+
+      <li><%= "#{characterweapon.weapon.name}: #{characterweapon.weapon.description} Damage: #{characterweapon.weapon.damage} #{characterweapon.weapon.damage_type} Armor piercing: #{characterweapon.weapon.armor_piercing} Rating: #{characterweapon.rating} Concealability modifier: #{characterweapon.weapon.concealability} Legality: #{characterweapon.weapon.legality}" %></li>
+
+      <% if @character.character_weapons.first.weapon.ammo != "" %>
+        <p><%= "Ammo: #{characterweapon.weapon.ammo}, Mode: #{characterweapon.weapon.mode}, Recoil: #{characterweapon.weapon.recoil}" %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
+
+<h5><a name = "general-gear">&nbsp;General: </h5>
+
+<div class = "editing-characters">
+  <form id="gear-type">
+    Add:
+    <select id = "PickGear">
+      <option value = '0'> Gear type </option>
+      <option value = '1'> Weapons </option>
+      <option value = '2'> Armour </option>
+      <option value = '3'> Vehicles </option>
+      <option value = '4'> General </option>
+    </select>
+  </form>
+
+  <div id = "weapons-input">
+    <form action= <%= "/addweapon/#{@character.id}" %> method="post">
+      <label for="weapon-name">Name: </label>
+      <input type="text" name="weapon-name" id="weapon-name" />
+
+      <label for="weapon-description">Description: </label>
+      <input type="text" name="weapon-description" id="weapon-description" />
+
+      <label for="weapon-damage">Damage: </label>
+      <input type="text" name="weapon-damage" id="weapon-damage" />
+
+      <label for="weapon-damage-type">Damage type: </label>
+      <input type="text" name="weapon-damage-type" id="weapon-damage-type" />
+
+      <label for="weapon-rating">Rating, if applicable: </label>
+      <input type="text" name="weapon-rating" id="weapon-rating" />
+
+      <label for="weapon-ap">Armor piercing: </label>
+      <input type="text" name="weapon-ap" id="weapon-ap" />
+
+      <label for="weapon-concealability">Concealability modifier: </label>
+      <input type="text" name="weapon-concealability" id="weapon-concealability" />
+
+      <label for="weapon-mode">Mode, if applicable: </label>
+      <input type="text" name="weapon-mode" id="weapon-mode" />
+
+      <label for="weapon-recoil">Recoil, if applicable: </label>
+      <input type="text" name="weapon-recoil" id="weapon-recoil" />
+
+      <label for="weapon-ammo">Ammo type, if applicable: </label>
+      <input type="text" name="weapon-ammo" id="weapon-ammo" />
+
+      <label for="weapon-legality">Legality: </label>
+      <input type="text" name="weapon-legality" id="weapon-legality" />
+
+      <label for="melee">Melee weapon? </label>
+      <select id = "melee" name = "melee">
+        <option value = 'true'> Yes </option>
+        <option value = 'false'> No </option>
+      </select>
+
+      <input class="weapon-submit" type="submit"  value="Submit"/>
+    </form>
+  </div>
+
+  <div id = "general-gear-input">
+    <form action= <%= "/addgengear/#{@character.id}" %> method="post">
+       <label for="general-gear-name">Name: </label>
+        <input type="text" name="general-gear" id="general-gear" />
+
+        <label for="general-gear-description">Description: </label>
+        <input type="text" name="general-gear-description" id="general-gear-description" />
+
+        <input class="general-gear-submit" type="submit"  value="Submit"/>
+    </form>
+  </div>
+
+</div>
+
+
+<div id = 'under-constructon'>
+  <p><em>Still under construction.</em></p>
+</div>
+
+
+<form action= <%= "/delete-weapon/#{@character.id}" %> method = 'post' >
+Weapon select:
+  <select name = "deletable-weapon">
+    <% @character.weapons.each do |weapon| %>
+      <option><%=weapon.name%></option>
+    <% end %>
+  </select>
+  <input class="delete-button" type="submit"  value="Delete"/>
+</form>
+
+
+  <h3><a name = "connections">Connections: </h3>
+
+<ul>
+  <% @character.connections.each do |connection|%>
+
+  <li><%= "#{connection.name}: #{connection.description} Loyalty: #{connection.loyalty}/ Connection: #{connection.connection}" %></li>
+
+  <% end %>
+</ul>
+
+<div class = "editing-characters">
+  <p>Add a connection:</p>
+    <form action= <%= "/addconnection/#{@character.id}" %> method="post">
+      <label for="connectionname">Name: </label>
+      <input type="text" name="connectionname" id="connectionname" />
+
+      <label for="connectiondescription">Description: </label>
+      <input type="text" name="connectiondescription" id="connectiondescription" />
+
+      <label for="connectionloyalty">Loyalty: </label>
+      <input type="text" name="connectionloyalty" id="connectionloyalty" />
+
+      <label for="connection">Connection: </label>
+      <input type="text" name="connection" id="connection" />
+
+      <input class="submit-button" type="submit"  value="Submit"/>
+    </form>
+</div>
+
+<form action= <%= "/delete-connection/#{@character.id}" %> method = 'post' >
+Connection select:
+  <select name = "deletable-connection">
+    <% @character.connections.each do |connection| %>
+      <option><%= connection.name%></option>
+    <% end %>
+  </select>
+  <input class="delete-button" type="submit"  value="Delete"/>
+</form>
+
+<div id="character-deletion">
+  <form action= <%= "/delete/#{@character.id}" %> method="post">
+    <label for="delete">Delete this character? This action cannot be undone. </label>
+    <input class="delete-button" type="submit"  value="Delete"/>
+  </form>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+Metatype.create(name: 'Human',special_ability: "+1 Edge.")
+Metatype.create(name: 'Ork',special_ability: "Low-light vision.")
+Metatype.create(name: 'Dwarf',special_ability: "Thermographic Vision, +2 dice for Body Tests to resist pathogens and toxins.")
+Metatype.create(name: 'Elf',special_ability: "Low-light vision.")
+Metatype.create(name: 'Troll',special_ability: "Thermographic vision, +1 Reach, +1 natural armor (cumulative with worn armor)")
