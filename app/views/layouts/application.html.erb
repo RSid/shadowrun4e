@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <h1>SHADOWRUN!</h1>
+  <h1><%= link_to 'SHADOWRUN!', characters_path %></h1>
     <ul>
       <% if user_signed_in? %>
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
@@ -22,11 +22,11 @@
 
 <%= yield %>
 
-  <p>
+  <p id = 'footer'>
     Shadowrun Character keeper is created and maintained by Alla Hoffman. You
     can find me on Github here.
-  </p>
-  <p id= 'legal'>
+  <br>
+  <br>
     The Topps Company, Inc. has sole ownership of the names, logo, artwork,
     marks, photographs, sounds, audio, video and/or any proprietary material
     used in connection with the game Shadowrun. The Topps Company, Inc. has

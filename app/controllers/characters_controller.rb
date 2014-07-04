@@ -1,4 +1,4 @@
-class CharacterController < ApplicationController
+class CharactersController < ApplicationController
 
   def index
     if user_signed_in?
@@ -7,6 +7,7 @@ class CharacterController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
