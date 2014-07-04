@@ -26,6 +26,11 @@
                 <% @users_characters.each do |character| %>
                 <li><%= link_to character.name, character_path %></li>
                 <% end %>
+              <% else %>
+                <li>
+                  Sign up to create and maintain character information for Shadowrun 4th Edition! <br>
+                  Site currently in progress.
+                </li>
               <% end %>
             </ul>
 
