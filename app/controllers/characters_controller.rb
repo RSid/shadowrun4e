@@ -15,15 +15,21 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @character = current_user.character.build(character_params)
+    binding.pry
+    @character = current_user.characters.build(character_params)
+
+    if @character.save
+      redirect_to character_path(@character)
+    else
+      flash.now[:notice] = 'Uh oh! Your character could not be saved.'
+      render :new
+    end
   end
 
   private
 
   def character_params
-    #will want to change metatype form to dropdown
-    #take cars systems check as model
-    params.require(:character).permit(:name, :metatype_id, :body, :agilty,
+    params.require(:character).permit(:name, :metatype_id, :body, :agility,
       :reaction, :strength, :charisma, :intuition, :logic, :willpower, :edge,
       :essence, :magic, :initiative_passes, :nuyen, :bio)
   end
