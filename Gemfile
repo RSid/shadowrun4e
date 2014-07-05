@@ -28,15 +28,18 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
-gem 'coveralls', require: false
+gem 'devise-bootstrap-views'
 
-group :development do
-  gem 'pry'
-end
+gem 'bootstrap-sass', '~> 3.2.0'
 
-group :test do
-  gem 'rspec'
+group :development, :test do
+  gem 'coveralls', require: false
   gem 'capybara'
+  gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'factory_girl_rails'
+  gem 'launchy'
+  gem 'dotenv-rails'
 end
 
 # Use ActiveModel has_secure_password
