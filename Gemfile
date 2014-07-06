@@ -32,6 +32,8 @@ gem 'devise-bootstrap-views'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 
+gem 'coveralls', require: false
+
 group :development, :test do
   gem 'coveralls', require: false
   gem 'capybara'
