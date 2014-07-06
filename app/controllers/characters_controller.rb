@@ -15,7 +15,6 @@ class CharactersController < ApplicationController
   end
 
   def create
-    binding.pry
     @character = current_user.characters.build(character_params)
 
     if @character.save

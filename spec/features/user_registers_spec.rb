@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'user creates a new user', %Q{
   As a Shadowrun 4E player
   I want to add myself as a user
-  So that my character information is saved
+  So that my characters are saved
 } do
 
   scenario 'user creates a profile' do
