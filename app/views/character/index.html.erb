@@ -1,0 +1,32 @@
+<!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Homepage</title>
+
+      <link rel="stylesheet" href="sr4.css" />
+    </head>
+    <body>
+
+      <p id="new-char"><%= link_to 'Create Character', new_character_path %></p>
+        <h2>List of Stored Characters</h2>
+
+            <ul class="char-list">
+              <% if current_user %>
+                <% @users_characters.each do |character| %>
+                <li><%= link_to character.name, character_path %></li>
+                <% end %>
+              <% else %>
+                <li>
+                  Sign up to create and maintain character information for Shadowrun 4th Edition! <br>
+                  Site currently in progress.
+                </li>
+              <% end %>
+            </ul>
+
+    </body>
+    </html>
+
+
+</body>
+</html>

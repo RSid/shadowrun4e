@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homepage</title>
+
+  <link rel="stylesheet" href="sr4.css" />
+</head>
+<body>
+
+<h1>SHADOWRUN!</h1>
+
+<%= styled_flash %>
+
+    <ul >
+      <% if signed_in? %>
+        <li>Signed in as <%= current_user.username %></a></li>
+        <li><a href="/sign_out">Sign out</a></li>
+
+        <p id="new-char"><a href="/create">Create a new character</a></p>
+        <h2>List of Stored Characters</h2>
+
+        <ul class="char-list">
+          <% @users_characters.each do |character| %>
+          <li><a href= <%= "/characters/#{character.id}"%> ><%= character.name %></a></li>
+          <% end %>
+        </ul>
+
+      <% else %>
+        <li><a href="/auth/github">Sign in with Github</a></li>
+
+        <p>Welcome to the Shadowrun 4E Character keeper! You can sign up with either Github or Facebook to make an account, or login below if you have already registered.</p>
+      <br>
+      <p><em>This site is currently in beta. Do not depend on it for character storage until this message no longer appears on the homepage.</em></p>
+      <br>
+      <p>This is a <em>work in progress</em>. At the moment, SR4E Character Keeper can only statically store and display your character. As time goes on, I hope to add functionality to allow making basic skills tests in-app. I will try to post on the homepage here every time I add a new feature for testing.</p>
+      <br>
+      <p>Feel free to find me on <a href = "https://github.com/RSid">github</a> or <a href = "http://allahoffman.tumblr.com/">tumblr</a></p>
+      <% end %>
+    </ul>
+
+</body>
+</html>
