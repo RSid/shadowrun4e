@@ -6,5 +6,4 @@ class CharacterQuality < ActiveRecord::Base
 
   validates :character_id, presence: true
   validates :quality_id, presence: true
-
 end

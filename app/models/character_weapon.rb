@@ -6,5 +6,4 @@ class CharacterWeapon < ActiveRecord::Base
 
   validates :character_id, presence: true
   validates :weapon_id, presence: true
-
 end

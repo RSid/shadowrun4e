@@ -3,7 +3,5 @@ class Skill < ActiveRecord::Base
   has_many :characters,
     through: :character_skills
 
-
   validates :name, presence: true
-
 end

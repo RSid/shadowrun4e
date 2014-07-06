@@ -5,5 +5,4 @@ class Connection < ActiveRecord::Base
   validates :loyalty, presence: true
   validates :connection, presence: true
   validates :character_id, presence: true
-
 end
