@@ -105,6 +105,7 @@ Skill select:
 
 <div class = "editing-characters">
   <p>Add a quality:</p>
+  <div id = "add-quality">
     <%= form_for [@character, @character_quality] do |f| %>
       <%= f.fields_for @quality do |i| %>
         <%= i.label :name %>
@@ -119,6 +120,7 @@ Skill select:
 
       <%= f.submit 'Submit' %>
     <% end %>
+  </div>
 </div>
 
 <form action= <%= "/delete-quality/#{@character.id}" %> method = 'post' >
@@ -250,22 +252,24 @@ Weapon select:
 
 <div class = "editing-characters">
   <p>Add a connection:</p>
-  <%= form_for [@character, @connection] do |f| %>
+  <div id = "add-connection">
+    <%= form_for [@character, @connection] do |f| %>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
 
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
 
-    <%= f.label :loyalty %>
-    <%= f.text_field :loyalty %>
+      <%= f.label :loyalty %>
+      <%= f.text_field :loyalty %>
 
-    <%= f.label :connection %>
-    <%= f.text_field :connection %>
+      <%= f.label :connection %>
+      <%= f.text_field :connection %>
 
-    <%= f.submit 'Submit' %>
-  <% end %>
+      <%= f.submit 'Submit' %>
+    <% end %>
+  </div>
 </div>
 
 <form action= <%= "/delete-connection/#{@character.id}" %> method = 'post' >

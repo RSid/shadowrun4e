@@ -14,7 +14,7 @@ class CharacterQualitiesController < ApplicationController
     end
 
     @character_quality = @character.character_qualities.build(character_quality_params.merge(quality: quality))
-    binding.pry
+
     if @character_quality.save
       redirect_to character_path(@character)
     else

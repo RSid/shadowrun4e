@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user creates a character', %Q{
+feature 'user adds a skill to their character', %Q{
   As a Shadowrun 4E player
   I want to add skills to my character
   So that they can improve
