@@ -2,10 +2,10 @@ class CharacterSkillsController < ApplicationController
 
   def new
     @character_skill = CharacterSkill.new
+    @skill = Skill.new
   end
 
   def create
-
     @character = Character.find(params[:character_id])
     skill = Skill.find_by(name: skill_params[:name])
 
@@ -19,7 +19,7 @@ class CharacterSkillsController < ApplicationController
       redirect_to character_path(@character)
     else
       flash.now[:notice] = 'Uh oh! Your skill could not be saved.'
-      render :character_show
+      render :show
     end
   end
 

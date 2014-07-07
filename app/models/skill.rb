@@ -3,5 +3,5 @@ class Skill < ActiveRecord::Base
   has_many :characters,
     through: :character_skills
 
-  validates :name, presence: true
+  validates :name, length: { minimum: 1 }
 end
