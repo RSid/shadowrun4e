@@ -36,6 +36,14 @@ class CharactersController < ApplicationController
         flash[:notice] = 'Character deleted!'
         redirect_to characters_path
       end
+    else
+      @character = Character.find(params[:id])
+      @skill = Skill.new
+      @character_skill = CharacterSkill.new
+      @quality = Quality.new
+      @character_quality = CharacterQuality.new
+      @connection = Connection.new
+      render :show
     end
   end
 
