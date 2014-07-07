@@ -1,5 +1,4 @@
 class Character < ActiveRecord::Base
-
   belongs_to :user
 
   has_many :character_skills, dependent: :destroy
@@ -40,6 +39,6 @@ class Character < ActiveRecord::Base
   end
 
   def change_nuyen(amount)
-    self.nuyen = self.nuyen + amount
+    nuyen = nuyen + amount
   end
 end

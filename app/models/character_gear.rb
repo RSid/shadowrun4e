@@ -6,5 +6,4 @@ class CharacterGear < ActiveRecord::Base
 
   validates :character_id, presence: true
   validates :gear_id, presence: true
-
 end

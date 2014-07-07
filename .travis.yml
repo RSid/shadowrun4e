@@ -1,0 +1,5 @@
+language: ruby
+rvm:
+  - 2.1.2
+before_script:
+  - psql -c 'create database shadowrun_4e_test;' -U postgres

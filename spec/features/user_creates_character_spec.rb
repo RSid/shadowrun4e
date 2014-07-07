@@ -35,4 +35,19 @@ feature 'user creates a character', %Q{
 
     expect(page).to have_content character.name
   end
+
+  scenario 'user tries to create a character without needed attributes' do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
+    metatype = FactoryGirl.create(:metatype)
+    character = FactoryGirl.build(:character, metatype: metatype, user: user)
+
+    visit new_character_path
+
+    click_on 'Create'
+
+    expect(page).to_not have_content character.name
+    expect(page).to have_content 'Uh oh! Your character could not be saved.'
+  end
 end

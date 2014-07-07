@@ -10,14 +10,8 @@ class CharacterSkill < ActiveRecord::Base
   validates :specialization, presence: true
 
   def roll
-
     rolls_array = []
-    self.rating.times {rolls_array << rand(1..6)}
+    rating.times { rolls_array << rand(1..6) }
     rolls_array
   end
-
-
 end
-
-
-

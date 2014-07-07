@@ -59,20 +59,29 @@
 </ul>
 
 <div class = "editing-characters">
-<p>Add a skill:</p>
-    <form action= <%= "/addskill/#{@character.id}" %> method="post">
-      <label for="skillname">Name: </label>
-      <input type="text" name="skillname" id="skillname" />
-      <label for="skillrating">Rating: </label>
-      <input type="text" name="skillrating" id="skillrating" />
-      <label for="skillspecialization">Specialization: </label>
-      <input type="text" name="skillspecialization" id="skillspecialization" />
-      <label for="skillgroup">Skill group: </label>
-      <input type="text" name="skillgroup" id="skillgroup" />
-      <label for="skilldefault">Default: </label>
-      <input type="text" name="skilldefault" id="skilldefault" />
-      <input class="submit-button" type="submit"  value="Submit"/>
-    </form>
+  <p>Add a skill:</p>
+    <div id = "add-skill">
+      <%= form_for [@character, @character_skill] do |f| %>
+        <%= f.fields_for @skill do |i| %>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
+
+          <%= i.label :skill_group %>
+          <%= i.text_field :skill_group %>
+
+          <%= i.label :default_skill %>
+          <%= i.text_field :default_skill %>
+        <% end %>
+
+        <%= f.label :rating %>
+        <%= f.text_field :rating %>
+
+        <%= f.label :specialization %>
+        <%= f.text_field :specialization %>
+
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </div>
   </div>
 
 <form action= <%= "/delete-skill/#{@character.id}" %> method = 'post' >
@@ -96,21 +105,22 @@ Skill select:
 
 <div class = "editing-characters">
   <p>Add a quality:</p>
-    <form action= <%= "/addquality/#{@character.id}" %> method="post">
-      <label for="qname">Name: </label>
-      <input type="text" name="qname" id="qname" />
+  <div id = "add-quality">
+    <%= form_for [@character, @character_quality] do |f| %>
+      <%= f.fields_for @quality do |i| %>
+        <%= i.label :name %>
+        <%= i.text_field :name %>
 
-      <label for="qdescription">Description: </label>
-      <input type="text" name="qdescription" id="qdescription" />
+        <%= i.label :description %>
+        <%= i.text_field :description %>
+      <% end %>
 
-      <label for="qaffect">Affected stat, if any: </label>
-      <input type="text" name="qaffect" id="qaffect" />
+      <%= f.label :affect_rating %>
+      <%= f.text_field :affect_rating %>
 
-      <label for="qrating">Affect rating, if any: </label>
-      <input type="text" name="qrating" id="qrating" />
-
-      <input  class="submit-button" type="submit"  value="Submit"/>
-    </form>
+      <%= f.submit 'Submit' %>
+    <% end %>
+  </div>
 </div>
 
 <form action= <%= "/delete-quality/#{@character.id}" %> method = 'post' >
@@ -242,21 +252,24 @@ Weapon select:
 
 <div class = "editing-characters">
   <p>Add a connection:</p>
-    <form action= <%= "/addconnection/#{@character.id}" %> method="post">
-      <label for="connectionname">Name: </label>
-      <input type="text" name="connectionname" id="connectionname" />
+  <div id = "add-connection">
+    <%= form_for [@character, @connection] do |f| %>
 
-      <label for="connectiondescription">Description: </label>
-      <input type="text" name="connectiondescription" id="connectiondescription" />
+      <%= f.label :name %>
+      <%= f.text_field :name %>
 
-      <label for="connectionloyalty">Loyalty: </label>
-      <input type="text" name="connectionloyalty" id="connectionloyalty" />
+      <%= f.label :description %>
+      <%= f.text_field :description %>
 
-      <label for="connection">Connection: </label>
-      <input type="text" name="connection" id="connection" />
+      <%= f.label :loyalty %>
+      <%= f.text_field :loyalty %>
 
-      <input class="submit-button" type="submit"  value="Submit"/>
-    </form>
+      <%= f.label :connection %>
+      <%= f.text_field :connection %>
+
+      <%= f.submit 'Submit' %>
+    <% end %>
+  </div>
 </div>
 
 <form action= <%= "/delete-connection/#{@character.id}" %> method = 'post' >
