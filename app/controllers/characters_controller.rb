@@ -29,6 +29,16 @@ class CharactersController < ApplicationController
     end
   end
 
+  def destroy
+    @character = Character.find(params[:id])
+    if current_user == @character.user
+      if @character.destroy
+        flash[:notice] = 'Character deleted!'
+        redirect_to characters_path
+      end
+    end
+  end
+
   private
 
   def character_params

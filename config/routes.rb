@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'characters#index'
 
-  resources :characters, only: [:index, :show, :new, :create] do
+  resources :characters, only: [:index, :show, :new, :create, :destroy] do
     resources :character_skills, only: [:new, :create]
 
     resources :skills, only: [:new, :create]

@@ -283,10 +283,8 @@ Connection select:
 </form>
 
 <div id="character-deletion">
-  <form action= <%= "/delete/#{@character.id}" %> method="post">
-    <label for="delete">Delete this character? This action cannot be undone. </label>
-    <input class="delete-button" type="submit"  value="Delete"/>
-  </form>
+  <%= link_to("Delete this character? This action cannot be undone.",
+    character_path(@character), method: :delete) %>
 </div>
 
 </div>
