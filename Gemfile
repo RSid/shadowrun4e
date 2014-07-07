@@ -32,7 +32,9 @@ gem 'devise-bootstrap-views'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 
-gem 'coveralls', require: false
+gem 'simple_form'
+
+gem 'cocoon'
 
 group :development, :test do
   gem 'coveralls', require: false

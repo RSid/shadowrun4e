@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root 'characters#index'
 
-  resources :characters, only: [:index, :show, :new, :create]
+  resources :characters, only: [:index, :show, :new, :create] do
+    resources :character_skills, only: [:new, :create]
+
+    resources :skills, only: [:new, :create]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -48,5 +48,6 @@ feature 'user creates a character', %Q{
     click_on 'Create'
 
     expect(page).to_not have_content character.name
+    expect(page).to have_content 'Uh oh! Your character could not be saved.'
   end
 end

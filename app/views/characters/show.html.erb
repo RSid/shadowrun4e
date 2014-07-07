@@ -59,21 +59,31 @@
 </ul>
 
 <div class = "editing-characters">
-<p>Add a skill:</p>
-    <form action= <%= "/addskill/#{@character.id}" %> method="post">
-      <label for="skillname">Name: </label>
-      <input type="text" name="skillname" id="skillname" />
-      <label for="skillrating">Rating: </label>
-      <input type="text" name="skillrating" id="skillrating" />
-      <label for="skillspecialization">Specialization: </label>
-      <input type="text" name="skillspecialization" id="skillspecialization" />
-      <label for="skillgroup">Skill group: </label>
-      <input type="text" name="skillgroup" id="skillgroup" />
-      <label for="skilldefault">Default: </label>
-      <input type="text" name="skilldefault" id="skilldefault" />
-      <input class="submit-button" type="submit"  value="Submit"/>
-    </form>
-  </div>
+  <p>Add a skill:</p>
+    <div id = "add-skill">
+
+      <%= form_for [@character, @character_skill] do |f| %>
+        <%= f.fields_for @skill do |i| %>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
+
+          <%= i.label :skill_group %>
+          <%= i.text_field :skill_group %>
+
+          <%= i.label :default_skill %>
+          <%= i.text_field :default_skill %>
+        <% end %>
+
+        <%= f.label :rating %>
+        <%= f.text_field :rating %>
+
+        <%= f.label :specialization %>
+        <%= f.text_field :specialization %>
+
+        <%= f.submit 'Submit' %>
+      <% end %>
+
+    </div>
 
 <form action= <%= "/delete-skill/#{@character.id}" %> method = 'post' >
 Skill select:

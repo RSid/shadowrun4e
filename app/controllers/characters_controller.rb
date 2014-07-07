@@ -8,6 +8,8 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
+    @skill = Skill.new
+    @character_skill = CharacterSkill.new
   end
 
   def new
