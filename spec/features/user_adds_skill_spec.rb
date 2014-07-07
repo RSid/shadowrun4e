@@ -10,12 +10,11 @@ feature 'user creates a character', %Q{
     user = FactoryGirl.create(:user)
     sign_in_as(user)
     metatype = FactoryGirl.create(:metatype)
-    character = FactoryGirl.build(:character, metatype: metatype, user: user)
+    character = FactoryGirl.create(:character, metatype: metatype, user: user)
 
     skill = FactoryGirl.create(:skill)
 
-    character_skill = FactoryGirl.create(:character_skill,
-      character: character, user: user)
+    character_skill = FactoryGirl.create(:character_skill, character: character, skill: skill)
 
     visit character_path(character)
 
@@ -24,14 +23,12 @@ feature 'user creates a character', %Q{
       fill_in 'Rating', with: character_skill.rating
       fill_in 'Specialization', with: character_skill.specialization
       fill_in 'Skill group', with: skill.skill_group
-      fill_in 'Default', with: skill.default
+      fill_in 'Default', with: skill.default_skill
       click_on 'Submit'
     end
 
-    expect(page).to have_content skill.rating
+    expect(page).to have_content character_skill.rating
     expect(page).to have_content skill.name
-    expect(page).to have_content skill.specialization
-    expect(page).to have_content skill.skill_group
-    expect(page).to have_content skill.default
+    expect(page).to have_content character_skill.specialization
   end
 end
