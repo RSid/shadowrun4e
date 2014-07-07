@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/spec/features/user_adds_quality_spec.rb": [
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/spec/features/user_add_connection_spec.rb": [
         1,
         null,
         1,
@@ -20,8 +20,6 @@
         null,
         1,
         null,
-        null,
-        1,
         1,
         1,
         1,
@@ -31,6 +29,7 @@
         1,
         null,
         null,
+        1,
         1,
         1,
         1,
@@ -683,7 +682,7 @@
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/spec/factories/character.rb": [
         1,
         1,
-        5,
+        6,
         1,
         1,
         1,
@@ -721,6 +720,16 @@
         null,
         null
       ],
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/spec/factories/connection.rb": [
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/spec/factories/metatype.rb": [
         1,
         1,
@@ -749,7 +758,7 @@
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/spec/factories/user.rb": [
         1,
         1,
-        7,
+        8,
         1,
         null,
         null
@@ -844,10 +853,46 @@
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/spec/support/authentication_helper.rb": [
         1,
         1,
-        4,
-        4,
-        4,
-        4,
+        5,
+        5,
+        5,
+        5,
+        null,
+        null
+      ],
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/spec/features/user_adds_quality_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
         null,
         null
       ],
@@ -1031,18 +1076,18 @@
         1,
         null,
         1,
+        8,
         7,
-        6,
         null,
         null,
         null,
         1,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
         null,
         null,
         1,
@@ -1122,22 +1167,12 @@
         1,
         null
       ],
-      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/quality.rb": [
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        null
-      ],
-      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/character_quality.rb": [
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/connection.rb": [
         1,
         1,
         null,
         1,
-        null,
-        null,
+        1,
         1,
         1,
         null
@@ -1170,12 +1205,22 @@
         null,
         null
       ],
-      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/connection.rb": [
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/quality.rb": [
+        1,
         1,
         1,
         null,
         1,
         1,
+        null
+      ],
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/character_quality.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
         1,
         1,
         null
@@ -1202,6 +1247,33 @@
         1,
         null
       ],
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/controllers/connections_controller.rb": [
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/controllers/character_qualities_controller.rb": [
         1,
         null,
@@ -1219,7 +1291,7 @@
         null,
         null,
         1,
-        1,
+        null,
         1,
         1,
         null,
@@ -1277,6 +1349,6 @@
         null
       ]
     },
-    "timestamp": 1404760341
+    "timestamp": 1404760978
   }
 }

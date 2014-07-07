@@ -18,7 +18,7 @@ feature 'user adds a quality to their character', %Q{
       character: character, quality: quality)
 
     visit character_path(character)
-    save_and_open_page
+
     within("#add-quality") do
       fill_in 'Name', with: quality.name
       fill_in 'Affect rating', with: character_quality.affect_rating
