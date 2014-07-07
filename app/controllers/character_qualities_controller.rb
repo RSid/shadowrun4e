@@ -1,10 +1,4 @@
 class CharacterQualitiesController < ApplicationController
-
-  def new
-    @character_quality = CharacterQuality.new
-    @quality = Quality.new
-  end
-
   def create
     @character = Character.find(params[:character_id])
     quality = Quality.find_by(name: quality_params[:name])

@@ -1,9 +1,4 @@
 class ConnectionsController < ApplicationController
-
-  def new
-    @connection = Connection.new
-  end
-
   def create
     @character = Character.find(params[:character_id])
 

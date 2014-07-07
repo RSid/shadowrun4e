@@ -1,10 +1,4 @@
 class CharacterSkillsController < ApplicationController
-
-  def new
-    @character_skill = CharacterSkill.new
-    @skill = Skill.new
-  end
-
   def create
     @character = Character.find(params[:character_id])
     skill = Skill.find_by(name: skill_params[:name])

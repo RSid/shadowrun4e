@@ -881,7 +881,7 @@
         null,
         null,
         1,
-        1,
+        null,
         1,
         1,
         1,
@@ -1074,7 +1074,6 @@
       ],
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/controllers/characters_controller.rb": [
         1,
-        null,
         1,
         8,
         7,
@@ -1249,11 +1248,6 @@
       ],
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/controllers/connections_controller.rb": [
         1,
-        null,
-        1,
-        0,
-        null,
-        null,
         1,
         1,
         null,
@@ -1276,12 +1270,6 @@
       ],
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/controllers/character_qualities_controller.rb": [
         1,
-        null,
-        1,
-        0,
-        0,
-        null,
-        null,
         1,
         1,
         1,
@@ -1313,12 +1301,6 @@
       ],
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/controllers/character_skills_controller.rb": [
         1,
-        null,
-        1,
-        0,
-        0,
-        null,
-        null,
         1,
         1,
         1,
@@ -1349,6 +1331,6 @@
         null
       ]
     },
-    "timestamp": 1404760978
+    "timestamp": 1404761557
   }
 }

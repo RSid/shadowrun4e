@@ -1,5 +1,4 @@
 class CharactersController < ApplicationController
-
   def index
     if user_signed_in?
       @users_characters = current_user.characters
