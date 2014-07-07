@@ -12,6 +12,7 @@ class CharactersController < ApplicationController
     @character_skill = CharacterSkill.new
     @quality = Quality.new
     @character_quality = CharacterQuality.new
+    @connection = Connection.new
   end
 
   def new
