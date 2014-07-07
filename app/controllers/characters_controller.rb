@@ -10,6 +10,8 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
     @skill = Skill.new
     @character_skill = CharacterSkill.new
+    @quality = Quality.new
+    @character_quality = CharacterQuality.new
   end
 
   def new

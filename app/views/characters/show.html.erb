@@ -82,8 +82,8 @@
 
         <%= f.submit 'Submit' %>
       <% end %>
-
     </div>
+  </div>
 
 <form action= <%= "/delete-skill/#{@character.id}" %> method = 'post' >
 Skill select:
@@ -106,21 +106,20 @@ Skill select:
 
 <div class = "editing-characters">
   <p>Add a quality:</p>
-    <form action= <%= "/addquality/#{@character.id}" %> method="post">
-      <label for="qname">Name: </label>
-      <input type="text" name="qname" id="qname" />
+    <%= form_for [@character, @character_quality] do |f| %>
+      <%= f.fields_for @quality do |i| %>
+        <%= i.label :name %>
+        <%= i.text_field :name %>
 
-      <label for="qdescription">Description: </label>
-      <input type="text" name="qdescription" id="qdescription" />
+        <%= i.label :description %>
+        <%= i.text_field :description %>
+      <% end %>
 
-      <label for="qaffect">Affected stat, if any: </label>
-      <input type="text" name="qaffect" id="qaffect" />
+      <%= f.label :affect_rating %>
+      <%= f.text_field :affect_rating %>
 
-      <label for="qrating">Affect rating, if any: </label>
-      <input type="text" name="qrating" id="qrating" />
-
-      <input  class="submit-button" type="submit"  value="Submit"/>
-    </form>
+      <%= f.submit 'Submit' %>
+    <% end %>
 </div>
 
 <form action= <%= "/delete-quality/#{@character.id}" %> method = 'post' >

@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     resources :character_skills, only: [:new, :create]
 
     resources :skills, only: [:new, :create]
+
+    resources :character_qualities, only: [:new, :create]
+
+    resources :qualities, only: [:new, :create]
+
+    resources :connections, only: [:new, :create]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
