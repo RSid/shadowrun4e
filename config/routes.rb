@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'characters#index'
+
+  get '/about' => 'pages#about'
+  root 'pages#landing'
 
   resources :characters, only: [:index, :show, :new, :create, :destroy] do
     resources :character_skills, only: [:new, :create, :destroy]
