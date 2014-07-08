@@ -35,5 +35,6 @@ feature 'user deletes a character', %Q(
     end
 
     expect(page).to have_content character.name
+    expect(page).to have_content 'You are not logged in. You must be logged in to edit a character.'
   end
 end
