@@ -32,7 +32,8 @@ class CharacterSkillsController < ApplicationController
         redirect_to character_path(@character)
       end
     else
-      @character = Character.find(params[:id])
+      flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
+      @character = Character.find(params[:character_id])
       @skill = Skill.new
       @character_skill = CharacterSkill.new
       @quality = Quality.new
