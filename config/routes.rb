@@ -5,15 +5,17 @@ Rails.application.routes.draw do
   root 'pages#landing'
 
   resources :characters, only: [:index, :show, :new, :create, :destroy] do
-    resources :character_skills, only: [:new, :create, :destroy]
+    resources :character_skills, only: [:new, :create, :destroy, :index]
 
     resources :skills, only: [:new, :create]
 
-    resources :character_qualities, only: [:new, :create, :destroy]
+    resources :character_qualities, only: [:new, :create, :destroy, :index]
 
     resources :qualities, only: [:new, :create]
 
-    resources :connections, only: [:new, :create, :destroy]
+    resources :connections, only: [:new, :create, :destroy, :index]
+
+    resources :inventory, only: [:index]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
