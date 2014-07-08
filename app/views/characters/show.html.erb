@@ -123,16 +123,6 @@
   </div>
 </div>
 
-<form action= <%= "/delete-quality/#{@character.id}" %> method = 'post' >
-Quality select:
-  <select name = "deletable-quality">
-    <% @character.character_qualities.each do |characterquality| %>
-      <option><%= characterquality.quality.name%></option>
-    <% end %>
-  </select>
-  <input class="delete-button" type="submit"  value="Delete"/>
-</form>
-
 <h3><a name = "gear">Gear: </h3>
 
 <h5><a name = "weapons">&nbsp;Weapons: </h5>
@@ -245,7 +235,11 @@ Weapon select:
 <ul>
   <% @character.connections.each do |connection|%>
 
-  <li><%= "#{connection.name}: #{connection.description} Loyalty: #{connection.loyalty}/ Connection: #{connection.connection}" %></li>
+  <li>
+    <%= "#{connection.name}: #{connection.description} Loyalty: #{connection.loyalty}/ Connection: #{connection.connection}" %>
+    <%= link_to( content_tag(fa_icon "trash-o"), character_connection_path(@character,
+    connection), method: :delete) %>
+  </li>
 
   <% end %>
 </ul>
