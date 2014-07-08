@@ -48,14 +48,13 @@
 <li><%= "Bio: #{@character.bio}" %></li>
 </ul>
 
-
 <h3><a name="skills">Skills: </h3>
 <ul>
   <% @character.character_skills.each do |characterskill| %>
 
-    <li><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating},
+    <li id = <%= characterskill.id %> ><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating},
       Specialization: #{characterskill.specialization}" %>
-      <%= link_to( content_tag(fa_icon "trash-o"), character_character_skill_path(@character,
+      <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_skill_path(@character,
       characterskill), method: :delete) %></li>
 
     <!--
@@ -96,7 +95,7 @@
 
     <li>
       <%= "#{characterquality.quality.name}: #{characterquality.quality.description} Rating: #{characterquality.affect_rating} #{characterquality.quality.affected_stat}" %>
-      <%= link_to( content_tag(fa_icon "trash-o"), character_character_quality_path(@character,
+      <%= link_to( content_tag(:i,nil,class: "fa fa-trash-o"), character_character_quality_path(@character,
       characterquality), method: :delete) %>
     </li>
 
@@ -237,7 +236,7 @@ Weapon select:
 
   <li>
     <%= "#{connection.name}: #{connection.description} Loyalty: #{connection.loyalty}/ Connection: #{connection.connection}" %>
-    <%= link_to( content_tag(fa_icon "trash-o"), character_connection_path(@character,
+    <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_connection_path(@character,
     connection), method: :delete) %>
   </li>
 
