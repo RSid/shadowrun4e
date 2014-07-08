@@ -53,7 +53,17 @@
 <ul>
   <% @character.character_skills.each do |characterskill| %>
 
-    <li><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating}, Specialization: #{characterskill.specialization}" %></li>
+    <li><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating},
+      Specialization: #{characterskill.specialization}" %>
+      <%= link_to("Delete", character_character_skill_path(@character,
+      characterskill), method: :delete) %></li>
+
+    <!-- <%= link_to("Delete this character? This action cannot be undone.",
+      character_path(@character), method: :delete) %>
+      use fontawesome icons and JS to make delete appear when you hover over it
+
+      different layouts, so I could have tabs for different parts of char sheet (dribbble.com)-->
+
 
   <% end %>
 </ul>
@@ -83,16 +93,6 @@
       <% end %>
     </div>
   </div>
-
-<form action= <%= "/delete-skill/#{@character.id}" %> method = 'post' >
-Skill select:
-  <select name = "deletable-skill">
-    <% @character.character_skills.each do |characterskill| %>
-      <option><%= characterskill.skill.name %></option>
-    <% end %>
-  </select>
-  <input class="delete-button" type="submit"  value="Delete"/>
-</form>
 
 <h3><a name = "qualities">Qualities: </h3>
 <ul>

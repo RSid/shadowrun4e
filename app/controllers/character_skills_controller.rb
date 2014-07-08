@@ -23,6 +23,25 @@ class CharacterSkillsController < ApplicationController
     end
   end
 
+  def destroy
+    @character = Character.find(params[:character_id])
+    @character_skill = CharacterSkill.find(params[:id])
+    if current_user == @character.user
+      if @character_skill.destroy
+        flash[:notice] = 'Skill deleted!'
+        redirect_to character_path
+      end
+    else
+      @character = Character.find(params[:id])
+      @skill = Skill.new
+      @character_skill = CharacterSkill.new
+      @quality = Quality.new
+      @character_quality = CharacterQuality.new
+      @connection = Connection.new
+      render :show
+    end
+  end
+
   private
 
   def character_skill_params
