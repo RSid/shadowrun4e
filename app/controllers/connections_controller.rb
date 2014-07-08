@@ -7,7 +7,7 @@ class ConnectionsController < ApplicationController
     if @connection.save
       redirect_to character_path(@character)
     else
-      flash.now[:notice] = 'Uh oh! Your skill could not be saved.'
+      flash.now[:notice] = 'Uh oh! Your connection could not be saved.'
       @character = Character.find(params[:id])
       @skill = Skill.new
       @character_skill = CharacterSkill.new
@@ -27,7 +27,7 @@ class ConnectionsController < ApplicationController
         redirect_to character_path(@character)
       end
     else
-      @character = Character.find(params[:id])
+      @character = Character.find(params[:character_id])
       @skill = Skill.new
       @character_skill = CharacterSkill.new
       @quality = Quality.new

@@ -12,8 +12,8 @@ class CharacterQualitiesController < ApplicationController
     if @character_quality.save
       redirect_to character_path(@character)
     else
-      flash.now[:notice] = 'Uh oh! Your skill could not be saved.'
-      @character = Character.find(params[:id])
+      flash.now[:notice] = 'Uh oh! Your quality could not be saved.'
+      @character = Character.find(params[:character_id])
       @skill = Skill.new
       @character_skill = CharacterSkill.new
       @quality = Quality.new
@@ -32,7 +32,7 @@ class CharacterQualitiesController < ApplicationController
         redirect_to character_path(@character)
       end
     else
-      @character = Character.find(params[:id])
+      @character = Character.find(params[:character_id])
       @skill = Skill.new
       @character_skill = CharacterSkill.new
       @quality = Quality.new
