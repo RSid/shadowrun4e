@@ -55,16 +55,12 @@
 
     <li><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating},
       Specialization: #{characterskill.specialization}" %>
-      <%= link_to("Delete", character_character_skill_path(@character,
+      <%= link_to( content_tag(fa_icon "trash-o"), character_character_skill_path(@character,
       characterskill), method: :delete) %></li>
 
-    <!-- <%= link_to("Delete this character? This action cannot be undone.",
-      character_path(@character), method: :delete) %>
+    <!--
       use fontawesome icons and JS to make delete appear when you hover over it
-
-      different layouts, so I could have tabs for different parts of char sheet (dribbble.com)-->
-
-
+-->
   <% end %>
 </ul>
 
@@ -98,7 +94,11 @@
 <ul>
   <% @character.character_qualities.each do |characterquality| %>
 
-    <li><%= "#{characterquality.quality.name}: #{characterquality.quality.description} Rating: #{characterquality.affect_rating} #{characterquality.quality.affected_stat} " %></li>
+    <li>
+      <%= "#{characterquality.quality.name}: #{characterquality.quality.description} Rating: #{characterquality.affect_rating} #{characterquality.quality.affected_stat}" %>
+      <%= link_to( content_tag(fa_icon "trash-o"), character_character_quality_path(@character,
+      characterquality), method: :delete) %>
+    </li>
 
   <% end %>
 </ul>

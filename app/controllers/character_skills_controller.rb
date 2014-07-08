@@ -29,7 +29,7 @@ class CharacterSkillsController < ApplicationController
     if current_user == @character.user
       if @character_skill.destroy
         flash[:notice] = 'Skill deleted!'
-        redirect_to character_path
+        redirect_to character_path(@character)
       end
     else
       @character = Character.find(params[:id])

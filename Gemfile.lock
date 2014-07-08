@@ -39,7 +39,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    cocoon (1.2.6)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -75,6 +74,8 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
+    font-awesome-rails (4.1.0.0)
+      railties (>= 3.2, < 5.0)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (2.1.1)
@@ -199,13 +200,13 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.2.0)
   capybara
-  cocoon
   coffee-rails (~> 4.0.0)
   coveralls
   devise
   devise-bootstrap-views
   dotenv-rails
   factory_girl_rails
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   launchy
