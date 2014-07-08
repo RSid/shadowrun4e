@@ -34,7 +34,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'simple_form'
 
-gem 'cocoon'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'coveralls', require: false

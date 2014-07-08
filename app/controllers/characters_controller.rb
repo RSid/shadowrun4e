@@ -7,6 +7,8 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
+    @character_skills = @character.character_skills
+
     @skill = Skill.new
     @character_skill = CharacterSkill.new
     @quality = Quality.new
@@ -26,6 +28,25 @@ class CharactersController < ApplicationController
     else
       flash.now[:notice] = 'Uh oh! Your character could not be saved.'
       render :new
+    end
+  end
+
+  def destroy
+    @character = Character.find(params[:id])
+    if current_user == @character.user
+      if @character.destroy
+        flash[:notice] = 'Character deleted!'
+        redirect_to characters_path
+      end
+    else
+      flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
+      @character = Character.find(params[:id])
+      @skill = Skill.new
+      @character_skill = CharacterSkill.new
+      @quality = Quality.new
+      @character_quality = CharacterQuality.new
+      @connection = Connection.new
+      render :show
     end
   end
 

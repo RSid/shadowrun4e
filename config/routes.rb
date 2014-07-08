@@ -2,16 +2,16 @@ Rails.application.routes.draw do
   devise_for :users
   root 'characters#index'
 
-  resources :characters, only: [:index, :show, :new, :create] do
-    resources :character_skills, only: [:new, :create]
+  resources :characters, only: [:index, :show, :new, :create, :destroy] do
+    resources :character_skills, only: [:new, :create, :destroy]
 
     resources :skills, only: [:new, :create]
 
-    resources :character_qualities, only: [:new, :create]
+    resources :character_qualities, only: [:new, :create, :destroy]
 
     resources :qualities, only: [:new, :create]
 
-    resources :connections, only: [:new, :create]
+    resources :connections, only: [:new, :create, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

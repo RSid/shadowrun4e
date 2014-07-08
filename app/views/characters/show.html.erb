@@ -48,13 +48,18 @@
 <li><%= "Bio: #{@character.bio}" %></li>
 </ul>
 
-
 <h3><a name="skills">Skills: </h3>
 <ul>
   <% @character.character_skills.each do |characterskill| %>
 
-    <li><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating}, Specialization: #{characterskill.specialization}" %></li>
+    <li ><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating},
+      Specialization: #{characterskill.specialization}" %>
+      <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_skill_path(@character,
+      characterskill), method: :delete,id: characterskill.id) %></li>
 
+    <!--
+      use fontawesome icons and JS to make delete appear when you hover over it
+-->
   <% end %>
 </ul>
 
@@ -84,21 +89,15 @@
     </div>
   </div>
 
-<form action= <%= "/delete-skill/#{@character.id}" %> method = 'post' >
-Skill select:
-  <select name = "deletable-skill">
-    <% @character.character_skills.each do |characterskill| %>
-      <option><%= characterskill.skill.name %></option>
-    <% end %>
-  </select>
-  <input class="delete-button" type="submit"  value="Delete"/>
-</form>
-
 <h3><a name = "qualities">Qualities: </h3>
 <ul>
   <% @character.character_qualities.each do |characterquality| %>
 
-    <li><%= "#{characterquality.quality.name}: #{characterquality.quality.description} Rating: #{characterquality.affect_rating} #{characterquality.quality.affected_stat} " %></li>
+    <li>
+      <%= "#{characterquality.quality.name}: #{characterquality.quality.description} Rating: #{characterquality.affect_rating} #{characterquality.quality.affected_stat}" %>
+      <%= link_to( content_tag(:i,nil,class: "fa fa-trash-o"), character_character_quality_path(@character,
+      characterquality), method: :delete,id: characterquality.id) %>
+    </li>
 
   <% end %>
 </ul>
@@ -122,16 +121,6 @@ Skill select:
     <% end %>
   </div>
 </div>
-
-<form action= <%= "/delete-quality/#{@character.id}" %> method = 'post' >
-Quality select:
-  <select name = "deletable-quality">
-    <% @character.character_qualities.each do |characterquality| %>
-      <option><%= characterquality.quality.name%></option>
-    <% end %>
-  </select>
-  <input class="delete-button" type="submit"  value="Delete"/>
-</form>
 
 <h3><a name = "gear">Gear: </h3>
 
@@ -245,7 +234,11 @@ Weapon select:
 <ul>
   <% @character.connections.each do |connection|%>
 
-  <li><%= "#{connection.name}: #{connection.description} Loyalty: #{connection.loyalty}/ Connection: #{connection.connection}" %></li>
+  <li>
+    <%= "#{connection.name}: #{connection.description} Loyalty: #{connection.loyalty}/ Connection: #{connection.connection}" %>
+    <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_connection_path(@character,
+    connection), method: :delete, id: connection.id) %>
+  </li>
 
   <% end %>
 </ul>
@@ -283,10 +276,8 @@ Connection select:
 </form>
 
 <div id="character-deletion">
-  <form action= <%= "/delete/#{@character.id}" %> method="post">
-    <label for="delete">Delete this character? This action cannot be undone. </label>
-    <input class="delete-button" type="submit"  value="Delete"/>
-  </form>
+  <%= link_to("Delete this character? This action cannot be undone.",
+    character_path(@character), method: :delete) %>
 </div>
 
 </div>
