@@ -13,11 +13,43 @@ feature 'user deletes a skill, quality, or connection', %Q(
     metatype = FactoryGirl.create(:metatype)
     character = FactoryGirl.create(:character, metatype: metatype, user: user)
     skill = FactoryGirl.create(:skill)
-    character_skill = FactoryGirl.create(:character_skill, character: character, skill: skill)
+    character_skill = FactoryGirl.create(:character_skill,
+      character: character, skill: skill)
 
     visit character_path(character)
 
     click_on (character_skill.id.to_s)
     expect(page).to_not have_content skill.name
+  end
+
+  scenario 'user deletes a quality' do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
+    metatype = FactoryGirl.create(:metatype)
+    character = FactoryGirl.create(:character, metatype: metatype, user: user)
+    quality = FactoryGirl.create(:quality)
+
+    character_quality = FactoryGirl.create(:character_quality,
+      character: character, quality: quality)
+
+    visit character_path(character)
+
+    click_on (character_quality.id.to_s)
+    expect(page).to_not have_content quality.name
+  end
+
+  scenario 'user deletes a connection' do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
+    metatype = FactoryGirl.create(:metatype)
+    character = FactoryGirl.create(:character, metatype: metatype, user: user)
+    connection = FactoryGirl.create(:connection, character: character)
+
+    visit character_path(character)
+
+    click_on (connection.id.to_s)
+    expect(page).to_not have_content connection.name
   end
 end

@@ -96,7 +96,7 @@
     <li>
       <%= "#{characterquality.quality.name}: #{characterquality.quality.description} Rating: #{characterquality.affect_rating} #{characterquality.quality.affected_stat}" %>
       <%= link_to( content_tag(:i,nil,class: "fa fa-trash-o"), character_character_quality_path(@character,
-      characterquality), method: :delete) %>
+      characterquality), method: :delete,id: characterquality.id) %>
     </li>
 
   <% end %>
@@ -237,7 +237,7 @@ Weapon select:
   <li>
     <%= "#{connection.name}: #{connection.description} Loyalty: #{connection.loyalty}/ Connection: #{connection.connection}" %>
     <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_connection_path(@character,
-    connection), method: :delete) %>
+    connection), method: :delete, id: connection.id) %>
   </li>
 
   <% end %>
