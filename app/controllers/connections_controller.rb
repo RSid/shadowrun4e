@@ -14,7 +14,7 @@ class ConnectionsController < ApplicationController
       @quality = Quality.new
       @character_quality = CharacterQuality.new
       @connection = Connection.new
-      render :show
+      render "/characters/show"
     end
   end
 
@@ -33,7 +33,7 @@ class ConnectionsController < ApplicationController
       @quality = Quality.new
       @character_quality = CharacterQuality.new
       @connection = Connection.new
-      render :show
+      render "/characters/show"
     end
   end
 
