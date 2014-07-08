@@ -4,7 +4,6 @@ class CreateCharacterWeaponsTable < ActiveRecord::Migration
       table.integer :character_id, null: false
       table.integer :weapon_id, null: false
       table.integer :rating
-
     end
   end
 end

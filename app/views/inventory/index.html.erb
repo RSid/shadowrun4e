@@ -1,3 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Character</title>
+  <script language="javascript" type="text/javascript" src="/jquery.1.11.1.js"></script>
+  <script language="javascript" type="text/javascript" src="/app.js"></script>
+  <script language="javascript" type="text/javascript" src="/skills_dynamic_forms.js"></script>
+  <link rel="stylesheet" href="/sr4.css" />
+</head>
+
 <div id = "character-name"><%= @character.name %></div>
 
 <ul class="char-nav">
@@ -91,15 +102,17 @@
     </div>
 
     <div id = "general-gear-input">
-      <form action= <%= "/addgengear/#{@character.id}" %> method="post">
-         <label for="general-gear-name">Name: </label>
-          <input type="text" name="general-gear" id="general-gear" />
+      <%= form_for [@character, @character_tool] do |f| %>
+        <%= f.fields_for @tool do |i| %>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
 
-          <label for="general-gear-description">Description: </label>
-          <input type="text" name="general-gear-description" id="general-gear-description" />
+          <%= i.label :description %>
+          <%= i.text_field :description %>
+        <% end %>
 
-          <input class="general-gear-submit" type="submit"  value="Submit"/>
-      </form>
+        <%= f.submit 'Submit' %>
+      <% end %>
     </div>
 
   </div>
@@ -108,15 +121,3 @@
   <div id = 'under-constructon'>
     <p><em>Still under construction.</em></p>
   </div>
-
-
-  <form action= <%= "/delete-weapon/#{@character.id}" %> method = 'post' >
-  Weapon select:
-    <select name = "deletable-weapon">
-      <% @character.weapons.each do |weapon| %>
-        <option><%=weapon.name%></option>
-      <% end %>
-    </select>
-    <input class="delete-button" type="submit"  value="Delete"/>
-  </form>
-</div>
