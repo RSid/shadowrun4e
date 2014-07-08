@@ -1,0 +1,122 @@
+<div id = "character-name"><%= @character.name %></div>
+
+<ul class="char-nav">
+  <li><%= link_to 'Base',character_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Skills', character_character_skills_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Qualities', character_character_qualities_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Inventory', character_inventory_index_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Connections', character_connections_path(@character) %></li>
+</ul>
+
+<div class = "content">
+
+  <h3><a name = "gear">Gear: </h3>
+
+  <h5><a name = "weapons">&nbsp;Weapons: </h5>
+
+  <ul>
+    <% if @character.character_weapons[0] != nil %>
+      <% @character.character_weapons.each do |characterweapon| %>
+
+        <li><%= "#{characterweapon.weapon.name}: #{characterweapon.weapon.description} Damage: #{characterweapon.weapon.damage} #{characterweapon.weapon.damage_type} Armor piercing: #{characterweapon.weapon.armor_piercing} Rating: #{characterweapon.rating} Concealability modifier: #{characterweapon.weapon.concealability} Legality: #{characterweapon.weapon.legality}" %></li>
+
+        <% if @character.character_weapons.first.weapon.ammo != "" %>
+          <p><%= "Ammo: #{characterweapon.weapon.ammo}, Mode: #{characterweapon.weapon.mode}, Recoil: #{characterweapon.weapon.recoil}" %></p>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <h5><a name = "general-gear">&nbsp;General: </h5>
+
+  <div class = "editing-characters">
+    <form id="gear-type">
+      Add:
+      <select id = "PickGear">
+        <option value = '0'> Gear type </option>
+        <option value = '1'> Weapons </option>
+        <option value = '2'> Armour </option>
+        <option value = '3'> Vehicles </option>
+        <option value = '4'> General </option>
+      </select>
+    </form>
+
+    <div id = "weapons-input">
+      <form action= <%= "/addweapon/#{@character.id}" %> method="post">
+        <label for="weapon-name">Name: </label>
+        <input type="text" name="weapon-name" id="weapon-name" />
+
+        <label for="weapon-description">Description: </label>
+        <input type="text" name="weapon-description" id="weapon-description" />
+
+        <label for="weapon-damage">Damage: </label>
+        <input type="text" name="weapon-damage" id="weapon-damage" />
+
+        <label for="weapon-damage-type">Damage type: </label>
+        <input type="text" name="weapon-damage-type" id="weapon-damage-type" />
+
+        <label for="weapon-rating">Rating, if applicable: </label>
+        <input type="text" name="weapon-rating" id="weapon-rating" />
+
+        <label for="weapon-ap">Armor piercing: </label>
+        <input type="text" name="weapon-ap" id="weapon-ap" />
+
+        <label for="weapon-concealability">Concealability modifier: </label>
+        <input type="text" name="weapon-concealability" id="weapon-concealability" />
+
+        <label for="weapon-mode">Mode, if applicable: </label>
+        <input type="text" name="weapon-mode" id="weapon-mode" />
+
+        <label for="weapon-recoil">Recoil, if applicable: </label>
+        <input type="text" name="weapon-recoil" id="weapon-recoil" />
+
+        <label for="weapon-ammo">Ammo type, if applicable: </label>
+        <input type="text" name="weapon-ammo" id="weapon-ammo" />
+
+        <label for="weapon-legality">Legality: </label>
+        <input type="text" name="weapon-legality" id="weapon-legality" />
+
+        <label for="melee">Melee weapon? </label>
+        <select id = "melee" name = "melee">
+          <option value = 'true'> Yes </option>
+          <option value = 'false'> No </option>
+        </select>
+
+        <input class="weapon-submit" type="submit"  value="Submit"/>
+      </form>
+    </div>
+
+    <div id = "general-gear-input">
+      <form action= <%= "/addgengear/#{@character.id}" %> method="post">
+         <label for="general-gear-name">Name: </label>
+          <input type="text" name="general-gear" id="general-gear" />
+
+          <label for="general-gear-description">Description: </label>
+          <input type="text" name="general-gear-description" id="general-gear-description" />
+
+          <input class="general-gear-submit" type="submit"  value="Submit"/>
+      </form>
+    </div>
+
+  </div>
+
+
+  <div id = 'under-constructon'>
+    <p><em>Still under construction.</em></p>
+  </div>
+
+
+  <form action= <%= "/delete-weapon/#{@character.id}" %> method = 'post' >
+  Weapon select:
+    <select name = "deletable-weapon">
+      <% @character.weapons.each do |weapon| %>
+        <option><%=weapon.name%></option>
+      <% end %>
+    </select>
+    <input class="delete-button" type="submit"  value="Delete"/>
+  </form>
+</div>
