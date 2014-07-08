@@ -52,10 +52,10 @@
 <ul>
   <% @character.character_skills.each do |characterskill| %>
 
-    <li id = <%= characterskill.id %> ><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating},
+    <li ><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating},
       Specialization: #{characterskill.specialization}" %>
       <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_skill_path(@character,
-      characterskill), method: :delete) %></li>
+      characterskill), method: :delete,id: characterskill.id) %></li>
 
     <!--
       use fontawesome icons and JS to make delete appear when you hover over it

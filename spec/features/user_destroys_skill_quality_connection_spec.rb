@@ -16,11 +16,8 @@ feature 'user deletes a skill, quality, or connection', %Q(
     character_skill = FactoryGirl.create(:character_skill, character: character, skill: skill)
 
     visit character_path(character)
-    save_and_open_page
-    within("#" + character_skill.id.to_s) do
-      click_on ".fa fa-trash-o"
-    end
 
+    click_on (character_skill.id.to_s)
     expect(page).to_not have_content skill.name
   end
 end
