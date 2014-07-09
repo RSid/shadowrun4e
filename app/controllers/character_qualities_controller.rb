@@ -38,6 +38,8 @@ class CharacterQualitiesController < ApplicationController
       end
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
+      @quality = Quality.new
+      @character_quality = CharacterQuality.new
       render "/character_qualities/index"
     end
   end

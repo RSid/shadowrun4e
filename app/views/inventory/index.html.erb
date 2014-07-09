@@ -48,12 +48,14 @@
 
   <h5><a name = "general-gear">&nbsp;General: </h5>
     <ul id = 'general-gear'>
-      <% @character_tools.each do |charactertool| %>
-        <li>
-          <%= "#{charactertool.tool.name}, #{charactertool.tool.description}" %>
-          <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_tool_path(@character,
-          charactertool), method: :delete, id: charactertool.id) %>
-        </li>
+      <% if @character.character_tools[0] != nil %>
+        <% @character.character_tools.each do |charactertool| %>
+          <li>
+            <%= "#{charactertool.tool.name}, #{charactertool.tool.description}" %>
+            <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_tool_path(@character,
+            charactertool), method: :delete, id: charactertool.id) %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
 

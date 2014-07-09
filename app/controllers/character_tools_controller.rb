@@ -1,9 +1,9 @@
 class CharacterToolsController < ApplicationController
-  def index
-  end
+  before_action :set_character
 
   def create
-    @character = Character.find(params[:character_id])
+    @inventory = InventoryFacade.new(@character)
+
     tool = Tool.find_by(name: tool_params[:name])
 
     if tool == nil
@@ -19,12 +19,14 @@ class CharacterToolsController < ApplicationController
       @character = Character.find(params[:character_id])
       @tool = Tool.new
       @character_tool = CharacterTool.new
-      render "inventory/index"
+
+      @weapon = Weapon.new
+      @character_weapon = CharacterWeapon.new
+      render "/inventory/index"
     end
   end
 
   def destroy
-    @character = Character.find(params[:character_id])
     @character_tool = CharacterTool.find(params[:id])
     if current_user == @character.user
       if @character_tool.destroy
@@ -33,7 +35,7 @@ class CharacterToolsController < ApplicationController
       end
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
-      render "/characters/show/inventory"
+      redirect_to character_inventory_index_path(@character)
     end
   end
 
@@ -45,5 +47,9 @@ class CharacterToolsController < ApplicationController
 
   def tool_params
     params.require(:character_tool).permit(:tool => [:name, :description])
+  end
+
+  def set_character
+    @character = Character.find(params[:character_id])
   end
 end
