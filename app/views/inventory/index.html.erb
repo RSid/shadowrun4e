@@ -29,25 +29,28 @@
 
   <h5><a name = "weapons">&nbsp;Weapons: </h5>
     <ul id = 'weapons' >
-      <% @character_tools.each do |character_tool| %>
-        <li><%= "#{character_tool.tool.name}, #{character_tool.tool.description}" %></li>
-      <% end %>
-    </ul
+      <% if @character.character_weapons[0] != nil %>
+        <% @character.character_weapons.each do |characterweapon| %>
 
-  <ul>
-    <% if @character.character_weapons[0] != nil %>
-      <% @character.character_weapons.each do |characterweapon| %>
+          <li><%= "#{characterweapon.weapon.name}: #{characterweapon.weapon.description} Damage: #{characterweapon.weapon.damage} #{characterweapon.weapon.damage_type} Armor piercing: #{characterweapon.weapon.armor_piercing} Rating: #{characterweapon.rating} Concealability modifier: #{characterweapon.weapon.concealability} Legality: #{characterweapon.weapon.legality}" %></li>
 
-        <li><%= "#{characterweapon.weapon.name}: #{characterweapon.weapon.description} Damage: #{characterweapon.weapon.damage} #{characterweapon.weapon.damage_type} Armor piercing: #{characterweapon.weapon.armor_piercing} Rating: #{characterweapon.rating} Concealability modifier: #{characterweapon.weapon.concealability} Legality: #{characterweapon.weapon.legality}" %></li>
-
-        <% if @character.character_weapons.first.weapon.ammo != "" %>
-          <p><%= "Ammo: #{characterweapon.weapon.ammo}, Mode: #{characterweapon.weapon.mode}, Recoil: #{characterweapon.weapon.recoil}" %></p>
+          <% if @character.character_weapons.first.weapon.ammo != "" %>
+            <p><%= "Ammo: #{characterweapon.weapon.ammo}, Mode: #{characterweapon.weapon.mode}, Recoil: #{characterweapon.weapon.recoil}" %></p>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
 
   <h5><a name = "general-gear">&nbsp;General: </h5>
+    <ul id = 'general-gear'>
+      <% @character_tools.each do |charactertool| %>
+        <li>
+          <%= "#{charactertool.tool.name}, #{charactertool.tool.description}" %>
+          <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_tool_path(@character,
+          charactertool), method: :delete, id: charactertool.id) %>
+        </li>
+      <% end %>
+    </ul>
 
   <div class = "editing-characters">
     <form id="gear-type">

@@ -19,6 +19,20 @@ class CharacterToolsController < ApplicationController
       @character = Character.find(params[:character_id])
       @tool = Tool.new
       @character_tool = CharacterTool.new
+      render "inventory/index"
+    end
+  end
+
+  def destroy
+    @character = Character.find(params[:character_id])
+    @character_tool = CharacterTool.find(params[:id])
+    if current_user == @character.user
+      if @character_tool.destroy
+        flash[:notice] = 'Gear deleted!'
+        redirect_to character_inventory_index_path(@character)
+      end
+    else
+      flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
       render "/characters/show/inventory"
     end
   end
@@ -26,7 +40,7 @@ class CharacterToolsController < ApplicationController
   private
 
   def character_tool_params
-    params.require(:character_tool).permit(:character_id, :tool)
+    params.require(:character_tool).permit(:character_id)
   end
 
   def tool_params

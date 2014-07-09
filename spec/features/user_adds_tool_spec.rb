@@ -31,6 +31,4 @@ feature 'user adds a tool to their character', %Q{
     expect(page).to have_content tool.description
     expect(page).to have_content tool.name
   end
-
-
 end

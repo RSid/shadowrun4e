@@ -14,7 +14,7 @@ class CharacterSkillsController < ApplicationController
     if skill == nil
       skill = Skill.create(skill_params["skill"])
     end
-
+    
     @character_skill = @character.character_skills.build(character_skill_params.merge(skill: skill))
 
     if @character_skill.save
