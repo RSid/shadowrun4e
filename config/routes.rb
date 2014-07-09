@@ -1,17 +1,29 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'characters#index'
+
+  get '/about' => 'pages#about'
+  root 'pages#landing'
 
   resources :characters, only: [:index, :show, :new, :create, :destroy] do
-    resources :character_skills, only: [:new, :create, :destroy]
+    resources :character_skills, only: [:new, :create, :destroy, :index]
 
     resources :skills, only: [:new, :create]
 
-    resources :character_qualities, only: [:new, :create, :destroy]
+    resources :character_qualities, only: [:new, :create, :destroy, :index]
 
     resources :qualities, only: [:new, :create]
 
-    resources :connections, only: [:new, :create, :destroy]
+    resources :connections, only: [:new, :create, :destroy, :index]
+
+    resources :inventory, only: [:index]
+
+    resources :tools, only: [:new, :create]
+
+    resources :character_tools, only: [:new, :create, :destroy, :index]
+
+    resources :weapons, only: [:new, :create]
+
+    resources :character_weapons, only: [:new, :create, :destroy, :index]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

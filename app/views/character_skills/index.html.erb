@@ -1,0 +1,56 @@
+<div id = "character-name"><%= @character.name %></div>
+
+<ul class="char-nav">
+  <li><%= link_to 'Base',character_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Skills', character_character_skills_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Qualities', character_character_qualities_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Inventory', character_inventory_index_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Connections', character_connections_path(@character) %></li>
+</ul>
+
+<div class = "content">
+  <h3><a name="skills">Skills: </h3>
+  <ul>
+    <% @character.character_skills.each do |characterskill| %>
+
+      <li ><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating},
+        Specialization: #{characterskill.specialization}" %>
+        <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_skill_path(@character,
+        characterskill), method: :delete,id: characterskill.id) %></li>
+
+      <!--
+        use fontawesome icons and JS to make delete appear when you hover over it
+  -->
+    <% end %>
+  </ul>
+
+  <div class = "editing-characters">
+    <p>Add a skill:</p>
+      <div id = "add-skill">
+        <%= form_for [@character, @character_skill] do |f| %>
+          <%= f.fields_for @skill do |i| %>
+            <%= i.label :name %>
+            <%= i.text_field :name %>
+
+            <%= i.label :skill_group %>
+            <%= i.text_field :skill_group %>
+
+            <%= i.label :default_skill %>
+            <%= i.text_field :default_skill %>
+          <% end %>
+
+          <%= f.label :rating %>
+          <%= f.text_field :rating %>
+
+          <%= f.label :specialization %>
+          <%= f.text_field :specialization %>
+
+          <%= f.submit 'Submit' %>
+        <% end %>
+      </div>
+    </div>
+</div>

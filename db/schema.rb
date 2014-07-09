@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140704155835) do
+ActiveRecord::Schema.define(version: 20140708220400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "armors", force: true do |t|
+    t.string "name",        null: false
+    t.string "description"
+    t.string "ballistic"
+    t.string "email"
+  end
+
+  create_table "character_armors", force: true do |t|
+    t.integer "character_id", null: false
+    t.integer "armor_id",     null: false
+  end
 
   create_table "character_qualities", force: true do |t|
     t.integer "character_id",  null: false
@@ -27,6 +39,11 @@ ActiveRecord::Schema.define(version: 20140704155835) do
     t.integer "skill_id",       null: false
     t.string  "specialization"
     t.integer "rating",         null: false
+  end
+
+  create_table "character_tools", force: true do |t|
+    t.integer "character_id", null: false
+    t.integer "tool_id",      null: false
   end
 
   create_table "character_weapons", force: true do |t|
@@ -97,6 +114,11 @@ ActiveRecord::Schema.define(version: 20140704155835) do
     t.string "name",          null: false
     t.string "default_skill"
     t.string "skill_group"
+  end
+
+  create_table "tools", force: true do |t|
+    t.string "name",        null: false
+    t.string "description"
   end
 
   create_table "users", force: true do |t|

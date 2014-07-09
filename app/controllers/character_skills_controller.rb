@@ -1,4 +1,12 @@
 class CharacterSkillsController < ApplicationController
+  def index
+    @character = Character.find(params[:character_id])
+    @character_skills = @character.character_skills
+
+    @skill = Skill.new
+    @character_skill = CharacterSkill.new
+  end
+
   def create
     @character = Character.find(params[:character_id])
     skill = Skill.find_by(name: skill_params[:name])
@@ -6,11 +14,11 @@ class CharacterSkillsController < ApplicationController
     if skill == nil
       skill = Skill.create(skill_params["skill"])
     end
-
+    
     @character_skill = @character.character_skills.build(character_skill_params.merge(skill: skill))
 
     if @character_skill.save
-      redirect_to character_path(@character)
+      redirect_to character_character_skills_path(@character)
     else
       flash.now[:notice] = 'Uh oh! Your skill could not be saved.'
       @character = Character.find(params[:character_id])
@@ -19,7 +27,7 @@ class CharacterSkillsController < ApplicationController
       @quality = Quality.new
       @character_quality = CharacterQuality.new
       @connection = Connection.new
-      render "/characters/show"
+      render "/character_skills/index"
     end
   end
 
@@ -29,7 +37,7 @@ class CharacterSkillsController < ApplicationController
     if current_user == @character.user
       if @character_skill.destroy
         flash[:notice] = 'Skill deleted!'
-        redirect_to character_path(@character)
+        redirect_to character_character_skills_path(@character)
       end
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
@@ -39,7 +47,7 @@ class CharacterSkillsController < ApplicationController
       @quality = Quality.new
       @character_quality = CharacterQuality.new
       @connection = Connection.new
-      render "/characters/show"
+      render "/character_skills/index"
     end
   end
 

@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <h1><%= link_to 'SHADOWRUN!', characters_path %></h1>
+  <h1><%= link_to image_tag('SRlogo.jpg'), characters_path %></h1>
     <ul>
       <% if user_signed_in? %>
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
@@ -20,9 +20,9 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-<%= yield %>
+  <%= yield %>
 
-  <p id = 'footer'>
+  <div id = 'footer'>
     Shadowrun Character keeper is created and maintained by Alla Hoffman. You
     can find me on Github here.
   <br>
@@ -34,6 +34,6 @@
     and/or any proprietary materials for promotional and informational purposes
     on its website but does not endorse, and is not affiliated with Alla Hoffman
     in any official capacity whatsoever.
-  </p>
+  </div>
 </body>
 </html>

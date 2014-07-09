@@ -12,7 +12,6 @@ class CreateWeaponsTable < ActiveRecord::Migration
       table.string :recoil
       table.string :ammo
       table.string :legality
-
     end
   end
 end

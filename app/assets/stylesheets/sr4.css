@@ -1,7 +1,10 @@
+/*Whole app*/
+
 @font-face {
   font-family: FrizQuadrata;
   src: url(frquad.ttf);
 }
+
 
 body {
   font-family: FrizQuadrata;
@@ -27,6 +30,74 @@ h1 a {
   font-size: 1.3em;
   }
 
+/*#footer {
+  color: gray;
+  font-size: .5em;
+  position: fixed;
+  bottom: -10px;
+  text-align: center;
+  padding: 5px;
+  }*/
+
+/*Landing page*/
+
+#background {
+  background: url(city.jpg) no-repeat center center fixed;
+  background-size: cover;
+  margin: 0px;
+  padding: 400px;
+}
+
+#landing-title {
+  font-size: 3em;
+  text-align: center;
+  line-height: 400px;
+}
+
+#landing-title img {
+  vertical-align: middle
+}
+
+#landing-nav-bar {
+  list-style: none;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+  text-align:center;
+}
+
+#landing-nav-bar li {
+  display: inline;
+  padding: 10px;
+  margin: 0px;
+}
+
+#landing-nav-bar li a {
+  color: darkgreen;
+  text-decoration: none;
+}
+
+#landing-foot {
+  background-color: black;
+  color: white;
+  font-size: .5em;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  }
+
+#panel {
+  border-radius: 15px;
+  width: 700px;
+  height: 500px;
+  background-color: rgba(255,255,255,.3)
+}
+
+/*Character index page*/
+
+
+
+/*Character show page*/
 
 .character-info {
   padding: 20px;
@@ -106,32 +177,12 @@ h2 {
   font-size: 2.8em;
 }
 
-#oauth {
-  text-align: center;
-  color: black;
-}
-
-#oauth a {
-  color: black;
-}
-
-#login {
-  display: inline;
-
-}
-
-#login a {
-  color: black;
-}
 
 .user-status {
   text-align: right;
   display: inline;
 }
 
-form {
-  margin-left: 20px;
-}
 
 .sub-heading {
   font-weight: bold;

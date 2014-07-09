@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Character</title>
+  <script language="javascript" type="text/javascript" src="/jquery.1.11.1.js"></script>
+  <script language="javascript" type="text/javascript" src="/app.js"></script>
+  <script language="javascript" type="text/javascript" src="/skills_dynamic_forms.js"></script>
+  <link rel="stylesheet" href="/sr4.css" />
+</head>
+
+<div id = "character-name"><%= @character.name %></div>
+
+<ul class="char-nav">
+  <li><%= link_to 'Base',character_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Skills', character_character_skills_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Qualities', character_character_qualities_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Inventory', character_inventory_index_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Connections', character_connections_path(@character) %></li>
+</ul>
+
+<div class = "content">
+
+  <h3><a name = "gear">Gear: </h3>
+
+  <h5><a name = "weapons">&nbsp;Weapons: </h5>
+    <ul id = 'weapons' >
+      <% if @character.character_weapons[0] != nil %>
+        <% @character.character_weapons.each do |characterweapon| %>
+
+          <li><%= "#{characterweapon.weapon.name}:
+            #{characterweapon.weapon.description}
+            Damage: #{characterweapon.weapon.damage}
+            #{characterweapon.weapon.damage_type} Armor piercing: #{characterweapon.weapon.armor_piercing} Rating: #{characterweapon.rating} Concealability modifier: #{characterweapon.weapon.concealability} Legality: #{characterweapon.weapon.legality}" %></li>
+
+          <% if @character.character_weapons.first.weapon.ammo != "" %>
+            <p><%= "Ammo: #{characterweapon.weapon.ammo}, Mode: #{characterweapon.weapon.mode}, Recoil: #{characterweapon.weapon.recoil}" %></p>
+          <% end %>
+          <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_weapon_path(@character,
+          characterweapon), method: :delete, id: characterweapon.id) %>
+        <% end %>
+      <% end %>
+    </ul>
+
+  <h5><a name = "general-gear">&nbsp;General: </h5>
+    <ul id = 'general-gear'>
+      <% if @character.character_tools[0] != nil %>
+        <% @character.character_tools.each do |charactertool| %>
+          <li>
+            <%= "#{charactertool.tool.name}, #{charactertool.tool.description}" %>
+            <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_tool_path(@character,
+            charactertool), method: :delete, id: charactertool.id) %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+
+  <div class = "editing-characters">
+    <form id="gear-type">
+      Add:
+      <select id = "PickGear">
+        <option value = '0'> Gear type </option>
+        <option value = '1'> Weapons </option>
+        <option value = '2'> Armour </option>
+        <option value = '3'> Vehicles </option>
+        <option value = '4'> General </option>
+      </select>
+    </form>
+
+    <div id = "weapons-input">
+      <%= form_for [@character, @character_weapon] do |f| %>
+        <%= f.label :rating %>
+        <%= f.text_field :rating %>
+
+        <%= f.fields_for @weapon do |i| %>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
+
+          <%= i.label :description %>
+          <%= i.text_field :description %>
+
+          <%= i.label :damage %>
+          <%= i.text_field :damage %>
+
+          <%= i.label :damage_type %>
+          <%= i.text_field :damage_type %>
+
+          <%= i.label :armor_piercing %>
+          <%= i.text_field :armor_piercing %>
+
+          <%= i.label :concealability %>
+          <%= i.text_field :concealability %>
+
+          <%= i.label :mode %>
+          <%= i.text_field :mode %>
+
+          <%= i.label :recoil %>
+          <%= i.text_field :recoil %>
+
+          <%= i.label :ammo %>
+          <%= i.text_field :ammo %>
+
+          <%= i.label :legality %>
+          <%= i.text_field :legality %>
+
+          <%= i.select :melee, [['Yes', true], ['No', false]] %>
+        <% end %>
+
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </div>
+
+    <div id = "general-gear-input">
+      <%= form_for [@character, @character_tool] do |f| %>
+        <%= f.fields_for @tool do |i| %>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
+
+          <%= i.label :description %>
+          <%= i.text_field :description %>
+        <% end %>
+
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </div>
+
+  </div>
+
+
+  <div id = 'under-constructon'>
+    <p><em>Still under construction.</em></p>
+  </div>

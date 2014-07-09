@@ -16,7 +16,7 @@ feature 'user adds a skill to their character', %Q{
 
     character_skill = FactoryGirl.build(:character_skill, character: character, skill: skill)
 
-    visit character_path(character)
+    visit character_character_skills_path(character)
 
     within("#add-skill") do
       fill_in 'Name', with: skill.name
@@ -42,7 +42,7 @@ feature 'user adds a skill to their character', %Q{
 
     character_skill = FactoryGirl.build(:character_skill, character: character, skill: skill)
 
-    visit character_path(character)
+    visit character_character_skills_path(character)
 
     within("#add-skill") do
 

@@ -1,0 +1,51 @@
+<div id = "character-name"><%= @character.name %></div>
+
+<ul class="char-nav">
+  <li><%= link_to 'Base',character_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Skills', character_character_skills_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Qualities', character_character_qualities_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Inventory', character_inventory_index_path(@character) %></li>
+  <li> | </li>
+  <li><%= link_to 'Connections', character_connections_path(@character) %></li>
+</ul>
+
+<div class = "content">
+  <h3><a name = "connections">Connections: </h3>
+
+  <ul>
+  <% @character.connections.each do |connection|%>
+
+  <li>
+    <%= "#{connection.name}: #{connection.description} Loyalty: #{connection.loyalty}/ Connection: #{connection.connection}" %>
+    <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_connection_path(@character,
+    connection), method: :delete, id: connection.id) %>
+  </li>
+
+  <% end %>
+  </ul>
+
+    <div class = "editing-characters">
+    <p>Add a connection:</p>
+    <div id = "add-connection">
+      <%= form_for [@character, @connection] do |f| %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+
+        <%= f.label :loyalty %>
+        <%= f.text_field :loyalty %>
+
+        <%= f.label :connection %>
+        <%= f.text_field :connection %>
+
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </div>
+  </div>
+</div>
