@@ -10,11 +10,10 @@ class CharacterToolsController < ApplicationController
       tool = Tool.create(tool_params["tool"])
     end
 
-    binding.pry
     @character_tool = @character.character_tools.build(character_tool_params.merge(tool: tool))
 
     if @character_tool.save
-      redirect_to character_path(@character)
+      redirect_to character_inventory_index_path(@character)
     else
       flash.now[:notice] = 'Uh oh! Your tool could not be saved.'
       @character = Character.find(params[:character_id])
