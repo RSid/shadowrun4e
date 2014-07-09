@@ -19,20 +19,20 @@ class CharacterWeaponsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @character = Character.find(params[:character_id])
-  #   @character_quality = CharacterQuality.find(params[:id])
-  #   if current_user == @character.user
-  #     if @character_quality.destroy
-  #       flash[:notice] = 'Quality deleted!'
-  #       redirect_to character_character_qualities_path(@character)
-  #     end
-  #   else
-  #     flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
-  #     @character = Character.find(params[:character_id])
-  #     render "inventory/index"
-  #   end
-  # end
+  def destroy
+    @character = Character.find(params[:character_id])
+    @character_weapon = CharacterWeapon.find(params[:id])
+    if current_user == @character.user
+      if @character_weapon.destroy
+        flash[:notice] = 'Weapon deleted!'
+        redirect_to character_inventory_index_path(@character)
+      end
+    else
+      flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
+      @character = Character.find(params[:character_id])
+      render "inventory/index"
+    end
+  end
 
   private
 

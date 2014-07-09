@@ -32,11 +32,16 @@
       <% if @character.character_weapons[0] != nil %>
         <% @character.character_weapons.each do |characterweapon| %>
 
-          <li><%= "#{characterweapon.weapon.name}: #{characterweapon.weapon.description} Damage: #{characterweapon.weapon.damage} #{characterweapon.weapon.damage_type} Armor piercing: #{characterweapon.weapon.armor_piercing} Rating: #{characterweapon.rating} Concealability modifier: #{characterweapon.weapon.concealability} Legality: #{characterweapon.weapon.legality}" %></li>
+          <li><%= "#{characterweapon.weapon.name}:
+            #{characterweapon.weapon.description}
+            Damage: #{characterweapon.weapon.damage}
+            #{characterweapon.weapon.damage_type} Armor piercing: #{characterweapon.weapon.armor_piercing} Rating: #{characterweapon.rating} Concealability modifier: #{characterweapon.weapon.concealability} Legality: #{characterweapon.weapon.legality}" %></li>
 
           <% if @character.character_weapons.first.weapon.ammo != "" %>
             <p><%= "Ammo: #{characterweapon.weapon.ammo}, Mode: #{characterweapon.weapon.mode}, Recoil: #{characterweapon.weapon.recoil}" %></p>
           <% end %>
+          <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_weapon_path(@character,
+          characterweapon), method: :delete, id: characterweapon.id) %>
         <% end %>
       <% end %>
     </ul>
@@ -68,7 +73,7 @@
       <%= form_for [@character, @character_weapon] do |f| %>
         <%= f.label :rating %>
         <%= f.text_field :rating %>
-        
+
         <%= f.fields_for @weapon do |i| %>
           <%= i.label :name %>
           <%= i.text_field :name %>
