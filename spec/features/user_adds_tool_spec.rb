@@ -32,7 +32,7 @@ feature 'user adds a tool to their character', %Q{
     expect(page).to have_content tool.name
   end
 
-  scenario 'user triest to add a tool without needed attributes' do
+  scenario 'user tries to add a tool without needed attributes' do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
     metatype = FactoryGirl.create(:metatype)

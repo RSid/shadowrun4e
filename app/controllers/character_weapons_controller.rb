@@ -33,7 +33,7 @@ class CharacterWeaponsController < ApplicationController
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
       @character = Character.find(params[:character_id])
-      render "inventory/index"
+      redirect_to character_inventory_index_path(@character)
     end
   end
 
