@@ -28,6 +28,11 @@
   <h3><a name = "gear">Gear: </h3>
 
   <h5><a name = "weapons">&nbsp;Weapons: </h5>
+    <ul id = 'weapons' >
+      <% @character_tools.each do |character_tool| %>
+        <li><%= "#{character_tool.tool.name}, #{character_tool.tool.description}" %></li>
+      <% end %>
+    </ul
 
   <ul>
     <% if @character.character_weapons[0] != nil %>

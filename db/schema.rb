@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20140708220400) do
 
   create_table "character_tools", force: true do |t|
     t.integer "character_id", null: false
-    t.integer "gear_id",      null: false
+    t.integer "tool_id",      null: false
   end
 
   create_table "character_weapons", force: true do |t|

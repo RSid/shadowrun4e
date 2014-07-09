@@ -17,9 +17,9 @@ Rails.application.routes.draw do
 
     resources :inventory, only: [:index]
 
-    resources :tools, only: [:new, :create, :destroy, :index]
+    resources :tools, only: [:new, :create]
 
-    resources :character_tools, only: [:new, :create]
+    resources :character_tools, only: [:new, :create, :destroy, :index]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
