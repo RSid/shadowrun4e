@@ -16,7 +16,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     character_skill = FactoryGirl.create(:character_skill,
       character: character, skill: skill)
 
-    visit character_path(character)
+    visit character_character_skills_path(character)
 
     click_on (character_skill.id.to_s)
     expect(page).to_not have_content skill.name
@@ -33,7 +33,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     character_quality = FactoryGirl.create(:character_quality,
       character: character, quality: quality)
 
-    visit character_path(character)
+    visit character_character_qualities_path(character)
 
     click_on (character_quality.id.to_s)
     expect(page).to_not have_content quality.name
@@ -47,7 +47,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     character = FactoryGirl.create(:character, metatype: metatype, user: user)
     connection = FactoryGirl.create(:connection, character: character)
 
-    visit character_path(character)
+    visit character_connections_path(character)
 
     click_on (connection.id.to_s)
     expect(page).to_not have_content connection.name
@@ -62,7 +62,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     character_skill = FactoryGirl.create(:character_skill,
       character: character, skill: skill)
 
-    visit character_path(character)
+    visit character_character_skills_path(character)
 
     click_on (character_skill.id.to_s)
     expect(page).to have_content skill.name
@@ -79,7 +79,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     character_quality = FactoryGirl.create(:character_quality,
         character: character, quality: quality)
 
-    visit character_path(character)
+    visit character_character_qualities_path(character)
 
     click_on (character_quality.id.to_s)
     expect(page).to have_content quality.name
@@ -94,7 +94,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     character = FactoryGirl.create(:character, metatype: metatype, user: user)
     connection = FactoryGirl.create(:connection, character: character)
 
-    visit character_path(character)
+    visit character_connections_path(character)
 
     click_on (connection.id.to_s)
     expect(page).to have_content connection.name
