@@ -18,7 +18,7 @@ class CharacterSkillsController < ApplicationController
     @character_skill = @character.character_skills.build(character_skill_params.merge(skill: skill))
 
     if @character_skill.save
-      redirect_to character_path(@character)
+      redirect_to character_character_skills_path(@character)
     else
       flash.now[:notice] = 'Uh oh! Your skill could not be saved.'
       @character = Character.find(params[:character_id])
@@ -27,7 +27,7 @@ class CharacterSkillsController < ApplicationController
       @quality = Quality.new
       @character_quality = CharacterQuality.new
       @connection = Connection.new
-      render "/characters/show"
+      render "/character_skills/index"
     end
   end
 
@@ -37,7 +37,7 @@ class CharacterSkillsController < ApplicationController
     if current_user == @character.user
       if @character_skill.destroy
         flash[:notice] = 'Skill deleted!'
-        redirect_to character_path(@character)
+        redirect_to character_character_skills_path(@character)
       end
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
@@ -47,7 +47,7 @@ class CharacterSkillsController < ApplicationController
       @quality = Quality.new
       @character_quality = CharacterQuality.new
       @connection = Connection.new
-      render "/characters/show"
+      render "/character_skills/index"
     end
   end
 
