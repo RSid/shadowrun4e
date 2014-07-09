@@ -42,4 +42,31 @@ feature 'user creates a character', %Q{
     expect(page).to have_content weapon.description
     expect(page).to have_content weapon.name
   end
+
+  scenario 'user tries to add a weapon without required attributes' do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+    metatype = FactoryGirl.create(:metatype)
+    character = FactoryGirl.create(:character, metatype: metatype, user: user)
+
+    weapon = FactoryGirl.build(:weapon)
+
+    character_weapon = FactoryGirl.build(:character_weapon, character: character,
+      weapon: weapon)
+
+    visit character_inventory_index_path(character)
+
+    within("#gear-type") do
+      select('Weapon', from: 'PickGear')
+    end
+
+    within("#weapons-input") do
+      click_on 'Submit'
+    end
+
+    expect(page).to_not have_content weapon.description
+    expect(page).to_not have_content weapon.name
+
+    expect(page).to have_content 'Uh oh! Your weapon could not be saved.'
+  end
 end

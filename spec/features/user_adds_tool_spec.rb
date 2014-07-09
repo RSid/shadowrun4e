@@ -31,4 +31,30 @@ feature 'user adds a tool to their character', %Q{
     expect(page).to have_content tool.description
     expect(page).to have_content tool.name
   end
+
+  scenario 'user triest to add a tool without needed attributes' do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+    metatype = FactoryGirl.create(:metatype)
+    character = FactoryGirl.create(:character, metatype: metatype, user: user)
+
+    tool = FactoryGirl.build(:tool)
+
+    character_tool = FactoryGirl.build(:character_tool, character: character, tool: tool)
+
+    visit character_inventory_index_path(character)
+
+    within("#gear-type") do
+      select('General', from: 'PickGear')
+    end
+
+    within("#general-gear-input") do
+      click_on 'Submit'
+    end
+
+    expect(page).to_not have_content tool.description
+    expect(page).to_not have_content tool.name
+
+    expect(page).to have_content 'Uh oh! Your tool could not be saved.'
+  end
 end

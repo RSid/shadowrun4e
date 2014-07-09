@@ -1,6 +1,5 @@
 class CharacterWeaponsController < ApplicationController
   def create
-    binding.pry
     @character = Character.find(params[:character_id])
     weapon = Weapon.find_by(name: weapon_params[:name])
 
@@ -13,8 +12,12 @@ class CharacterWeaponsController < ApplicationController
     if @character_weapon.save
       redirect_to character_inventory_index_path(@character)
     else
-      flash.now[:notice] = 'Uh oh! Your quality could not be saved.'
+      flash.now[:notice] = 'Uh oh! Your weapon could not be saved.'
       @character = Character.find(params[:character_id])
+      @character_weapon = CharacterWeapon.new
+      @weapon = Weapon.new
+      @character_tool = CharacterTool.new
+      @tool = Tool.new
       render "inventory/index"
     end
   end

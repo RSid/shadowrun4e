@@ -39,4 +39,6 @@ feature 'user deletes a inventory objects', %Q(
 
     # expect(page).to have_content 'You are not logged in. You must be logged in to edit a character.'
   end
+
+  ##
 end
