@@ -14,7 +14,7 @@ feature 'user adds a connection to their character', %Q{
 
     connection = FactoryGirl.create(:connection, character: character)
 
-    visit character_path(character)
+    visit character_connections_path(character)
 
     within("#add-connection") do
       fill_in 'Name', with: connection.name
@@ -39,7 +39,7 @@ feature 'user adds a connection to their character', %Q{
 
     connection = FactoryGirl.build(:connection, character: character)
 
-    visit character_path(character)
+    visit character_connections_path(character)
 
     within("#add-connection") do
 
