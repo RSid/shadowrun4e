@@ -18,7 +18,7 @@ class CharacterQualitiesController < ApplicationController
     @character_quality = @character.character_qualities.build(character_quality_params.merge(quality: quality))
 
     if @character_quality.save
-      redirect_to character_path(@character)
+      redirect_to character_character_qualities_path(@character)
     else
       flash.now[:notice] = 'Uh oh! Your quality could not be saved.'
       @character = Character.find(params[:character_id])
@@ -27,7 +27,7 @@ class CharacterQualitiesController < ApplicationController
       @quality = Quality.new
       @character_quality = CharacterQuality.new
       @connection = Connection.new
-      render "/characters/show"
+      render "/character_qualities/index"
     end
   end
 
@@ -37,7 +37,7 @@ class CharacterQualitiesController < ApplicationController
     if current_user == @character.user
       if @character_quality.destroy
         flash[:notice] = 'Quality deleted!'
-        redirect_to character_path(@character)
+        redirect_to character_character_qualities_path(@character)
       end
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
@@ -47,7 +47,7 @@ class CharacterQualitiesController < ApplicationController
       @quality = Quality.new
       @character_quality = CharacterQuality.new
       @connection = Connection.new
-      render "/characters/show"
+      render "/character_qualities/index"
     end
   end
 

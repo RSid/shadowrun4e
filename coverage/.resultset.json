@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/spec/features/user_add_connection_spec.rb": [
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/spec/features/user_adds_quality_spec.rb": [
         1,
         null,
         1,
@@ -20,7 +20,9 @@
         null,
         1,
         null,
+        null,
         1,
+        null,
         1,
         1,
         1,
@@ -32,7 +34,6 @@
         1,
         1,
         1,
-        1,
         null,
         null,
         1,
@@ -42,6 +43,9 @@
         1,
         null,
         1,
+        null,
+        1,
+        null,
         null,
         1,
         null,
@@ -743,7 +747,7 @@
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/spec/factories/connection.rb": [
         1,
         1,
-        3,
+        1,
         1,
         1,
         1,
@@ -761,7 +765,7 @@
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/spec/factories/quality.rb": [
         1,
         1,
-        1,
+        3,
         1,
         null,
         null
@@ -1021,25 +1025,43 @@
         1,
         null
       ],
-      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/connection.rb": [
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/quality.rb": [
+        1,
         1,
         1,
         null,
-        1,
-        1,
         1,
         1,
         null
       ],
-      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/controllers/connections_controller.rb": [
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/character_quality.rb": [
         1,
         1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/controllers/character_qualities_controller.rb": [
+        1,
+        1,
+        3,
+        3,
+        null,
         3,
         3,
         null,
         null,
         1,
         2,
+        2,
+        null,
+        2,
+        2,
+        null,
         null,
         2,
         null,
@@ -1081,6 +1103,10 @@
         null,
         1,
         2,
+        null,
+        null,
+        1,
+        4,
         null,
         null
       ],
@@ -1112,27 +1138,17 @@
         null,
         null
       ],
-      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/quality.rb": [
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        null
-      ],
-      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/character_quality.rb": [
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/connection.rb": [
         1,
         1,
         null,
         1,
-        null,
-        null,
+        1,
         1,
         1,
         null
       ]
     },
-    "timestamp": 1404915242
+    "timestamp": 1404915645
   }
 }

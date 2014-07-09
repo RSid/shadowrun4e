@@ -17,7 +17,7 @@ feature 'user adds a quality to their character', %Q{
     character_quality = FactoryGirl.create(:character_quality,
       character: character, quality: quality)
 
-    visit character_path(character)
+    visit character_character_qualities_path(character)
 
     within("#add-quality") do
       fill_in 'Name', with: quality.name
@@ -43,7 +43,7 @@ feature 'user adds a quality to their character', %Q{
     character_quality = FactoryGirl.build(:character_quality,
       character: character, quality: quality)
 
-    visit character_path(character)
+    visit character_character_qualities_path(character)
 
     within("#add-quality") do
 
