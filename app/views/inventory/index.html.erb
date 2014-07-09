@@ -65,48 +65,46 @@
     </form>
 
     <div id = "weapons-input">
-      <form action= <%= "/addweapon/#{@character.id}" %> method="post">
-        <label for="weapon-name">Name: </label>
-        <input type="text" name="weapon-name" id="weapon-name" />
+      <%= form_for [@character, @character_weapon] do |f| %>
+        <%= f.label :rating %>
+        <%= f.text_field :rating %>
+        
+        <%= f.fields_for @weapon do |i| %>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
 
-        <label for="weapon-description">Description: </label>
-        <input type="text" name="weapon-description" id="weapon-description" />
+          <%= i.label :description %>
+          <%= i.text_field :description %>
 
-        <label for="weapon-damage">Damage: </label>
-        <input type="text" name="weapon-damage" id="weapon-damage" />
+          <%= i.label :damage %>
+          <%= i.text_field :damage %>
 
-        <label for="weapon-damage-type">Damage type: </label>
-        <input type="text" name="weapon-damage-type" id="weapon-damage-type" />
+          <%= i.label :damage_type %>
+          <%= i.text_field :damage_type %>
 
-        <label for="weapon-rating">Rating, if applicable: </label>
-        <input type="text" name="weapon-rating" id="weapon-rating" />
+          <%= i.label :armor_piercing %>
+          <%= i.text_field :armor_piercing %>
 
-        <label for="weapon-ap">Armor piercing: </label>
-        <input type="text" name="weapon-ap" id="weapon-ap" />
+          <%= i.label :concealability %>
+          <%= i.text_field :concealability %>
 
-        <label for="weapon-concealability">Concealability modifier: </label>
-        <input type="text" name="weapon-concealability" id="weapon-concealability" />
+          <%= i.label :mode %>
+          <%= i.text_field :mode %>
 
-        <label for="weapon-mode">Mode, if applicable: </label>
-        <input type="text" name="weapon-mode" id="weapon-mode" />
+          <%= i.label :recoil %>
+          <%= i.text_field :recoil %>
 
-        <label for="weapon-recoil">Recoil, if applicable: </label>
-        <input type="text" name="weapon-recoil" id="weapon-recoil" />
+          <%= i.label :ammo %>
+          <%= i.text_field :ammo %>
 
-        <label for="weapon-ammo">Ammo type, if applicable: </label>
-        <input type="text" name="weapon-ammo" id="weapon-ammo" />
+          <%= i.label :legality %>
+          <%= i.text_field :legality %>
 
-        <label for="weapon-legality">Legality: </label>
-        <input type="text" name="weapon-legality" id="weapon-legality" />
+          <%= i.select :melee, [['Yes', true], ['No', false]] %>
+        <% end %>
 
-        <label for="melee">Melee weapon? </label>
-        <select id = "melee" name = "melee">
-          <option value = 'true'> Yes </option>
-          <option value = 'false'> No </option>
-        </select>
-
-        <input class="weapon-submit" type="submit"  value="Submit"/>
-      </form>
+        <%= f.submit 'Submit' %>
+      <% end %>
     </div>
 
     <div id = "general-gear-input">

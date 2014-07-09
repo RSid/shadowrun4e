@@ -22,11 +22,8 @@ class CharacterQualitiesController < ApplicationController
     else
       flash.now[:notice] = 'Uh oh! Your quality could not be saved.'
       @character = Character.find(params[:character_id])
-      @skill = Skill.new
-      @character_skill = CharacterSkill.new
       @quality = Quality.new
       @character_quality = CharacterQuality.new
-      @connection = Connection.new
       render "/character_qualities/index"
     end
   end
@@ -41,12 +38,6 @@ class CharacterQualitiesController < ApplicationController
       end
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
-      @character = Character.find(params[:character_id])
-      @skill = Skill.new
-      @character_skill = CharacterSkill.new
-      @quality = Quality.new
-      @character_quality = CharacterQuality.new
-      @connection = Connection.new
       render "/character_qualities/index"
     end
   end

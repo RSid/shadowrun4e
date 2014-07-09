@@ -5,5 +5,5 @@ class Weapon < ActiveRecord::Base
   validates :name, presence: true
   validates :damage, presence: true
   validates :damage_type, presence: true
-  validates :melee, presence: true # inclusion:[ true, false]
+  validates :melee, inclusion: [true, false]
 end
