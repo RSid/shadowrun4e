@@ -33,7 +33,7 @@ feature 'user deletes a inventory objects', %Q(
     character_tool = FactoryGirl.create(:character_tool, character: character, tool: tool)
 
     visit character_inventory_index_path(character)
-    
+
     click_on (character_tool.id.to_s)
     expect(page).to have_content tool.name
 
