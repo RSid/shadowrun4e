@@ -37,7 +37,7 @@ body {
 
   }
 
-#panel > h1 > a > img {  
+#panel > h1 > a > img {
   display: block;
   margin: auto;
   padding: 10px;
@@ -256,6 +256,7 @@ h2 {
 }
 
 .editing-characters{
+  @include editing-character;
   font-size: .7em;
 }
 
