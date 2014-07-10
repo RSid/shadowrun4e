@@ -1,21 +1,29 @@
 /*Whole app*/
 
+html {
+  margin: 0PX;
+  padding: 0px;
+  height: 100%;
+}
+
 @font-face {
   font-family: FrizQuadrata;
   src: url(frquad.ttf);
 }
 
-
 body {
   font-family: FrizQuadrata;
   margin: 0px;
   font-size: 1.3em;
+  padding: 0px;
+  height: 100%;
+
 }
 
 
-h1 {
-  text-align: center;
-  background-color: rgba(3,84,43,0.7);
+#header {
+  @include span-columns(12);
+  background-color: #005375;
   margin: 0px;
   padding: 5px;
   border-bottom: 8px solid black;
@@ -23,29 +31,44 @@ h1 {
 
 }
 
-h1 a {
-  text-decoration: none;
-  color: white;
-  font-family: "Andale Mono", AndaleMono, monospace;
-  font-size: 1.3em;
+#header > h1 > a > img {
+  @include span-columns(6);
+  @include shift(3);
+
   }
 
-/*#footer {
+#panel > h1 > a > img {
+  display: block;
+  margin: auto;
+  padding: 10px;
+}
+
+.wrapper {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+margin: 0 auto -4em;
+}
+
+.footer, .push {
+height: 4em;
+}
+
+.footer {
+  background-color: black;
   color: gray;
-  font-size: .5em;
-  position: fixed;
-  bottom: -10px;
+  font-size: .4em;
+  font-family: Arial,sans-serif;
+  padding: 5em;
   text-align: center;
-  padding: 5px;
-  }*/
+}
 
 /*Landing page*/
 
 #background {
+  @include outer-container;
   background: url(city.jpg) no-repeat center center fixed;
   background-size: cover;
-  margin: 0px;
-  padding: 400px;
 }
 
 #landing-title {
@@ -55,6 +78,8 @@ h1 a {
 }
 
 #landing-title img {
+  width: 90%;
+  height: auto;
   vertical-align: middle
 }
 
@@ -73,11 +98,12 @@ h1 a {
 }
 
 #landing-nav-bar li a {
-  color: darkgreen;
+  color: black;
   text-decoration: none;
 }
 
 #landing-foot {
+  @include span-columns(12);
   background-color: black;
   color: white;
   font-size: .5em;
@@ -87,14 +113,54 @@ h1 a {
   }
 
 #panel {
+  @include span-columns(6);
+  @include shift(3);
   border-radius: 15px;
-  width: 700px;
-  height: 500px;
-  background-color: rgba(255,255,255,.3)
+  margin: 25%;
+  background-color: rgba(65,200,255,.3)
 }
 
-/*Character index page*/
+/*Login*/
 
+#sign-in-container {
+  @include outer-container;
+}
+
+#sign-in {
+  @include span-columns(6);
+  @include shift(3);
+}
+
+.boolean optional control-label {
+  display: inline;
+}
+
+#user_remember_me {
+  display: inline;
+}
+
+/*Character layout*/
+
+#login-nav-container {
+  @include outer-container;
+  width: 100%;
+}
+
+#login-nav {
+  @include span-columns(6);
+  @include shift(3);
+  text-align: center;
+}
+
+
+#login-nav li {
+  display: inline;
+}
+
+#login-nav li a {
+  color: white;
+  padding: 10px;
+}
 
 
 /*Character show page*/
@@ -162,6 +228,7 @@ h1 a {
 }
 
 .char-list {
+  @extend %default-ul;
   width:50%;
   margin-left:auto;
   margin-right:auto;
@@ -189,7 +256,14 @@ h2 {
 }
 
 .editing-characters{
+  @include editing-character;
   font-size: .7em;
+}
+
+
+
+.editing-characters form{
+  // @include editing;
 }
 
 #character-deletion {

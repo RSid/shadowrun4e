@@ -3,10 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Character</title>
-  <script language="javascript" type="text/javascript" src="/jquery.1.11.1.js"></script>
-  <script language="javascript" type="text/javascript" src="/app.js"></script>
-  <script language="javascript" type="text/javascript" src="/skills_dynamic_forms.js"></script>
-  <link rel="stylesheet" href="/sr4.css" />
 </head>
 
 <div id = "character-name"><%= @character.name %></div>
@@ -27,7 +23,7 @@
 
   <h3><a name = "gear">Gear: </h3>
 
-  <h5><a name = "weapons">&nbsp;Weapons: </h5>
+  <h6><a name = "weapons">&nbsp;Weapons: </h6>
     <ul id = 'weapons' >
       <% if @character.character_weapons[0] != nil %>
         <% @character.character_weapons.each do |characterweapon| %>
@@ -35,11 +31,19 @@
           <li><%= "#{characterweapon.weapon.name}:
             #{characterweapon.weapon.description}
             Damage: #{characterweapon.weapon.damage}
-            #{characterweapon.weapon.damage_type} Armor piercing: #{characterweapon.weapon.armor_piercing} Rating: #{characterweapon.rating} Concealability modifier: #{characterweapon.weapon.concealability} Legality: #{characterweapon.weapon.legality}" %></li>
+            #{characterweapon.weapon.damage_type}
+            Armor piercing: #{characterweapon.weapon.armor_piercing}
+            Rating: #{characterweapon.rating}
+            Concealability modifier: #{characterweapon.weapon.concealability}
+            Legality: #{characterweapon.weapon.legality}" %>
+            </li>
 
           <% if @character.character_weapons.first.weapon.ammo != "" %>
-            <p><%= "Ammo: #{characterweapon.weapon.ammo}, Mode: #{characterweapon.weapon.mode}, Recoil: #{characterweapon.weapon.recoil}" %></p>
+            <p><%= "Ammo: #{characterweapon.weapon.ammo},
+              Mode: #{characterweapon.weapon.mode},
+              Recoil: #{characterweapon.weapon.recoil}" %></p>
           <% end %>
+
           <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_weapon_path(@character,
           characterweapon), method: :delete, id: characterweapon.id) %>
         <% end %>
@@ -107,6 +111,7 @@
           <%= i.label :legality %>
           <%= i.text_field :legality %>
 
+          <%= i.label :melee %>
           <%= i.select :melee, [['Yes', true], ['No', false]] %>
         <% end %>
 
@@ -134,3 +139,4 @@
   <div id = 'under-constructon'>
     <p><em>Still under construction.</em></p>
   </div>
+</div>

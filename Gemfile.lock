@@ -30,6 +30,13 @@ GEM
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
+    bitters (0.10.0)
+      bourbon (>= 3.2)
+      sass (>= 3.2)
+      thor
+    bourbon (3.2.3)
+      sass (~> 3.2)
+      thor
     builder (3.2.2)
     capybara (2.4.1)
       mime-types (>= 1.16)
@@ -75,7 +82,7 @@ GEM
     font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
     hike (1.2.3)
-    i18n (0.6.9)
+    i18n (0.6.11)
     jbuilder (2.1.2)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -93,6 +100,10 @@ GEM
     mini_portile (0.6.0)
     minitest (5.4.0)
     multi_json (1.10.1)
+    neat (1.5.1)
+      bourbon (>= 3.1)
+      sass (~> 3.2.19)
+    netrc (0.7.7)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
@@ -125,9 +136,9 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
-    rest-client (1.6.8)
-      mime-types (~> 1.16)
-      rdoc (>= 2.4.2)
+    rest-client (1.7.1)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec-core (3.0.2)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.2)
@@ -197,6 +208,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bitters
+  bourbon
   capybara
   coffee-rails (~> 4.0.0)
   coveralls
@@ -208,6 +221,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  neat
   pg
   pry-rails
   rails (= 4.1.1)
