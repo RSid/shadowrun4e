@@ -7,7 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <h1><%= link_to image_tag('SRlogo.jpg'), characters_path %></h1>
+  <div id = "header">
+    <h1><%= link_to image_tag('SRlogo.jpg'), characters_path %></h1>
     <div id = "login-nav-container">
       <ul id = "login-nav">
         <% if user_signed_in? %>
@@ -16,8 +17,10 @@
           <li><%= link_to 'Login', new_user_session_path, method: :get %></li>
           <li><%= link_to 'Sign Up', new_user_registration_path, method: :get %></li>
         <% end %>
+        <li><%= link_to 'About', about_path %></li>
       </ul>
     </div>
+  </div>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>

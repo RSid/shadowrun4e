@@ -13,8 +13,8 @@ body {
 }
 
 
-h1 {
-  text-align: center;
+#header {
+  @include outer-container;
   background-color: #005375;
   margin: 0px;
   padding: 5px;
@@ -23,11 +23,9 @@ h1 {
 
 }
 
-h1 a {
-  text-decoration: none;
-  color: white;
-  font-family: "Andale Mono", AndaleMono, monospace;
-  font-size: 1.3em;
+#header > h1 > a > img {
+  @include span-columns(6);
+  @include shift(3);
   }
 
 
@@ -111,6 +109,14 @@ h1 a {
   @include shift(3);
 }
 
+.boolean optional control-label {
+  display: inline;
+}
+
+#user_remember_me {
+  display: inline;
+}
+
 /*Character layout*/
 
 #login-nav-container {
@@ -118,13 +124,19 @@ h1 a {
 }
 
 #login-nav {
-  @include span-columns(2);
-  @include shift(5);
+  @include span-columns(6);
+  @include shift(3);
+  text-align: center;
 }
 
 
 #login-nav li {
   display: inline;
+}
+
+#login-nav li a {
+  color: white;
+  padding: 10px;
 }
 
 
