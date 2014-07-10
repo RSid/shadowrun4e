@@ -1,26 +1,34 @@
-$( document ).ready(function() {
-  $('#weapons-input').hide();
-  $('#general-gear-input').hide();
+var ready;
+ready = function() {
 
-  $('#PickGear').change(function() {
+    $('#weapons-input').hide();
+    $('#general-gear-input').hide();
 
-    var optionValue = $('#PickGear option:selected').val();
+    $('#PickGear').change(function() {
 
-    if ( optionValue==1 ) {
+      var optionValue = $('#PickGear option:selected').val();
 
-      $('#weapons-input').show();
-      $('#general-gear-input').hide();
-      $('#under-constructon').show();
+      if ( optionValue==1 ) {
 
-    } else if ( optionValue==4 ){
+        $('#weapons-input').show();
+        $('#general-gear-input').hide();
+        $('#under-constructon').show();
+
+      } else if ( optionValue==4 ){
+          $('#weapons-input').hide();
+          $('#general-gear-input').show();
+      }
+
+      else {
         $('#weapons-input').hide();
-        $('#general-gear-input').show();
-    }
-
-    else {
-      $('#weapons-input').hide();
-      $('#general-gear-input').hide();
-      $('#under-constructon').show();
-    }
+        $('#general-gear-input').hide();
+        $('#under-constructon').show();
+      }
   });
-});
+
+}
+
+
+
+$( document ).ready(ready);
+$(document).on('page:load', ready);
