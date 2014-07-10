@@ -34,14 +34,7 @@ class Character < ActiveRecord::Base
   validates :essence, presence: true
   validates :initiative_passes, presence: true
 
-  def roll(skill, modifiers = 0, edge_used = false)
-    results = []
-    dice = skill + modifiers
-    dice.times { results << rand(6) }
-    results
-  end
-
   def change_nuyen(amount)
-    nuyen = nuyen + amount
+    self.nuyen = nuyen + amount
   end
 end

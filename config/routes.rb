@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get '/about' => 'pages#about'
   root 'pages#landing'
 
-  resources :characters, only: [:index, :show, :new, :create, :destroy] do
+  resources :characters, only: [:index, :show, :new, :create, :destroy, :update, :edit] do
+
     resources :character_skills, only: [:new, :create, :destroy, :index]
 
     resources :skills, only: [:new, :create]

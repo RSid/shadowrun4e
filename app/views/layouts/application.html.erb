@@ -29,6 +29,20 @@
 
     <%= yield %>
 
+    <ul id = 'quick-actions'>
+      <li>
+        <div class = 'editing-characters'>
+        <%= form_for @character do |f| %>
+          <%= f.label :nuyen %>
+          <%= f.text_field :nuyen %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+      </li>
+      <li>Change stat</li>
+      <li>Roll skill</li>
+    </ul>
+
     <div class="push"></div>
 
   </div>

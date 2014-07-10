@@ -24,6 +24,15 @@ class CharactersController < ApplicationController
     end
   end
 
+  def update
+    @character = Character.find(params[:id])
+    if @character.update(character_params)
+      redirect_to character_path(@character)
+    else
+      flash.now[:notice] = 'Uh oh! Your update could not be saved.'
+    end
+  end
+
   def destroy
     @character = Character.find(params[:id])
     if current_user == @character.user
