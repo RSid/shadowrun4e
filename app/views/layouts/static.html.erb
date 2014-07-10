@@ -7,23 +7,42 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id = 'background' >
-    <div id = 'panel'>
-      <div id = 'landing-title'> <%= image_tag('logo.jpg') %> </div>
-
-      <ul id = 'landing-nav-bar'>
-        <% if user_signed_in? %>
-          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to 'Login', new_user_session_path, method: :get %></li>
-          <li><%= link_to 'Sign Up', new_user_registration_path, method: :get %></li>
-        <% end %>
-      </ul>
+  <div class='wrapper' id = 'background'>
+    <div id = "panel">
+      <h1><%= link_to image_tag('logo.png'), characters_path %></h1>
+      <div id = "login-nav-container">
+        <ul id = "login-nav">
+          <% if user_signed_in? %>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Login', new_user_session_path, method: :get %></li>
+            <li><%= link_to 'Sign Up', new_user_registration_path, method: :get %></li>
+          <% end %>
+          <li><%= link_to 'About', about_path %></li>
+        </ul>
+      </div>
     </div>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
 
     <%= yield %>
 
+    <div class="push"></div>
+
   </div>
 
+    <div class = 'footer'>
+      Shadowrun Character keeper is created and maintained by Alla Hoffman.
+
+      The Topps Company, Inc. has sole ownership of the names, logo, artwork,
+      marks, photographs, sounds, audio, video and/or any proprietary material
+      used in connection with the game Shadowrun. The Topps Company, Inc. has
+      granted permission to Alla Hoffman to use such names, logos, artwork, marks
+      and/or any proprietary materials for promotional and informational purposes
+      on its website but does not endorse, and is not affiliated with Alla Hoffman
+      in any official capacity whatsoever.
+    </div>
 </body>
 </html>

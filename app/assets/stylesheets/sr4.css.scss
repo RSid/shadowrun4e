@@ -1,5 +1,11 @@
 /*Whole app*/
 
+html {
+  margin: 0PX;
+  padding: 0px;
+  height: 100%;
+}
+
 @font-face {
   font-family: FrizQuadrata;
   src: url(frquad.ttf);
@@ -9,11 +15,13 @@ body {
   font-family: FrizQuadrata;
   margin: 0px;
   font-size: 1.3em;
+  padding: 0px;
+  height: 100%;
 }
 
 
 #header {
-  @include outer-container;
+  @include span-columns(12);
   background-color: #005375;
   margin: 0px;
   padding: 5px;
@@ -27,16 +35,26 @@ body {
   @include shift(3);
   }
 
+.wrapper {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+margin: 0 auto -4em;
+}
+.footer, .push {
+height: 4em;
+}
 
-#footer {
-  @include span-columns(12);
+.footer {
   background-color: black;
   color: gray;
-  font-family: Arial,sans-serif;
   font-size: .4em;
-  padding: 10px;
+  font-family: Arial,sans-serif;
+  padding: 5em;
   text-align: center;
-  }
+}
+
+
 
 /*Landing page*/
 
@@ -120,6 +138,7 @@ body {
 
 #login-nav-container {
   @include outer-container;
+  width: 100%;
 }
 
 #login-nav {
