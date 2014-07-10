@@ -30,10 +30,15 @@ gem 'devise'
 
 gem 'devise-bootstrap-views'
 
-
 gem 'simple_form'
 
 gem "font-awesome-rails"
+
+gem 'bourbon'
+
+gem 'neat'
+
+gem 'bitters'
 
 group :development, :test do
   gem 'coveralls', require: false

@@ -1,7 +1,10 @@
+/*Whole app*/
+
 @font-face {
   font-family: FrizQuadrata;
   src: url(frquad.ttf);
 }
+
 
 body {
   font-family: FrizQuadrata;
@@ -12,7 +15,7 @@ body {
 
 h1 {
   text-align: center;
-  background-color: rgba(3,84,43,0.7);
+  background-color: #005375;
   margin: 0px;
   padding: 5px;
   border-bottom: 8px solid black;
@@ -27,6 +30,105 @@ h1 a {
   font-size: 1.3em;
   }
 
+
+#footer {
+  @include span-columns(12);
+  background-color: black;
+  color: gray;
+  font-family: Arial,sans-serif;
+  font-size: .4em;
+  padding: 10px;
+  text-align: center;
+  }
+
+/*Landing page*/
+
+#background {
+  @include outer-container;
+  background: url(city.jpg) no-repeat center center fixed;
+  background-size: cover;
+  margin: 0px;
+  padding: 0px;
+}
+
+#landing-title {
+  font-size: 3em;
+  text-align: center;
+  line-height: 400px;
+}
+
+#landing-title img {
+  width: 90%;
+  height: auto;
+  vertical-align: middle
+}
+
+#landing-nav-bar {
+  list-style: none;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+  text-align:center;
+}
+
+#landing-nav-bar li {
+  display: inline;
+  padding: 10px;
+  margin: 0px;
+}
+
+#landing-nav-bar li a {
+  color: black;
+  text-decoration: none;
+}
+
+#landing-foot {
+  @include span-columns(12);
+  background-color: black;
+  color: white;
+  font-size: .5em;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  }
+
+#panel {
+  @include span-columns(6);
+  @include shift(3);
+  border-radius: 15px;
+
+  background-color: rgba(65,200,255,.3)
+}
+
+/*Login*/
+
+#sign-in-container {
+  @include outer-container;
+}
+
+#sign-in {
+  @include span-columns(6);
+  @include shift(3);
+}
+
+/*Character layout*/
+
+#login-nav-container {
+  @include outer-container;
+}
+
+#login-nav {
+  @include span-columns(2);
+  @include shift(5);
+}
+
+
+#login-nav li {
+  display: inline;
+}
+
+
+/*Character show page*/
 
 .character-info {
   padding: 20px;
@@ -106,32 +208,12 @@ h2 {
   font-size: 2.8em;
 }
 
-#oauth {
-  text-align: center;
-  color: black;
-}
-
-#oauth a {
-  color: black;
-}
-
-#login {
-  display: inline;
-
-}
-
-#login a {
-  color: black;
-}
 
 .user-status {
   text-align: right;
   display: inline;
 }
 
-form {
-  margin-left: 20px;
-}
 
 .sub-heading {
   font-weight: bold;

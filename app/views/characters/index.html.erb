@@ -18,21 +18,22 @@
     </head>
     <body>
 
-      <p id="new-char"><%= link_to 'Create Character', new_character_path %></p>
-        <h2>List of Stored Characters</h2>
+    <div id="new-char"><%= link_to 'Create Character', new_character_path %></div>
+      
+      <h2>List of Stored Characters</h2>
 
-            <ul class="char-list">
-              <% if current_user %>
-                <% @users_characters.each do |character| %>
-                <li><%= link_to character.name, character_path(character) %></li>
-                <% end %>
-              <% else %>
-                <li>
-                  Sign up to create and maintain character information for Shadowrun 4th Edition! <br>
-                  Site currently in progress.
-                </li>
+          <ul class="char-list">
+            <% if current_user %>
+              <% @users_characters.each do |character| %>
+              <li><%= link_to character.name, character_path(character) %></li>
               <% end %>
-            </ul>
+            <% else %>
+              <li>
+                Sign up to create and maintain character information for Shadowrun 4th Edition! <br>
+                Site currently in progress.
+              </li>
+            <% end %>
+          </ul>
 
     </body>
     </html>
