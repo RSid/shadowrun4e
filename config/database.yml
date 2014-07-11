@@ -81,5 +81,4 @@ test:
 production:
   <<: *default
   database: shadowrun_4e_production
-  username: shadowrun_4e
   password: <%= ENV['SHADOWRUN_4E_DATABASE_PASSWORD'] %>
