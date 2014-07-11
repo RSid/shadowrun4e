@@ -34,7 +34,7 @@ roll = function() {
 $('#die').click(function() {
     var dicepoolValue = $('#dicepool').val();
 
-    if(dicepoolValue > 0) {
+    if(dicepoolValue > 0 && dicepoolValue < 60) {
       var results = [];
       for (i = 0; i < dicepoolValue; i++) {
         results.push(Math.floor(Math.random() * (6 - 1 + 1)) + 1);
@@ -70,8 +70,10 @@ $('#die').click(function() {
       $('#quick-actions').append(result);
 
 
-    } else {
+    } else if (dicepoolValue <=0){
       alert("Please choose a positive number of dice!");
+    } else {
+      alert("Pretty sure you don't have that big a dice pool, champ.");
     }
   });
 }
