@@ -1,5 +1,5 @@
-var ready;
-ready = function() {
+var gear;
+gear = function() {
 
     $('#weapons-input').hide();
     $('#general-gear-input').hide();
@@ -28,14 +28,13 @@ ready = function() {
 
 }
 
-$( document ).ready(ready);
-$(document).on('page:load', ready);
+var roll;
+roll = function() {
 
-$( document ).ready(function() {
-  $('#die').click(function() {
+$('#die').click(function() {
     var dicepoolValue = $('#dicepool').val();
 
-    if(dicepoolValue > 0) {
+    if(dicepoolValue > 0 && dicepoolValue < 60) {
       var results = [];
       for (i = 0; i < dicepoolValue; i++) {
         results.push(Math.floor(Math.random() * (6 - 1 + 1)) + 1);
@@ -71,8 +70,33 @@ $( document ).ready(function() {
       $('#quick-actions').append(result);
 
 
-    } else {
+    } else if (dicepoolValue <=0){
       alert("Please choose a positive number of dice!");
+    } else {
+      alert("Pretty sure you don't have that big a dice pool, champ.");
     }
   });
-});
+}
+
+var stateChangeForm;
+stateChangeForm = function() {
+
+    $('#change').change(function() {
+      var attributeValue = $('#change option:selected').val();
+
+      var html = "<label for='character_" + attributeValue +  "'>"+ attributeValue +"</label>" + "<input id='character_" + attributeValue + "' " + "name='character["
+        + attributeValue + "] type='text'>"
+
+      $('.edit-input').append(html);
+  });
+
+}
+
+$( document ).ready(gear);
+$(document).on('page:load', gear);
+
+$( document ).ready(roll);
+$(document).on('page:load', roll);
+
+$( document ).ready(stateChangeForm);
+$(document).on('page:load', stateChangeForm);

@@ -7,6 +7,7 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
+    @attributes = @character.mutable_attributes
     @roller = DiceRoller.new
   end
 
@@ -27,7 +28,17 @@ class CharactersController < ApplicationController
 
   def update
     @character = Character.find(params[:id])
-    if @character.update(character_params)
+    attributes_changing = params['character'].keys
+    attributes_params = {}
+
+    attributes_changing.each do |attribute|
+      if @character.mutable_attributes.include?(attribute)
+        attributes_params.merge!(attribute => params['character'][attribute][" type="])
+      end
+    end
+
+    @character = Character.find(params[:id])
+    if @character.update(attributes_params)
       redirect_to character_path(@character)
     else
       flash.now[:notice] = 'Uh oh! Your update could not be saved.'
@@ -49,6 +60,7 @@ class CharactersController < ApplicationController
       @quality = Quality.new
       @character_quality = CharacterQuality.new
       @connection = Connection.new
+      @attributes = @character.mutable_attributes
       render :show
     end
   end
