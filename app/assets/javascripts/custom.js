@@ -1,5 +1,5 @@
-var ready;
-ready = function() {
+var gear;
+gear = function() {
 
     $('#weapons-input').hide();
     $('#general-gear-input').hide();
@@ -28,11 +28,10 @@ ready = function() {
 
 }
 
-$( document ).ready(ready);
-$(document).on('page:load', ready);
+var roll;
+roll = function() {
 
-$( document ).ready(function() {
-  $('#die').click(function() {
+$('#die').click(function() {
     var dicepoolValue = $('#dicepool').val();
 
     if(dicepoolValue > 0) {
@@ -75,4 +74,11 @@ $( document ).ready(function() {
       alert("Please choose a positive number of dice!");
     }
   });
-});
+}
+
+
+$( document ).ready(gear);
+$(document).on('page:load', gear);
+
+$( document ).ready(roll);
+$(document).on('page:load', roll);

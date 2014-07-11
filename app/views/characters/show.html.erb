@@ -50,14 +50,24 @@
 <li><%= "Bio: #{@character.bio}" %></li>
 </ul>
 
-Add dropdown to reveal form for changing stat, like inventory
-<div class = 'editing-characters'>
-<%= form_for @character do |f| %>
-  <%= f.label :change_nuyen %>
-  <%= f.text_field :nuyen %>
+<div class = "editing-characters">
+  <form id="change_character">
+    Change:
+    <select id = "attribute">
+      <option value = '0'> Attribute </option>
+      <% @attributes.each do |attribute| %>
+        <option value = <%= @attributes.index(attribute) %> >
+          <%= attribute %>
+        </option>
+      <% end %>
 
-  <%= f.button :submit %>
-<% end %>
+      <%= form_for @character do |f| %>
+        <%= options_for_select(@attributes) %>
+
+
+        <%= f.button :submit %>
+      <% end %>
+    </select>
 </div>
 
 <div id="character-deletion">

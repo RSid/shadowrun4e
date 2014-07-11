@@ -7,6 +7,7 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
+    @attributes = @character.mutable_attributes
     @roller = DiceRoller.new
   end
 
