@@ -29,6 +29,14 @@
 
     <%= yield %>
 
+    <ul id = 'quick-actions'>
+      <li>Roll Dice</li>
+      <li>
+        <input type="number" id="dicepool" value = "0" >
+        <%= content_tag(:i,nil,class: "fa fa-cube", id: 'die') %>
+      </li>
+    </ul>
+
     <div class="push"></div>
 
   </div>

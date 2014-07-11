@@ -7,6 +7,7 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
+    @roller = DiceRoller.new
   end
 
   def new
@@ -21,6 +22,15 @@ class CharactersController < ApplicationController
     else
       flash.now[:notice] = 'Uh oh! Your character could not be saved.'
       render :new
+    end
+  end
+
+  def update
+    @character = Character.find(params[:id])
+    if @character.update(character_params)
+      redirect_to character_path(@character)
+    else
+      flash.now[:notice] = 'Uh oh! Your update could not be saved.'
     end
   end
 
