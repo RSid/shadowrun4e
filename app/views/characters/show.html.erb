@@ -51,23 +51,16 @@
 </ul>
 
 <div class = "editing-characters">
-  <form id="change_character">
-    Change:
-    <select id = "attribute">
-      <option value = '0'> Attribute </option>
-      <% @attributes.each do |attribute| %>
-        <option value = <%= @attributes.index(attribute) %> >
-          <%= attribute %>
-        </option>
-      <% end %>
 
-      <%= form_for @character do |f| %>
-        <%= options_for_select(@attributes) %>
-
-
+      <%= form_for @character, html: { id: "change_character" },
+        method: :patch do |f| %>
+        <%= select_tag "change", options_for_select(@attributes),
+        prompt: "Select attribute" %>
+        <div class="edit-input">
+        </div>
         <%= f.button :submit %>
       <% end %>
-    </select>
+
 </div>
 
 <div id="character-deletion">

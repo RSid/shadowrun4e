@@ -28,7 +28,12 @@ class CharactersController < ApplicationController
 
   def update
     @character = Character.find(params[:id])
-    if @character.update(character_params)
+    attribute_changing = params['character'].keys[0]
+    if @character.mutable_attributes.include?(attribute_changing)
+      new_attribute = { attribute_changing => params['character'][attribute_changing][" type="] }
+    end
+    @character = Character.find(params[:id])
+    if @character.update(new_attribute)
       redirect_to character_path(@character)
     else
       flash.now[:notice] = 'Uh oh! Your update could not be saved.'

@@ -78,9 +78,27 @@ $('#die').click(function() {
   });
 }
 
+var stateChangeForm;
+stateChangeForm = function() {
+
+    $('#change').change(function() {
+      var attributeValue = $('#change option:selected').val();
+
+      var html = "<input id='character_" + attributeValue + "' " + "name='character["
+        + attributeValue + "] type='text'>"
+
+      $('.edit-input').append(html);
+  });
+
+}
+
+
 
 $( document ).ready(gear);
 $(document).on('page:load', gear);
 
 $( document ).ready(roll);
 $(document).on('page:load', roll);
+
+$( document ).ready(stateChangeForm);
+$(document).on('page:load', stateChangeForm);
