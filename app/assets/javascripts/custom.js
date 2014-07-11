@@ -28,6 +28,18 @@ ready = function() {
 
 }
 
-
 $( document ).ready(ready);
 $(document).on('page:load', ready);
+
+$( document ).ready(function() {
+  $('#die').click(function() {
+    var dicepoolValue = $('#dicepool').val();
+    var results = [];
+    for (i = 0; i < dicepoolValue; i++) {
+      results.push(Math.floor(Math.random() * (6 - 1 + 1)) + 1);
+    }
+
+    var returned = results.join();
+    alert("Results: " + returned);
+  });
+});

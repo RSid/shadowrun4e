@@ -120,6 +120,12 @@ height: 4em;
   background-color: rgba(65,200,255,.3)
 }
 
+/*About*/
+
+#about-me{
+  color:white;
+}
+
 /*Login*/
 
 #sign-in-container {
@@ -160,6 +166,16 @@ height: 4em;
 #login-nav li a {
   color: white;
   padding: 10px;
+}
+
+#quick-actions {
+
+}
+
+#dicepool {
+  width: 6%;
+  display: inline;
+  margin: 10px;
 }
 
 

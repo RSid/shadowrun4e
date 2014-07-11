@@ -33,8 +33,4 @@ class Character < ActiveRecord::Base
   validates :nuyen, presence: true
   validates :essence, presence: true
   validates :initiative_passes, presence: true
-
-  def change_nuyen(amount)
-    self.nuyen = nuyen + amount
-  end
 end

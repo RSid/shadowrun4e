@@ -30,17 +30,11 @@
     <%= yield %>
 
     <ul id = 'quick-actions'>
+      <li>Roll Dice</li>
       <li>
-        <div class = 'editing-characters'>
-        <%= form_for @character do |f| %>
-          <%= f.label :nuyen %>
-          <%= f.text_field :nuyen %>
-          <%= f.button :submit %>
-        <% end %>
-      </div>
+        <input type="number" id="dicepool" value = "0" >
+        <%= content_tag(:i,nil,class: "fa fa-cube", id: 'die') %>
       </li>
-      <li>Change stat</li>
-      <li>Roll skill</li>
     </ul>
 
     <div class="push"></div>

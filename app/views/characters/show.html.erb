@@ -50,6 +50,16 @@
 <li><%= "Bio: #{@character.bio}" %></li>
 </ul>
 
+Add dropdown to reveal form for changing stat, like inventory
+<div class = 'editing-characters'>
+<%= form_for @character do |f| %>
+  <%= f.label :change_nuyen %>
+  <%= f.text_field :nuyen %>
+
+  <%= f.button :submit %>
+<% end %>
+</div>
+
 <div id="character-deletion">
   <%= link_to("Delete this character? This action cannot be undone.",
     character_path(@character), method: :delete) %>
