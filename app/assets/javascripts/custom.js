@@ -42,7 +42,9 @@ $( document ).ready(function() {
       }
 
       var returned = results.join();
-      alert("Results: " + returned);
+      var result = $("<li>");
+      result.html("Results: " + returned).css("font-weight", "bold");
+      $('#quick-actions').append(result)
     } else {
       alert("Please choose a positive number of dice!");
     }
