@@ -60,6 +60,7 @@ class CharactersController < ApplicationController
       @quality = Quality.new
       @character_quality = CharacterQuality.new
       @connection = Connection.new
+      @attributes = @character.mutable_attributes
       render :show
     end
   end
