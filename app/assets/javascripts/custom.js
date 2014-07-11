@@ -84,15 +84,13 @@ stateChangeForm = function() {
     $('#change').change(function() {
       var attributeValue = $('#change option:selected').val();
 
-      var html = "<input id='character_" + attributeValue + "' " + "name='character["
+      var html = "<label for='character_" + attributeValue +  "'>"+ attributeValue +"</label>" + "<input id='character_" + attributeValue + "' " + "name='character["
         + attributeValue + "] type='text'>"
 
       $('.edit-input').append(html);
   });
 
 }
-
-
 
 $( document ).ready(gear);
 $(document).on('page:load', gear);

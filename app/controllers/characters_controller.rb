@@ -28,12 +28,17 @@ class CharactersController < ApplicationController
 
   def update
     @character = Character.find(params[:id])
-    attribute_changing = params['character'].keys[0]
-    if @character.mutable_attributes.include?(attribute_changing)
-      new_attribute = { attribute_changing => params['character'][attribute_changing][" type="] }
+    attributes_changing = params['character'].keys
+    attributes_params = {}
+
+    attributes_changing.each do |attribute|
+      if @character.mutable_attributes.include?(attribute)
+        attributes_params.merge!(attribute => params['character'][attribute][" type="])
+      end
     end
+
     @character = Character.find(params[:id])
-    if @character.update(new_attribute)
+    if @character.update(attributes_params)
       redirect_to character_path(@character)
     else
       flash.now[:notice] = 'Uh oh! Your update could not be saved.'

@@ -55,7 +55,7 @@
       <%= form_for @character, html: { id: "change_character" },
         method: :patch do |f| %>
         <%= select_tag "change", options_for_select(@attributes),
-        prompt: "Select attribute" %>
+        prompt: "Select attribute to edit" %>
         <div class="edit-input">
         </div>
         <%= f.button :submit %>
