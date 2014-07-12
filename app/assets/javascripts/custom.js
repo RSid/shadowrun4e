@@ -112,6 +112,9 @@ $(document).ready(function() {
       url: $(this).attr('action'),
       dataType: "json",
       data: dataSubmit
+      success: function() {
+        
+      }
     });
   });
 });
