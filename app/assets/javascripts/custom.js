@@ -100,3 +100,18 @@ $(document).on('page:load', roll);
 
 $( document ).ready(stateChangeForm);
 $(document).on('page:load', stateChangeForm);
+
+$(document).ready(function() {
+  $('#new_character_skill').on('submit', function(event) {
+    event.preventDefault();
+
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit
+    });
+  });
+});
