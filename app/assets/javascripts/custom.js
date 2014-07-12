@@ -113,8 +113,26 @@ $(document).ready(function() {
       dataType: "json",
       data: dataSubmit
       success: function() {
-        
+
       }
     });
   });
+
+  $('#new_character_quality').on('submit', function(event) {
+    event.preventDefault();
+
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit
+      success: function() {
+
+      }
+    });
+  });
+
+
 });
