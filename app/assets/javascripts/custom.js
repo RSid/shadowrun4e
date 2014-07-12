@@ -92,16 +92,9 @@ stateChangeForm = function() {
 
 }
 
-$( document ).ready(gear);
-$(document).on('page:load', gear);
+var ajaxer;
 
-$( document ).ready(roll);
-$(document).on('page:load', roll);
-
-$( document ).ready(stateChangeForm);
-$(document).on('page:load', stateChangeForm);
-
-$(document).ready(function() {
+ajaxer = function() {
   $('#new_character_skill').on('submit', function(event) {
     event.preventDefault();
 
@@ -116,23 +109,16 @@ $(document).ready(function() {
 
       }
     });
-  });
+  }
 
-  $('#new_character_quality').on('submit', function(event) {
-    event.preventDefault();
+$( document ).ready(gear);
+$(document).on('page:load', gear);
 
-    var dataSubmit = $(this).serialize();
+$( document ).ready(roll);
+$(document).on('page:load', roll);
 
-    $.ajax({
-      type: "POST",
-      url: $(this).attr('action'),
-      dataType: "json",
-      data: dataSubmit
-      success: function() {
+$( document ).ready(stateChangeForm);
+$(document).on('page:load', stateChangeForm);
 
-      }
-    });
-  });
-
-
-});
+$(document).ready(ajaxer);
+$(document).on('page:load', ajaxer);
