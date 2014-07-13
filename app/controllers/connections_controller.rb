@@ -1,4 +1,6 @@
 class ConnectionsController < ApplicationController
+  include EmptyFormObjects
+
   def index
     @character = Character.find(params[:character_id])
     @connection = Connection.new
@@ -13,12 +15,7 @@ class ConnectionsController < ApplicationController
       redirect_to character_connections_path(@character)
     else
       flash.now[:notice] = 'Uh oh! Your connection could not be saved.'
-      @character = Character.find(params[:character_id])
-      @skill = Skill.new
-      @character_skill = CharacterSkill.new
-      @quality = Quality.new
-      @character_quality = CharacterQuality.new
-      @connection = Connection.new
+      generate_empty_form_objects
       render "/connections/index"
     end
   end
@@ -33,12 +30,7 @@ class ConnectionsController < ApplicationController
       end
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
-      @character = Character.find(params[:character_id])
-      @skill = Skill.new
-      @character_skill = CharacterSkill.new
-      @quality = Quality.new
-      @character_quality = CharacterQuality.new
-      @connection = Connection.new
+      generate_empty_form_objects
       render "/connections/index"
     end
   end

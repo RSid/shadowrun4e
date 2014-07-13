@@ -1,4 +1,6 @@
 class CharactersController < ApplicationController
+  include EmptyFormObjects
+
   def index
     if user_signed_in?
       @users_characters = current_user.characters
@@ -54,13 +56,7 @@ class CharactersController < ApplicationController
       end
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
-      @character = Character.find(params[:id])
-      @skill = Skill.new
-      @character_skill = CharacterSkill.new
-      @quality = Quality.new
-      @character_quality = CharacterQuality.new
-      @connection = Connection.new
-      @attributes = @character.mutable_attributes
+      generate_empty_form_objects
       render :show
     end
   end

@@ -1,4 +1,5 @@
 class CharacterToolsController < ApplicationController
+  include EmptyFormObjects
   before_action :set_character
 
   def create
@@ -13,11 +14,7 @@ class CharacterToolsController < ApplicationController
     else
       flash.now[:notice] = 'Uh oh! Your tool could not be saved.'
       @character = Character.find(params[:character_id])
-      @tool = Tool.new
-      @character_tool = CharacterTool.new
-
-      @weapon = Weapon.new
-      @character_weapon = CharacterWeapon.new
+      generate_empty_form_objects
       render "/inventory/index"
     end
   end

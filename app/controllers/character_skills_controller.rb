@@ -1,4 +1,6 @@
 class CharacterSkillsController < ApplicationController
+  include EmptyFormObjects
+
   def index
     @character = Character.find(params[:character_id])
     @character_skills = @character.character_skills
@@ -18,12 +20,7 @@ class CharacterSkillsController < ApplicationController
       redirect_to character_character_skills_path(@character)
     else
       flash.now[:notice] = 'Uh oh! Your skill could not be saved.'
-      @character = Character.find(params[:character_id])
-      @skill = Skill.new
-      @character_skill = CharacterSkill.new
-      @quality = Quality.new
-      @character_quality = CharacterQuality.new
-      @connection = Connection.new
+      generate_empty_form_objects
       render "/character_skills/index"
     end
   end
@@ -38,12 +35,7 @@ class CharacterSkillsController < ApplicationController
       end
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
-      @character = Character.find(params[:character_id])
-      @skill = Skill.new
-      @character_skill = CharacterSkill.new
-      @quality = Quality.new
-      @character_quality = CharacterQuality.new
-      @connection = Connection.new
+      generate_empty_form_objects
       render "/character_skills/index"
     end
   end
