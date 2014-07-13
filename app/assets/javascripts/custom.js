@@ -117,8 +117,8 @@ $(document).on('page:load', gear);
 $( document ).ready(roll);
 $(document).on('page:load', roll);
 
-$( document ).ready(stateChangeForm);
-$(document).on('page:load', stateChangeForm);
-
 $(document).ready(ajaxer);
 $(document).on('page:load', ajaxer);
+
+$( document ).ready(stateChangeForm);
+$(document).on('page:load', stateChangeForm);

@@ -7,7 +7,7 @@ class ConnectionsController < ApplicationController
   def create
     @character = Character.find(params[:character_id])
 
-    @connection = @character.connections.build(connection_params)
+    @connection = @character.connections.find_or_create_by(connection_params)
 
     if @connection.save
       redirect_to character_connections_path(@character)

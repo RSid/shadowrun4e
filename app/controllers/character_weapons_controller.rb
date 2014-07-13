@@ -1,11 +1,8 @@
 class CharacterWeaponsController < ApplicationController
   def create
     @character = Character.find(params[:character_id])
-    weapon = Weapon.find_by(name: weapon_params[:name])
 
-    if weapon == nil
-      weapon = Weapon.create(weapon_params["weapon"])
-    end
+    weapon = Weapon.find_or_create_by(weapon_params["weapon"])
 
     @character_weapon = @character.character_weapons.build(character_weapon_params.merge(weapon: weapon))
 

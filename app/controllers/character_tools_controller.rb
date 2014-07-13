@@ -4,11 +4,7 @@ class CharacterToolsController < ApplicationController
   def create
     @inventory = InventoryFacade.new(@character)
 
-    tool = Tool.find_by(name: tool_params[:name])
-
-    if tool == nil
-      tool = Tool.create(tool_params["tool"])
-    end
+    tool = Tool.find_or_create_by(tool_params["tool"])
 
     @character_tool = @character.character_tools.build(character_tool_params.merge(tool: tool))
 

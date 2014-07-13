@@ -9,11 +9,8 @@ class CharacterQualitiesController < ApplicationController
 
   def create
     @character = Character.find(params[:character_id])
-    quality = Quality.find_by(name: quality_params[:name])
 
-    if quality == nil
-      quality = Quality.create(quality_params["quality"])
-    end
+    quality = Quality.find_or_create_by(quality_params["quality"])
 
     @character_quality = @character.character_qualities.build(character_quality_params.merge(quality: quality))
 

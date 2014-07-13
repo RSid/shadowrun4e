@@ -9,12 +9,9 @@ class CharacterSkillsController < ApplicationController
 
   def create
     @character = Character.find(params[:character_id])
-    skill = Skill.find_by(name: skill_params[:name])
 
-    if skill == nil
-      skill = Skill.create(skill_params["skill"])
-    end
-    
+    skill = Skill.find_or_create_by(skill_params["skill"])
+
     @character_skill = @character.character_skills.build(character_skill_params.merge(skill: skill))
 
     if @character_skill.save
