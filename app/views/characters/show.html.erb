@@ -3,10 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Character</title>
-  <script language="javascript" type="text/javascript" src="/jquery.1.11.1.js"></script>
-  <script language="javascript" type="text/javascript" src="/app.js"></script>
-  <script language="javascript" type="text/javascript" src="/skills_dynamic_forms.js"></script>
-  <link rel="stylesheet" href="/sr4.css" />
 </head>
 <body>
 
@@ -55,9 +51,11 @@
         method: :patch do |f| %>
         <%= select_tag "change", options_for_select(@attributes),
         prompt: "Select attribute to edit" %>
+        <div id="base-edits">
           <div class="edit-input">
           </div>
         <%= f.button :submit %>
+      </div>
       <% end %>
 
 <div id="character-deletion">

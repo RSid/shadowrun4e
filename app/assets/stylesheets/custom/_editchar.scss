@@ -6,13 +6,16 @@
   select {
     font-size: $form-font-size;
   }
-  width: 100%;
+
+  margin-left: 25%;
+  margin-right: 25%;
+
   textarea,
   #{$all-text-inputs},
   select[multiple=multiple] {
     margin-bottom: $base-line-height / 2;
     padding: ($base-line-height / 3) ($base-line-height / 3);
-    width: 50%;
+
     height: ($base-line-height);
   }
 }

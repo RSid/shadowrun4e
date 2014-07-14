@@ -287,13 +287,26 @@ h2 {
 .edit-character-hover, #character-stat-edit, #gear-type {
   padding: 10px;
   text-align: center;
-  width: 20%;
-  margin-left: 40%;
-  margin-right: 40%;
+  width: 15%;
+  margin-left: 42.5%;
+  margin-right: 42.5%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: solid 2px black;
+  border-radius: 10px;
 }
 
-#weapons-input, #general-gear-input {
+#weapons-input, #general-gear-input, #base-edits {
   @include editing-character;
+}
+
+.edit-input {
+  width: 100%;
+}
+
+#change {
+  @include span-columns(4);
+  @include shift(4);
 }
 
 #character-deletion {
