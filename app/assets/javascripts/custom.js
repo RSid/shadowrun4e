@@ -107,7 +107,7 @@ ajaxer = function() {
 var toggleEditForms;
 toggleEditForms = function() {
   $('.editing-characters').hide();
-  $(".edit-character-hover").mouseover(function() {
+  $(".edit-character-hover").click(function() {
     $('.editing-characters').toggle();
   });
 }
@@ -118,11 +118,6 @@ toggleDeletion = function() {
   $("#character-name").mouseover(function() {
     $('#char-deletion').toggle();
   });
-
-  // $('#delete-').hide();
-  // $("#character-name").mouseover(function() {
-  //   $('#char-deletion').toggle();
-  // });
 }
 
 $( document ).ready(gear);
