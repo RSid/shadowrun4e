@@ -112,6 +112,19 @@ toggleEditForms = function() {
   });
 }
 
+var toggleDeletion;
+toggleDeletion = function() {
+  $('#char-deletion').hide();
+  $("#character-name").mouseover(function() {
+    $('#char-deletion').toggle();
+  });
+
+  // $('#delete-').hide();
+  // $("#character-name").mouseover(function() {
+  //   $('#char-deletion').toggle();
+  // });
+}
+
 $( document ).ready(gear);
 $(document).on('page:load', gear);
 
@@ -126,3 +139,6 @@ $(document).on('page:load', statChangeForm);
 
 $( document ).ready(toggleEditForms);
 $(document).on('page:load', toggleEditForms);
+
+$( document ).ready(toggleDeletion);
+$(document).on('page:load', toggleDeletion);

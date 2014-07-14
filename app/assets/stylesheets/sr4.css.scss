@@ -4,6 +4,7 @@ html {
   margin: 0PX;
   padding: 0px;
   height: 100%;
+
 }
 
 @font-face {
@@ -17,8 +18,6 @@ body {
   font-size: 1.3em;
   padding: 0px;
   height: 100%;
-  background: url('sr4background.png') no-repeat center center ;
-  background-size: cover;
 }
 
 #header {
@@ -44,11 +43,12 @@ body {
 }
 
 .wrapper {
-min-height: 100%;
-height: auto !important;
-height: 100%;
-margin: 0 auto -4em;
-
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+  background: url('sr4background.png') no-repeat center center ;
+  background-size: cover;
 }
 
 .footer, .push {
@@ -62,6 +62,10 @@ height: 4em;
   font-family: Arial,sans-serif;
   padding: 5em;
   text-align: center;
+}
+
+.fa {
+  color: red;
 }
 
 /*Landing page*/
@@ -125,7 +129,6 @@ height: 4em;
 
 #about-me{
   color:white;
-  background-color: blue;
 }
 
 /*Login*/
@@ -174,9 +177,11 @@ height: 4em;
   display: block;
   border: solid 1px grey;
   border-radius: 15px;
-  position: fixed;
+  position: relative;
   bottom: 10%;
-  margin-left: 90%;
+  margin-left: 82%;
+  margin-right: 2%;
+  margin-bottom: 2%;
   padding: 10px;
 }
 
@@ -186,7 +191,9 @@ height: 4em;
   margin: 10px;
 }
 
-
+#die {
+  color: black;
+}
 /*Character show page*/
 
 .character-info {
@@ -197,6 +204,9 @@ height: 4em;
   text-align: center;
   font-size: 1.6em;
   padding-top: 10px;
+  width: 30%;
+  margin-left:35%;
+  margin-right:35%;
 }
 
 .char-nav {
@@ -236,15 +246,16 @@ height: 4em;
 #new-char {
   text-align: center;
   padding: 20px 0px;
+  margin-top: 10px;
 }
 
 #new-char a {
   text-decoration: none;
   color: black;
   padding: 5px 15px;
-  border: 2px ridge #03542B;
+  border: 2px ridge #029870;
   border-radius: 15px;
-  background-color: rgba(3,84,43,0.1);
+  background-color: rgba(2,152,112,0.1);
 }
 
 .content {
@@ -319,7 +330,7 @@ h6 {
 
 .edit-input {
   width: 100%;
-  max-height: 500px;
+  max-height: 200px;
   overflow: auto;
 }
 
@@ -328,17 +339,15 @@ h6 {
   @include shift(4);
 }
 
-#character-deletion {
+#char-deletion {
   text-align: center;
-  padding-top: 50px;
-  margin: 10px;
 }
 
-.submit-button {
-background-color: gray;
-border-color: black;
-color: white;
 
+.submit-button {
+  background-color: gray;
+  border-color: black;
+  color: white;
 }
 
 .delete-button {

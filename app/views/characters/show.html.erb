@@ -6,7 +6,13 @@
 </head>
 <body>
 
-<div id = "character-name"><%= @character.name %></div>
+<div id = "character-name">
+  <%= @character.name %>
+</div>
+
+<div id='char-deletion'>
+  <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_path(@character), method: :delete) %>
+</div>
 
 <ul class="char-nav">
   <li><%= link_to 'Base',character_path(@character) %></li>
@@ -19,8 +25,6 @@
   <li> | </li>
   <li><%= link_to 'Connections', character_connections_path(@character) %></li>
 </ul>
-
-
 
 <ul class = "character-details">
 <li><%= "Metatype: #{@character.metatype.name}" %></li>
@@ -57,12 +61,6 @@
         <%= f.button :submit %>
       </div>
       <% end %>
-
-<div id="character-deletion">
-  <%= link_to("Delete this character? This action cannot be undone.",
-    character_path(@character), method: :delete) %>
-</div>
-
 
 </body>
 </html>
