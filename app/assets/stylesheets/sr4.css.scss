@@ -8,7 +8,7 @@ html {
 
 @font-face {
   font-family: FrizQuadrata;
-  src: url(frquad.ttf);
+  src: font-url("frquad.ttf");
 }
 
 body {
@@ -19,7 +19,6 @@ body {
   height: 100%;
 
 }
-
 
 #header {
   @include span-columns(12);
