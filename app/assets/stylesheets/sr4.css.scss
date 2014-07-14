@@ -17,7 +17,8 @@ body {
   font-size: 1.3em;
   padding: 0px;
   height: 100%;
-
+  background: url('sr4background.png') no-repeat center center ;
+  background-size: cover;
 }
 
 #header {
@@ -47,6 +48,7 @@ min-height: 100%;
 height: auto !important;
 height: 100%;
 margin: 0 auto -4em;
+
 }
 
 .footer, .push {
@@ -66,7 +68,7 @@ height: 4em;
 
 #background {
   @include outer-container;
-  background: url(city.jpg) no-repeat center center fixed;
+  background: url('city.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -170,6 +172,12 @@ height: 4em;
 
 #quick-actions {
   display: block;
+  border: solid 1px grey;
+  border-radius: 15px;
+  position: fixed;
+  bottom: 10%;
+  margin-left: 90%;
+  padding: 10px;
 }
 
 #dicepool {
@@ -297,6 +305,10 @@ h2 {
   border-radius: 10px;
 }
 
+h6 {
+  margin-top: 15px;
+}
+
 #weapons-input, #general-gear-input, #base-edits {
   @include editing-character;
 }
@@ -307,6 +319,8 @@ h2 {
 
 .edit-input {
   width: 100%;
+  max-height: 500px;
+  overflow: auto;
 }
 
 #change {
