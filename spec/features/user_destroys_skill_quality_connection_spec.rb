@@ -15,7 +15,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     skill = FactoryGirl.create(:skill)
     character_skill = FactoryGirl.create(:character_skill,
       character: character, skill: skill)
-
+    save_and_open_page
     visit character_character_skills_path(character)
 
     click_on (character_skill.id.to_s)

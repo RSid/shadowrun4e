@@ -16,6 +16,9 @@ gear = function() {
       } else if ( optionValue==0 ){
           $('#weapons-input').hide();
           $('#general-gear-input').hide();
+      } else {
+        $('#weapons-input').hide();
+        $('#general-gear-input').hide();
       }
   });
 }
@@ -75,13 +78,15 @@ statChangeForm = function() {
     $('#change').change(function() {
       var attributeValue = $('#change option:selected').val();
 
-      var html = "<label for='character_" + attributeValue +  "'>"+ attributeValue +"</label>" + "<input id='character_" + attributeValue + "' " + "name='character["
+      var html = "<label for='character_" + attributeValue +  "' class = 'new-form-field'>"
+      + attributeValue +"</label>" + "<input class = 'new-form-field' id='character_" + attributeValue
+      + "' " + "name='character["
         + attributeValue + "] type='text'>"
 
       $('.edit-input').append(html);
   });
 
-  $("#character-stat-edit").mouseover(function() {
+  $("#character-stat-edit").click(function() {
     $('.edit-input').toggle();
   });
 }

@@ -15,9 +15,7 @@ feature 'user deletes a character', %Q(
 
     visit character_path(character)
 
-    within("#character-deletion") do
-      click_on 'Delete this character? This action cannot be undone.'
-    end
+    click_on (character.id.to_s)
 
     expect(page).to_not have_content character.name
   end
@@ -30,9 +28,7 @@ feature 'user deletes a character', %Q(
 
     visit character_path(character)
 
-    within("#character-deletion") do
-      click_on 'Delete this character? This action cannot be undone.'
-    end
+    click_on (character.id.to_s)
 
     expect(page).to have_content character.name
     expect(page).to have_content 'You are not logged in. You must be logged in to edit a character.'
