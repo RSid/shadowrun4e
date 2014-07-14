@@ -2,7 +2,6 @@
   input,
   label,
   select {
-    display: inline;
     font-size: $form-font-size;
   }
 
@@ -11,7 +10,6 @@
   select[multiple=multiple] {
     margin-bottom: $base-line-height / 2;
     padding: ($base-line-height / 3) ($base-line-height / 3);
-    display: inline;
     width: 15%;
     height: ($base-line-height);
   }

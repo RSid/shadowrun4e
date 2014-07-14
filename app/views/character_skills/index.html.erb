@@ -12,7 +12,6 @@
   <li><%= link_to 'Connections', character_connections_path(@character) %></li>
 </ul>
 
-<div class = "content">
   <h3><a name="skills">Skills: </h3>
   <ul>
     <% @character.character_skills.each do |characterskill| %>
@@ -27,9 +26,9 @@
   -->
     <% end %>
   </ul>
+<p class = 'edit-character-hover'>Add a skill</p>
 
   <div class = "editing-characters">
-    <p>Add a skill:</p>
       <div id = "add-skill">
         <%= form_for [@character, @character_skill] do |f| %>
           <%= f.fields_for @skill do |i| %>

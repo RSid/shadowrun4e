@@ -1,6 +1,5 @@
 var gear;
 gear = function() {
-
     $('#weapons-input').hide();
     $('#general-gear-input').hide();
 
@@ -25,12 +24,10 @@ gear = function() {
         $('#under-constructon').show();
       }
   });
-
 }
 
 var roll;
 roll = function() {
-
 $('#die').click(function() {
     var dicepoolValue = $('#dicepool').val();
 
@@ -89,11 +86,9 @@ stateChangeForm = function() {
 
       $('.edit-input').append(html);
   });
-
 }
 
 var ajaxer;
-
 ajaxer = function() {
   $('#new_character_skill' || '#change_character').on('submit', function(event) {
     event.preventDefault();
@@ -106,9 +101,16 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function() {
-
       }
     });
+  });
+}
+
+var toggleEditForms;
+toggleEditForms = function() {
+  $('.editing-characters').hide();
+  $(".edit-character-hover").mouseover(function() {
+    $('.editing-characters').toggle();
   });
 }
 
@@ -123,3 +125,6 @@ $(document).on('page:load', ajaxer);
 
 $( document ).ready(stateChangeForm);
 $(document).on('page:load', stateChangeForm);
+
+$( document ).ready(toggleEditForms);
+$(document).on('page:load', toggleEditForms);

@@ -26,8 +26,8 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-
-    <%= yield %>
+    <div class = "content">
+      <%= yield %>
 
     <ul id = 'quick-actions'>
       <li>Roll Dice</li>
@@ -36,6 +36,7 @@
         <%= content_tag(:i,nil,class: "fa fa-cube", id: 'die') %>
       </li>
     </ul>
+  </div>
 
     <div class="push"></div>
 

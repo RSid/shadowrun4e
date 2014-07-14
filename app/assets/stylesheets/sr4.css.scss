@@ -240,7 +240,7 @@ height: 4em;
 }
 
 .content {
-  margin: 20px;
+  margin: 50px;
 }
 
 .char-list {
@@ -276,10 +276,8 @@ h2 {
   font-size: .7em;
 }
 
-
-
-.editing-characters form{
-  // @include editing;
+.editing-characters p{
+  font-size: 1.7em;
 }
 
 #character-deletion {

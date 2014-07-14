@@ -12,7 +12,6 @@
   <li><%= link_to 'Connections', character_connections_path(@character) %></li>
 </ul>
 
-<div class = "content">
   <h3><a name = "qualities">Qualities: </h3>
   <ul>
     <% @character.character_qualities.each do |characterquality| %>
@@ -45,4 +44,3 @@
       <% end %>
     </div>
   </div>
-</div>
