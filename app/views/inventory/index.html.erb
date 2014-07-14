@@ -61,7 +61,6 @@
       <% end %>
     </ul>
 
-  <div class = "editing-characters">
     <form id="gear-type">
       Add:
       <select id = "PickGear">
@@ -73,6 +72,7 @@
       </select>
     </form>
 
+  <!-- <div class = "editing-characters"> -->
     <div id = "weapons-input">
       <%= form_for [@character, @character_weapon] do |f| %>
         <%= f.label :rating %>
@@ -130,9 +130,6 @@
         <%= f.submit 'Submit' %>
       <% end %>
     </div>
-
-  </div>
-
 
   <div id = 'under-constructon'>
     <p><em>Still under construction.</em></p>

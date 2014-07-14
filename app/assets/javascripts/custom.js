@@ -8,20 +8,14 @@ gear = function() {
       var optionValue = $('#PickGear option:selected').val();
 
       if ( optionValue==1 ) {
-
         $('#weapons-input').show();
         $('#general-gear-input').hide();
-        $('#under-constructon').show();
-
       } else if ( optionValue==4 ){
           $('#weapons-input').hide();
           $('#general-gear-input').show();
-      }
-
-      else {
-        $('#weapons-input').hide();
-        $('#general-gear-input').hide();
-        $('#under-constructon').show();
+      } else if ( optionValue==0 ){
+          $('#weapons-input').hide();
+          $('#general-gear-input').hide();
       }
   });
 }
@@ -75,8 +69,8 @@ $('#die').click(function() {
   });
 }
 
-var stateChangeForm;
-stateChangeForm = function() {
+var statChangeForm;
+statChangeForm = function() {
 
     $('#change').change(function() {
       var attributeValue = $('#change option:selected').val();
@@ -85,6 +79,10 @@ stateChangeForm = function() {
         + attributeValue + "] type='text'>"
 
       $('.edit-input').append(html);
+  });
+
+  $("#character-stat-edit").mouseover(function() {
+    $('.edit-input').toggle();
   });
 }
 
@@ -123,8 +121,8 @@ $(document).on('page:load', roll);
 $(document).ready(ajaxer);
 $(document).on('page:load', ajaxer);
 
-$( document ).ready(stateChangeForm);
-$(document).on('page:load', stateChangeForm);
+$( document ).ready(statChangeForm);
+$(document).on('page:load', statChangeForm);
 
 $( document ).ready(toggleEditForms);
 $(document).on('page:load', toggleEditForms);

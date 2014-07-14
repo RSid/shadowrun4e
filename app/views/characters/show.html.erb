@@ -50,18 +50,15 @@
 <li><%= "Bio: #{@character.bio}" %></li>
 </ul>
 
-<div class = "editing-characters">
-
+  <div id='character-stat-edit'> Edit Character's: </div>
       <%= form_for @character, html: { id: "change_character" },
         method: :patch do |f| %>
         <%= select_tag "change", options_for_select(@attributes),
         prompt: "Select attribute to edit" %>
-        <div class="edit-input">
-        </div>
+          <div class="edit-input">
+          </div>
         <%= f.button :submit %>
       <% end %>
-
-</div>
 
 <div id="character-deletion">
   <%= link_to("Delete this character? This action cannot be undone.",
