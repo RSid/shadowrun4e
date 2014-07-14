@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Character</title>
-  <script language="javascript" type="text/javascript" src="/jquery.1.11.1.js"></script>
-  <script language="javascript" type="text/javascript" src="/app.js"></script>
-  <script language="javascript" type="text/javascript" src="/skills_dynamic_forms.js"></script>
-  <link rel="stylesheet" href="/sr4.css" />
 </head>
 <body>
 
-<div id = "character-name"><%= @character.name %></div>
+<div id = "character-name">
+  <%= @character.name %>
+</div>
+
+<div id='char-deletion'>
+  <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"),
+  character_path(@character), method: :delete, id: @character.id) %>
+</div>
 
 <ul class="char-nav">
   <li><%= link_to 'Base',character_path(@character) %></li>
@@ -24,51 +27,47 @@
   <li><%= link_to 'Connections', character_connections_path(@character) %></li>
 </ul>
 
-<div class = "content">
+<table id = 'barscilwe'>
+  <tr>
+    <td><%= "Body: #{@character.body}" %>
+    <td><%= "Agility: #{@character.agility}" %>
+    <td><%= "Strength: #{@character.strength}" %>
+    <td><%= "Reaction: #{@character.reaction}" %>
+    <td><%= "Charisma: #{ @character.charisma}" %>
+    <td><%= "Intuition: #{ @character.intuition}" %>
+    <td><%= "Logic: #{@character.logic}" %>
+    <td><%= "Willpower: #{@character.willpower}" %>
+    <td><%= "Edge: #{@character.edge}" %>
+  <tr>
+</table>
 
-<ul class = "character-details">
-<li><%= "Metatype: #{@character.metatype.name}" %></li>
-<li><%= "Metatype special: #{@character.metatype.special_ability}" %></li>
-<ul class = "barscilwe">
-  <li><%= "Body: #{@character.body}" %>
-  <li><%= "Agility: #{@character.agility}" %>
-  <li><%= "Strength: #{@character.strength}" %>
-  <li><%= "Reaction: #{@character.reaction}" %>
-  <li><%= "Charisma: #{ @character.charisma}" %>
-  <li><%= "Intuition: #{ @character.intuition}" %>
-  <li><%= "Logic: #{@character.logic}" %>
-  <li><%= "Willpower: #{@character.willpower}" %>
-  <li><%= "Edge: #{@character.edge}" %>
-</ul>
-<li><%= "Physical damage track: #{8 + (@character.body.to_f/2).ceil}" %></li>
-<li><%= "Stun damage track: #{8 + (@character.willpower.to_f/2).ceil}" %></li>
-<li><%= "Initiative: #{@character.reaction + @character.intuition}"%></li>
-<li><%= "Initiative passes: #{@character.initiative_passes}" %></li>
-<li><%= "Nuyen: #{@character.nuyen}" %></li>
-<li><%= "Essence: #{@character.essence}" %></li>
-<li><%= "Magic/Resonance: #{@character.magic}" %></li>
-<li><%= "Bio: #{@character.bio}" %></li>
-</ul>
+<table>
+  <tr><td>Metatype:</td><td><%= "#{@character.metatype.name}" %></td></tr>
+  <tr><td>Metatype special: </td><td><%= "#{@character.metatype.special_ability}" %></td></tr>
+</table>
 
-<div class = "editing-characters">
+<table>
+  <tr><td>Physical damage track:</td><td> <%= "#{8 + (@character.body.to_f/2).ceil}" %></td></tr>
+  <tr><td>Stun damage track:</td><td> <%="#{8 + (@character.willpower.to_f/2).ceil}" %></td></tr>
+  <tr><td>Initiative:</td><td> <%= "#{@character.reaction + @character.intuition}"%></td></tr>
+  <tr><td>Initiative passes</td><td><%= "#{@character.initiative_passes}" %></td></tr>
+  <tr><td>Nuyen</td><td><%= "#{@character.nuyen}" %></tr>
+  <tr><td>Essence:</td><td><%= "#{@character.essence}" %></tr>
+  <tr><td>Magic/Resonance:</td><td> <%= "#{@character.magic}" %></tr>
+  <tr><td>Biography:</td><td><%= "#{@character.bio}" %></tr>
+</table>
 
+  <div id='character-stat-edit'> Edit Character's: </div>
       <%= form_for @character, html: { id: "change_character" },
         method: :patch do |f| %>
         <%= select_tag "change", options_for_select(@attributes),
         prompt: "Select attribute to edit" %>
-        <div class="edit-input">
-        </div>
+        <div id="base-edits">
+          <div class="edit-input">
+          </div>
         <%= f.button :submit %>
+      </div>
       <% end %>
-
-</div>
-
-<div id="character-deletion">
-  <%= link_to("Delete this character? This action cannot be undone.",
-    character_path(@character), method: :delete) %>
-</div>
-
-</div>
 
 </body>
 </html>

@@ -9,7 +9,6 @@ input,
 label,
 select {
   display: block;
-  // font-family: $form-font-family;
   font-size: $form-font-size;
 }
 
@@ -35,7 +34,6 @@ select[multiple=multiple] {
   border-radius: $form-border-radius;
   border: 1px solid $form-border-color;
   box-shadow: $form-box-shadow;
-  // font-family: $form-font-family;
   font-size: $form-font-size;
   margin-bottom: $base-line-height / 2;
   padding: ($base-line-height / 3) ($base-line-height / 3);

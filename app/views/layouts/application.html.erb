@@ -23,19 +23,22 @@
       </div>
     </div>
 
+    <div class="push"></div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+    <div class = "content">
+      <%= yield %>
 
-    <%= yield %>
+    </div>
 
-    <ul id = 'quick-actions'>
-      <li>Roll Dice</li>
-      <li>
-        <input type="number" id="dicepool" value = "0" >
-        <%= content_tag(:i,nil,class: "fa fa-cube", id: 'die') %>
-      </li>
-    </ul>
+  <ul id = 'quick-actions'>
+    <li>Roll Dice</li>
+    <li>
+      <input type="number" id="dicepool" value = "0" >
+      <%= content_tag(:i,nil,class: "fa fa-cube", id: 'die') %>
+    </li>
+  </ul>
 
     <div class="push"></div>
 

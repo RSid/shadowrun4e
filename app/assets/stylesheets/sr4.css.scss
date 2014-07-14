@@ -4,11 +4,12 @@ html {
   margin: 0PX;
   padding: 0px;
   height: 100%;
+
 }
 
 @font-face {
   font-family: FrizQuadrata;
-  src: url(frquad.ttf);
+  src: font-url("frquad.ttf");
 }
 
 body {
@@ -17,9 +18,7 @@ body {
   font-size: 1.3em;
   padding: 0px;
   height: 100%;
-
 }
-
 
 #header {
   @include span-columns(12);
@@ -44,10 +43,12 @@ body {
 }
 
 .wrapper {
-min-height: 100%;
-height: auto !important;
-height: 100%;
-margin: 0 auto -4em;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+  background: url('sr4background.png') no-repeat center center ;
+  background-size: cover;
 }
 
 .footer, .push {
@@ -63,11 +64,15 @@ height: 4em;
   text-align: center;
 }
 
+.fa {
+  color: red;
+}
+
 /*Landing page*/
 
 #background {
   @include outer-container;
-  background: url(city.jpg) no-repeat center center fixed;
+  background: url('city.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -124,7 +129,6 @@ height: 4em;
 
 #about-me{
   color:white;
-  background-color: blue;
 }
 
 /*Login*/
@@ -170,15 +174,26 @@ height: 4em;
 }
 
 #quick-actions {
-
+  display: block;
+  border: solid 1px grey;
+  border-radius: 15px;
+  position: relative;
+  bottom: 10%;
+  margin-left: 82%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  padding: 10px;
 }
 
 #dicepool {
-  width: 6%;
+  width: 70px;
   display: inline;
   margin: 10px;
 }
 
+#die {
+  color: black;
+}
 
 /*Character show page*/
 
@@ -190,6 +205,9 @@ height: 4em;
   text-align: center;
   font-size: 1.6em;
   padding-top: 10px;
+  width: 30%;
+  margin-left:35%;
+  margin-right:35%;
 }
 
 .char-nav {
@@ -207,41 +225,34 @@ height: 4em;
   color:black;
 }
 
-.barscilwe {
-  margin: 0px;
-  padding: 0px;
+#barscilwe {
+  width: 100%;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
 }
 
-.barscilwe li {
-  list-style: none;
-  display: inline-block;
-  padding-right: 20px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
-.character-details {
-  list-style: none;
-  margin: 25px 0px;
-  padding: 0px;
+#barscilwe tr td{
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 #new-char {
   text-align: center;
   padding: 20px 0px;
+  margin-top: 10px;
 }
 
 #new-char a {
   text-decoration: none;
   color: black;
   padding: 5px 15px;
-  border: 2px ridge #03542B;
+  border: 2px ridge #029870;
   border-radius: 15px;
-  background-color: rgba(3,84,43,0.1);
+  background-color: rgba(2,152,112,0.1);
 }
 
 .content {
-  margin: 20px;
+  margin: 50px;
 }
 
 .char-list {
@@ -272,28 +283,74 @@ h2 {
   font-weight: bold;
 }
 
+.edit-container{
+  @include outer-container;
+}
+
 .editing-characters{
   @include editing-character;
   font-size: .7em;
 }
 
-
-
-.editing-characters form{
-  // @include editing;
+.editing-characters p{
+  font-size: 1.7em;
 }
 
-#character-deletion {
+.edit-character-hover, #character-stat-edit, #gear-type {
+  padding: 10px;
   text-align: center;
-  padding-top: 50px;
-  margin: 10px;
+  width: 15%;
+  min-width: 110px;
+  margin-left: 42.5%;
+  margin-right: 42.5%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: solid 2px black;
+  border-radius: 10px;
 }
+
+
+h6 {
+  margin-top: 15px;
+}
+
+#weapons-input, #general-gear-input, #base-edits {
+  @include editing-character;
+}
+
+#base-edits {
+
+}
+
+.new-form-field {
+  display: inline;
+  padding-left: 20px;
+}
+
+.subheading {
+  margin-left: 20px;
+}
+
+.edit-input {
+  width: 100%;
+  max-height: 200px;
+  overflow: auto;
+}
+
+#change {
+  @include span-columns(4);
+  @include shift(4);
+}
+
+#char-deletion {
+  text-align: center;
+}
+
 
 .submit-button {
-background-color: gray;
-border-color: black;
-color: white;
-
+  background-color: gray;
+  border-color: black;
+  color: white;
 }
 
 .delete-button {

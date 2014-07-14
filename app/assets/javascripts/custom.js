@@ -1,6 +1,5 @@
 var gear;
 gear = function() {
-
     $('#weapons-input').hide();
     $('#general-gear-input').hide();
 
@@ -9,28 +8,23 @@ gear = function() {
       var optionValue = $('#PickGear option:selected').val();
 
       if ( optionValue==1 ) {
-
         $('#weapons-input').show();
         $('#general-gear-input').hide();
-        $('#under-constructon').show();
-
       } else if ( optionValue==4 ){
           $('#weapons-input').hide();
           $('#general-gear-input').show();
-      }
-
-      else {
+      } else if ( optionValue==0 ){
+          $('#weapons-input').hide();
+          $('#general-gear-input').hide();
+      } else {
         $('#weapons-input').hide();
         $('#general-gear-input').hide();
-        $('#under-constructon').show();
       }
   });
-
 }
 
 var roll;
 roll = function() {
-
 $('#die').click(function() {
     var dicepoolValue = $('#dicepool').val();
 
@@ -78,22 +72,26 @@ $('#die').click(function() {
   });
 }
 
-var stateChangeForm;
-stateChangeForm = function() {
+var statChangeForm;
+statChangeForm = function() {
 
     $('#change').change(function() {
       var attributeValue = $('#change option:selected').val();
 
-      var html = "<label for='character_" + attributeValue +  "'>"+ attributeValue +"</label>" + "<input id='character_" + attributeValue + "' " + "name='character["
+      var html = "<label for='character_" + attributeValue +  "' class = 'new-form-field'>"
+      + attributeValue +"</label>" + "<input class = 'new-form-field' id='character_" + attributeValue
+      + "' " + "name='character["
         + attributeValue + "] type='text'>"
 
       $('.edit-input').append(html);
   });
 
+  $("#character-stat-edit").click(function() {
+    $('.edit-input').toggle();
+  });
 }
 
 var ajaxer;
-
 ajaxer = function() {
   $('#new_character_skill' || '#change_character').on('submit', function(event) {
     event.preventDefault();
@@ -106,9 +104,24 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function() {
-
       }
     });
+  });
+}
+
+var toggleEditForms;
+toggleEditForms = function() {
+  $('.editing-characters').hide();
+  $(".edit-character-hover").click(function() {
+    $('.editing-characters').toggle();
+  });
+}
+
+var toggleDeletion;
+toggleDeletion = function() {
+  $('#char-deletion').hide();
+  $("#character-name").mouseover(function() {
+    $('#char-deletion').toggle();
   });
 }
 
@@ -121,5 +134,11 @@ $(document).on('page:load', roll);
 $(document).ready(ajaxer);
 $(document).on('page:load', ajaxer);
 
-$( document ).ready(stateChangeForm);
-$(document).on('page:load', stateChangeForm);
+$( document ).ready(statChangeForm);
+$(document).on('page:load', statChangeForm);
+
+$( document ).ready(toggleEditForms);
+$(document).on('page:load', toggleEditForms);
+
+$( document ).ready(toggleDeletion);
+$(document).on('page:load', toggleDeletion);

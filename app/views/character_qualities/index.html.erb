@@ -12,7 +12,6 @@
   <li><%= link_to 'Connections', character_connections_path(@character) %></li>
 </ul>
 
-<div class = "content">
   <h3><a name = "qualities">Qualities: </h3>
   <ul>
     <% @character.character_qualities.each do |characterquality| %>
@@ -26,8 +25,8 @@
     <% end %>
   </ul>
 
+<p class = 'edit-character-hover'>Add a quality</p>
   <div class = "editing-characters">
-    <p>Add a quality:</p>
     <div id = "add-quality">
       <%= form_for [@character, @character_quality] do |f| %>
         <%= f.fields_for @quality do |i| %>
@@ -45,4 +44,3 @@
       <% end %>
     </div>
   </div>
-</div>

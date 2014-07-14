@@ -1,18 +1,21 @@
 @mixin editing-character {
+  @include span-columns(6);
+  @include shift(3);
   input,
   label,
   select {
-    display: inline;
     font-size: $form-font-size;
   }
+
+  margin-left: 25%;
+  margin-right: 25%;
 
   textarea,
   #{$all-text-inputs},
   select[multiple=multiple] {
     margin-bottom: $base-line-height / 2;
     padding: ($base-line-height / 3) ($base-line-height / 3);
-    display: inline;
-    width: 15%;
+
     height: ($base-line-height);
   }
 }

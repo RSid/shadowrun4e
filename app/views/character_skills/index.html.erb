@@ -12,24 +12,21 @@
   <li><%= link_to 'Connections', character_connections_path(@character) %></li>
 </ul>
 
-<div class = "content">
   <h3><a name="skills">Skills: </h3>
   <ul>
     <% @character.character_skills.each do |characterskill| %>
 
-      <li ><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating},
+      <li id = <%= characterskill.id %> ><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating},
         Specialization: #{characterskill.specialization}" %>
         <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_skill_path(@character,
-        characterskill), method: :delete,id: characterskill.id) %></li>
+        characterskill), method: :delete,id: characterskill.id.to_s) %></li>
 
-      <!--
-        use fontawesome icons and JS to make delete appear when you hover over it
-  -->
     <% end %>
   </ul>
+<p class = 'edit-character-hover'>Add a skill</p>
 
+<div class = 'edit-container'>
   <div class = "editing-characters">
-    <p>Add a skill:</p>
       <div id = "add-skill">
         <%= form_for [@character, @character_skill] do |f| %>
           <%= f.fields_for @skill do |i| %>
@@ -52,5 +49,5 @@
           <%= f.submit 'Submit' %>
         <% end %>
       </div>
-    </div>
-</div>
+      </div>
+  </div>
