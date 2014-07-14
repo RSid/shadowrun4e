@@ -92,11 +92,34 @@ stateChangeForm = function() {
 
 }
 
+var ajaxer;
+
+ajaxer = function() {
+  $('#new_character_skill' || '#change_character').on('submit', function(event) {
+    event.preventDefault();
+    alert('hit');
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function() {
+
+      }
+    });
+  });
+}
+
 $( document ).ready(gear);
 $(document).on('page:load', gear);
 
 $( document ).ready(roll);
 $(document).on('page:load', roll);
+
+$(document).ready(ajaxer);
+$(document).on('page:load', ajaxer);
 
 $( document ).ready(stateChangeForm);
 $(document).on('page:load', stateChangeForm);

@@ -1,4 +1,6 @@
 class CharacterQualitiesController < ApplicationController
+  include EmptyFormObjects
+
   def index
     @character = Character.find(params[:character_id])
     @character_qualities = @character.character_qualities
@@ -9,11 +11,8 @@ class CharacterQualitiesController < ApplicationController
 
   def create
     @character = Character.find(params[:character_id])
-    quality = Quality.find_by(name: quality_params[:name])
 
-    if quality == nil
-      quality = Quality.create(quality_params["quality"])
-    end
+    quality = Quality.find_or_create_by(quality_params["quality"])
 
     @character_quality = @character.character_qualities.build(character_quality_params.merge(quality: quality))
 
@@ -21,9 +20,7 @@ class CharacterQualitiesController < ApplicationController
       redirect_to character_character_qualities_path(@character)
     else
       flash.now[:notice] = 'Uh oh! Your quality could not be saved.'
-      @character = Character.find(params[:character_id])
-      @quality = Quality.new
-      @character_quality = CharacterQuality.new
+      generate_empty_form_objects
       render "/character_qualities/index"
     end
   end
@@ -38,8 +35,7 @@ class CharacterQualitiesController < ApplicationController
       end
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
-      @quality = Quality.new
-      @character_quality = CharacterQuality.new
+      generate_empty_form_objects
       render "/character_qualities/index"
     end
   end

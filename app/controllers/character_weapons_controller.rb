@@ -1,11 +1,10 @@
 class CharacterWeaponsController < ApplicationController
+  include EmptyFormObjects
+  
   def create
     @character = Character.find(params[:character_id])
-    weapon = Weapon.find_by(name: weapon_params[:name])
 
-    if weapon == nil
-      weapon = Weapon.create(weapon_params["weapon"])
-    end
+    weapon = Weapon.find_or_create_by(weapon_params["weapon"])
 
     @character_weapon = @character.character_weapons.build(character_weapon_params.merge(weapon: weapon))
 
@@ -13,11 +12,7 @@ class CharacterWeaponsController < ApplicationController
       redirect_to character_inventory_index_path(@character)
     else
       flash.now[:notice] = 'Uh oh! Your weapon could not be saved.'
-      @character = Character.find(params[:character_id])
-      @character_weapon = CharacterWeapon.new
-      @weapon = Weapon.new
-      @character_tool = CharacterTool.new
-      @tool = Tool.new
+      generate_empty_form_objects
       render "inventory/index"
     end
   end

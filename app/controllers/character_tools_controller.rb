@@ -1,14 +1,11 @@
 class CharacterToolsController < ApplicationController
+  include EmptyFormObjects
   before_action :set_character
 
   def create
     @inventory = InventoryFacade.new(@character)
 
-    tool = Tool.find_by(name: tool_params[:name])
-
-    if tool == nil
-      tool = Tool.create(tool_params["tool"])
-    end
+    tool = Tool.find_or_create_by(tool_params["tool"])
 
     @character_tool = @character.character_tools.build(character_tool_params.merge(tool: tool))
 
@@ -17,11 +14,7 @@ class CharacterToolsController < ApplicationController
     else
       flash.now[:notice] = 'Uh oh! Your tool could not be saved.'
       @character = Character.find(params[:character_id])
-      @tool = Tool.new
-      @character_tool = CharacterTool.new
-
-      @weapon = Weapon.new
-      @character_weapon = CharacterWeapon.new
+      generate_empty_form_objects
       render "/inventory/index"
     end
   end
