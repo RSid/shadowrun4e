@@ -169,7 +169,7 @@ height: 4em;
 }
 
 #quick-actions {
-
+  display: block;
 }
 
 #dicepool {
@@ -271,6 +271,10 @@ h2 {
   font-weight: bold;
 }
 
+.edit-container{
+  @include outer-container;
+}
+
 .editing-characters{
   @include editing-character;
   font-size: .7em;
@@ -278,6 +282,11 @@ h2 {
 
 .editing-characters p{
   font-size: 1.7em;
+}
+
+.edit-character-hover {
+  padding: 10px;
+  text-align: center;
 }
 
 #character-deletion {

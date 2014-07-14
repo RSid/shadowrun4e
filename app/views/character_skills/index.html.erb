@@ -28,6 +28,7 @@
   </ul>
 <p class = 'edit-character-hover'>Add a skill</p>
 
+<div class = 'edit-container'>
   <div class = "editing-characters">
       <div id = "add-skill">
         <%= form_for [@character, @character_skill] do |f| %>
@@ -51,5 +52,5 @@
           <%= f.submit 'Submit' %>
         <% end %>
       </div>
-    </div>
-</div>
+      </div>
+  </div>
