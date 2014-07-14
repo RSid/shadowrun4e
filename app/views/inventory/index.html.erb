@@ -20,46 +20,50 @@
 </ul>
 
   <h3><a name = "gear">Gear: </h3>
+    <h6><a name = "weapons">&nbsp;Weapons: </h6>
+      <div class = 'subheading'>
+        <ul id = 'weapons' >
+          <% if @character.character_weapons[0] != nil %>
+            <% @character.character_weapons.each do |characterweapon| %>
 
-  <h6><a name = "weapons">&nbsp;Weapons: </h6>
-    <ul id = 'weapons' >
-      <% if @character.character_weapons[0] != nil %>
-        <% @character.character_weapons.each do |characterweapon| %>
+              <li>
+                <%= "#{characterweapon.weapon.name}:
+                #{characterweapon.weapon.description}
+                Damage: #{characterweapon.weapon.damage}
+                #{characterweapon.weapon.damage_type}
+                Armor piercing: #{characterweapon.weapon.armor_piercing}
+                Rating: #{characterweapon.rating}
+                Concealability modifier: #{characterweapon.weapon.concealability}
+                Legality: #{characterweapon.weapon.legality}" %>
 
-          <li><%= "#{characterweapon.weapon.name}:
-            #{characterweapon.weapon.description}
-            Damage: #{characterweapon.weapon.damage}
-            #{characterweapon.weapon.damage_type}
-            Armor piercing: #{characterweapon.weapon.armor_piercing}
-            Rating: #{characterweapon.rating}
-            Concealability modifier: #{characterweapon.weapon.concealability}
-            Legality: #{characterweapon.weapon.legality}" %>
-            </li>
+                <% if @character.character_weapons.first.weapon.ammo != "" %>
+                  <%= "Ammo: #{characterweapon.weapon.ammo},
+                    Mode: #{characterweapon.weapon.mode},
+                    Recoil: #{characterweapon.weapon.recoil}" %>
+                <% end %>
 
-          <% if @character.character_weapons.first.weapon.ammo != "" %>
-            <p><%= "Ammo: #{characterweapon.weapon.ammo},
-              Mode: #{characterweapon.weapon.mode},
-              Recoil: #{characterweapon.weapon.recoil}" %></p>
+                <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_weapon_path(@character,
+                characterweapon), method: :delete, id: characterweapon.id) %>
+              </li>
+            <% end %>
           <% end %>
+        </ul>
+      </div>
 
-          <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_weapon_path(@character,
-          characterweapon), method: :delete, id: characterweapon.id) %>
-        <% end %>
-      <% end %>
-    </ul>
-
-  <h5><a name = "general-gear">&nbsp;General: </h5>
-    <ul id = 'general-gear'>
-      <% if @character.character_tools[0] != nil %>
-        <% @character.character_tools.each do |charactertool| %>
-          <li>
-            <%= "#{charactertool.tool.name}, #{charactertool.tool.description}" %>
-            <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_tool_path(@character,
-            charactertool), method: :delete, id: charactertool.id) %>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>
+    <h6><a name = "general-gear">&nbsp;General: </h6>
+      <div class = 'subheading'>
+        <ul id = 'general-gear'>
+          <% if @character.character_tools[0] != nil %>
+            <% @character.character_tools.each do |charactertool| %>
+              <li>
+                <%= "#{charactertool.tool.name}, #{charactertool.tool.description}" %>
+                <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_tool_path(@character,
+                charactertool), method: :delete, id: charactertool.id) %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+    </div>
 
     <form id="gear-type">
       Add:
