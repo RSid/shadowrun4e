@@ -16,12 +16,24 @@ class CharacterSkillsController < ApplicationController
 
     @character_skill = @character.character_skills.build(character_skill_params.merge(skill: skill))
 
-    if @character_skill.save
-      redirect_to character_character_skills_path(@character)
-    else
-      flash.now[:notice] = 'Uh oh! Your skill could not be saved.'
-      generate_empty_form_objects
-      render "/character_skills/index"
+    respond_to do |format|
+      format.html do
+        if @character_skill.save
+          redirect_to character_character_skills_path(@character)
+        else
+          flash.now[:notice] = 'Uh oh! Your skill could not be saved.'
+          generate_empty_form_objects
+          render "/character_skills/index"
+        end
+      end
+
+      format.json do
+        if @character_skill.save
+          render json: {characterskill: @character_skill, skill: @character_skill.skill}
+        else
+          render json: { errors: @character.errors }
+        end
+      end
     end
   end
 
@@ -29,10 +41,10 @@ class CharacterSkillsController < ApplicationController
     @character = Character.find(params[:character_id])
     @character_skill = CharacterSkill.find(params[:id])
     if current_user == @character.user
-      if @character_skill.destroy
-        flash[:notice] = 'Skill deleted!'
-        redirect_to character_character_skills_path(@character)
-      end
+        if @character_skill.destroy
+          flash[:notice] = 'Skill deleted!'
+          redirect_to character_character_skills_path(@character)
+        end
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
       generate_empty_form_objects

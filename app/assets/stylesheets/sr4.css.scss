@@ -318,23 +318,12 @@ h6 {
   @include editing-character;
 }
 
-#base-edits {
-
-}
-
 .new-form-field {
-  display: inline;
   padding-left: 20px;
 }
 
 .subheading {
   margin-left: 20px;
-}
-
-.edit-input {
-  width: 100%;
-  max-height: 200px;
-  overflow: auto;
 }
 
 #change {
@@ -345,7 +334,6 @@ h6 {
 #char-deletion {
   text-align: center;
 }
-
 
 .submit-button {
   background-color: gray;

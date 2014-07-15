@@ -93,9 +93,8 @@ statChangeForm = function() {
 
 var ajaxer;
 ajaxer = function() {
-  $('#new_character_skill' || '#change_character').on('submit', function(event) {
+  $('#new_character_skill').on('submit', function(event) {
     event.preventDefault();
-    alert('hit');
     var dataSubmit = $(this).serialize();
 
     $.ajax({
@@ -103,7 +102,11 @@ ajaxer = function() {
       url: $(this).attr('action'),
       dataType: "json",
       data: dataSubmit,
-      success: function() {
+      success: function(data) {
+        var newSkill = "<li>"+ data.skill.name +" Rating: "
+          + data.characterskill.rating + " Specialization: "
+          + data.characterskill.specialization + "</li>"
+        $('#skills-list').append(newSkill);
       }
     });
   });
