@@ -95,7 +95,7 @@ var ajaxer;
 ajaxer = function() {
   $('#new_character_skill' || '#change_character').on('submit', function(event) {
     event.preventDefault();
-    alert('hit');
+    
     var dataSubmit = $(this).serialize();
 
     $.ajax({
