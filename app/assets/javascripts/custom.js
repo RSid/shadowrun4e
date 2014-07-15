@@ -110,6 +110,22 @@ ajaxer = function() {
       }
     });
   });
+
+    $('.deleter').click(function(event) {
+    event.preventDefault();
+    alert('trg');
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function(data) {
+        debugger
+      }
+    });
+  });
 }
 
 var toggleEditForms;
