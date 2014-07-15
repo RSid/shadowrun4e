@@ -13,7 +13,7 @@
 </ul>
 
   <h3><a name="skills">Skills: </h3>
-  <ul>
+  <ul id = 'skills-list'>
     <% @character.character_skills.each do |characterskill| %>
 
       <li id = <%= characterskill.id %> ><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating},
@@ -28,7 +28,7 @@
 <div class = 'edit-container'>
   <div class = "editing-characters">
       <div id = "add-skill">
-        <%= form_for [@character, @character_skill], remote: true do |f| %>
+        <%= form_for [@character, @character_skill] do |f| %>
           <%= f.fields_for @skill do |i| %>
             <%= i.label :name %>
             <%= i.text_field :name %>

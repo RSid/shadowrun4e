@@ -23,8 +23,8 @@
     <h6><a name = "weapons">&nbsp;Weapons: </h6>
       <div class = 'subheading'>
         <ul id = 'weapons' >
-          <% if @character.character_weapons[0] != nil %>
-            <% @character.character_weapons.each do |characterweapon| %>
+          <% if @character_inventory.character_weapons[0] != nil %>
+            <% @character_inventory.character_weapons.each do |characterweapon| %>
 
               <li>
                 <%= "#{characterweapon.weapon.name}:
@@ -53,8 +53,8 @@
     <h6><a name = "general-gear">&nbsp;General: </h6>
       <div class = 'subheading'>
         <ul id = 'general-gear'>
-          <% if @character.character_tools[0] != nil %>
-            <% @character.character_tools.each do |charactertool| %>
+          <% if @character_inventory.character_tools[0] != nil %>
+            <% @character_inventory.character_tools.each do |charactertool| %>
               <li>
                 <%= "#{charactertool.tool.name}, #{charactertool.tool.description}" %>
                 <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_tool_path(@character,

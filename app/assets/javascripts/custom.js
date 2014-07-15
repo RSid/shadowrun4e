@@ -107,7 +107,8 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function() {
-        
+        alert('yay');
+        $('#skills-list').append(data);
       }
     });
   });
