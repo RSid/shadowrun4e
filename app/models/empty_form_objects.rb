@@ -6,6 +6,8 @@ module EmptyFormObjects
       @character = Character.find(params[:id])
     end
 
+    @character_inventory = Inventory.new(@character)
+
     @attributes = @character.mutable_attributes
 
     @skill = Skill.new
