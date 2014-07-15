@@ -41,10 +41,10 @@ class CharacterSkillsController < ApplicationController
     @character = Character.find(params[:character_id])
     @character_skill = CharacterSkill.find(params[:id])
     if current_user == @character.user
-      if @character_skill.destroy
-        flash[:notice] = 'Skill deleted!'
-        redirect_to character_character_skills_path(@character)
-      end
+        if @character_skill.destroy
+          flash[:notice] = 'Skill deleted!'
+          redirect_to character_character_skills_path(@character)
+        end
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
       generate_empty_form_objects
