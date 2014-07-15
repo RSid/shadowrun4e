@@ -107,9 +107,10 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function(data) {
-        alert('yay');
+        alert(dataSubmit);
         //look @ hash, from structure create html
-        $('#skills-list').append(data);
+
+        $('#skills-list').append(newSkill);
       }
     });
   });
