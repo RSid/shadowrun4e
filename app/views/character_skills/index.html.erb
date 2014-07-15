@@ -28,7 +28,7 @@
 <div class = 'edit-container'>
   <div class = "editing-characters">
       <div id = "add-skill">
-        <%= form_for [@character, @character_skill] do |f| %>
+        <%= form_for [@character, @character_skill], remote: true do |f| %>
           <%= f.fields_for @skill do |i| %>
             <%= i.label :name %>
             <%= i.text_field :name %>

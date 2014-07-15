@@ -93,9 +93,12 @@ statChangeForm = function() {
 
 var ajaxer;
 ajaxer = function() {
-  $('#new_character_skill' || '#change_character').on('submit', function(event) {
+  // $("#new_character_skill").on("ajax:success",
+  //   alert('thing!')
+  // );
+
+  $('#new_character_skill,#change_character').on('submit', function(event) {
     event.preventDefault();
-    
     var dataSubmit = $(this).serialize();
 
     $.ajax({
@@ -104,6 +107,7 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function() {
+        
       }
     });
   });
