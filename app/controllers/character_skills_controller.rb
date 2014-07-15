@@ -29,7 +29,7 @@ class CharacterSkillsController < ApplicationController
 
       format.json do
         if @character_skill.save
-          render json: @character
+          render json: {characterskill: @character_skill, skill: @character_skill.skill}
         else
           render json: { errors: @character.errors }
         end

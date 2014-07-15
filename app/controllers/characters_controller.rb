@@ -29,7 +29,6 @@ class CharactersController < ApplicationController
   end
 
   def update
-    binding.pry
     @character = Character.find(params[:id])
     attributes_changing = params['character'].keys
     attributes_params = {}

@@ -93,10 +93,6 @@ statChangeForm = function() {
 
 var ajaxer;
 ajaxer = function() {
-  // $("#new_character_skill").on("ajax:success",
-  //   alert('thing!')
-  // );
-
   $('#new_character_skill').on('submit', function(event) {
     event.preventDefault();
     var dataSubmit = $(this).serialize();
@@ -107,9 +103,9 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function(data) {
-        alert(json);
-        //look @ hash, from structure create html
-
+        var newSkill = "<li>Skill: "+ data.skill.name +" Rating: "
+          + data.characterskill.rating + " Specialization: "
+          + data.characterskill.specialization + "</li>"
         $('#skills-list').append(newSkill);
       }
     });
