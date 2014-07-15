@@ -16,12 +16,24 @@ class CharacterSkillsController < ApplicationController
 
     @character_skill = @character.character_skills.build(character_skill_params.merge(skill: skill))
 
-    if @character_skill.save
-      redirect_to character_character_skills_path(@character)
-    else
-      flash.now[:notice] = 'Uh oh! Your skill could not be saved.'
-      generate_empty_form_objects
-      render "/character_skills/index"
+    respond_to do |format|
+      format.html do
+        if @character_skill.save
+          redirect_to character_character_skills_path(@character)
+        else
+          flash.now[:notice] = 'Uh oh! Your skill could not be saved.'
+          generate_empty_form_objects
+          render "/character_skills/index"
+        end
+      end
+
+      format.json do
+        if @character_skill.save
+          render json: @character
+        else
+          render json: { errors: @character.errors }
+        end
+      end
     end
   end
 

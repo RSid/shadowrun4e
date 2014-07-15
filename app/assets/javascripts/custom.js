@@ -97,7 +97,7 @@ ajaxer = function() {
   //   alert('thing!')
   // );
 
-  $('#new_character_skill,#change_character').on('submit', function(event) {
+  $('#new_character_skill').on('submit', function(event) {
     event.preventDefault();
     var dataSubmit = $(this).serialize();
 
@@ -106,8 +106,9 @@ ajaxer = function() {
       url: $(this).attr('action'),
       dataType: "json",
       data: dataSubmit,
-      success: function() {
+      success: function(data) {
         alert('yay');
+        //look @ hash, from structure create html
         $('#skills-list').append(data);
       }
     });
