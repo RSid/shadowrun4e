@@ -29,13 +29,14 @@ class CharactersController < ApplicationController
   end
 
   def update
+    binding.pry
     @character = Character.find(params[:id])
     attributes_changing = params['character'].keys
     attributes_params = {}
 
     attributes_changing.each do |attribute|
       if @character.mutable_attributes.include?(attribute)
-        attributes_params.merge!(attribute => params['character'][attribute][" type="])
+          attributes_params.merge!(attribute => params['character'][attribute][" type="])
       end
     end
 
@@ -66,6 +67,6 @@ class CharactersController < ApplicationController
   def character_params
     params.require(:character).permit(:name, :metatype_id, :body, :agility,
       :reaction, :strength, :charisma, :intuition, :logic, :willpower, :edge,
-      :essence, :magic, :initiative_passes, :nuyen, :bio)
+      :essence, :magic, :initiative_passes, :nuyen, :bio, :gm_id)
   end
 end
