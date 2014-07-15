@@ -19,7 +19,7 @@
       <li id = <%= characterskill.id %> ><%= "#{characterskill.skill.name}, Rating: #{characterskill.rating},
         Specialization: #{characterskill.specialization}" %>
         <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_skill_path(@character,
-        characterskill), method: :delete,id: characterskill.id.to_s, class: 'deleter') %></li>
+        characterskill), method: :delete,id: characterskill.id.to_s) %></li>
 
     <% end %>
   </ul>
