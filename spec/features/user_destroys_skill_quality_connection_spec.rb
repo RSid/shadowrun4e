@@ -18,8 +18,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
 
     visit character_character_skills_path(character)
 
-    find_link(character_skill.id.to_s).trigger('click')
-    # click_on (character_skill.id.to_s)
+    click_on (character_skill.id.to_s)
     expect(page).to_not have_content skill.name
   end
 

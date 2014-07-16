@@ -2,6 +2,8 @@ class CharacterToolsController < ApplicationController
   include EmptyFormObjects
   before_action :set_character
 
+  before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
+
   def create
     @inventory = InventoryFacade.new(@character)
 
@@ -31,26 +33,22 @@ class CharacterToolsController < ApplicationController
   end
 
   def destroy
-    @character_tool = CharacterTool.find(params[:id])
-    if current_user == @character.user
+    @character = Character.find(params[:character_id])
+
+    render_unauthorized unless @character.user == current_user
+
+    @character_tool = @character.character_tools.destroy(params[:id])
+
       respond_to do |format|
         format.html do
-          if @character_tool.destroy
-            flash[:notice] = 'Gear deleted!'
+          flash[:notice] = 'Gear deleted!'
             redirect_to character_inventory_index_path(@character)
           end
-        end
 
         format.json do
-          if @character_tool.destroy
-            render json: @character_tool
-          end
+          render json: @character_tool
         end
       end
-    else
-      flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
-      redirect_to character_inventory_index_path(@character)
-    end
   end
 
   private
