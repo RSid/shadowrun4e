@@ -103,7 +103,7 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function(data) {
-        var newSkill = "<li>Skill: "+ data.skill.name +" Rating: "
+        var newSkill = "<li>"+ data.skill.name +" Rating: "
           + data.characterskill.rating + " Specialization: "
           + data.characterskill.specialization + "</li>"
         $('#skills-list').append(newSkill);
@@ -111,18 +111,17 @@ ajaxer = function() {
     });
   });
 
+
     $('.deleter').click(function(event) {
     event.preventDefault();
-    alert('trg');
-    var dataSubmit = $(this).serialize();
+    var id = "#" + this.id;
 
     $.ajax({
-      type: "POST",
-      url: $(this).attr('action'),
+      type: "DELETE",
+      url: $(this).attr('href'),
       dataType: "json",
-      data: dataSubmit,
-      success: function(data) {
-        debugger
+      success: function() {
+        $(id).hide();
       }
     });
   });
