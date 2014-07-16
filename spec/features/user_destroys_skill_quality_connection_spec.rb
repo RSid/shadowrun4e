@@ -22,7 +22,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     expect(page).to_not have_content skill.name
   end
 
-  scenario 'user deletes a quality' do
+  scenario 'user deletes a quality', :js => true do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
 
@@ -36,6 +36,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     visit character_character_qualities_path(character)
 
     click_on (character_quality.id.to_s)
+    reload_page
     expect(page).to_not have_content quality.name
   end
 

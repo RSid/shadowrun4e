@@ -58,7 +58,7 @@ $('#die').click(function() {
 
       var returned = results.join();
 
-      var result = $("<li>");
+      var result = $("<li class= 'result'>");
       result.html("Results: " + returned + " Successes: " +
         successes.length + glitch).css("font-weight", "bold");
       $('#quick-actions').append(result);
@@ -224,6 +224,13 @@ toggleDeletion = function() {
   });
 }
 
+var toggleResults;
+toggleResults = function() {
+  $("#roll-dice").click(function() {
+    $('.result').toggle();
+  });
+}
+
 $( document ).ready(gear);
 $(document).on('page:load', gear);
 
@@ -241,3 +248,6 @@ $(document).on('page:load', toggleEditForms);
 
 $( document ).ready(toggleDeletion);
 $(document).on('page:load', toggleDeletion);
+
+$( document ).ready(toggleResults);
+$(document).on('page:load', toggleResults);
