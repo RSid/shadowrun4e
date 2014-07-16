@@ -1,6 +1,8 @@
 class CharacterQualitiesController < ApplicationController
   include EmptyFormObjects
 
+  before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
+
   def index
     @character = Character.find(params[:character_id])
     @character_qualities = @character.character_qualities
@@ -39,28 +41,43 @@ class CharacterQualitiesController < ApplicationController
 
   def destroy
     @character = Character.find(params[:character_id])
-    @character_quality = CharacterQuality.find(params[:id])
-    if current_user == @character.user
+    # @character_quality = CharacterQuality.find(params[:id])
+
+    render_unauthorized unless @character.user == current_user
+
+    @character_quality = @character.character_qualities.destroy(params[:id])
+
       respond_to do |format|
         format.html do
-          if @character_quality.destroy
-            flash[:notice] = 'Quality deleted!'
-            redirect_to character_character_qualities_path(@character)
-          end
+          flash[:notice] = 'Skill deleted!'
+          redirect_to character_character_qualities_path(@character)
         end
-
         format.json do
-          if @character_quality.destroy
-            render json: @character_quality
-          end
+          render json: @character_quality
         end
       end
 
-    else
-      flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
-      generate_empty_form_objects
-      render "/character_qualities/index"
-    end
+    # if current_user == @character.user
+    #   respond_to do |format|
+    #     format.html do
+    #       if @character_quality.destroy
+    #         flash[:notice] = 'Quality deleted!'
+    #         redirect_to character_character_qualities_path(@character)
+    #       end
+    #     end
+    #
+    #     format.json do
+    #       if @character_quality.destroy
+    #         render json: @character_quality
+    #       end
+    #     end
+    #   end
+    #
+    # else
+    #   flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
+    #   generate_empty_form_objects
+    #   render "/character_qualities/index"
+    # end
   end
 
   private
