@@ -93,6 +93,7 @@ statChangeForm = function() {
 
 var ajaxer;
 ajaxer = function() {
+
   $('#new_character_skill').on('submit', function(event) {
     event.preventDefault();
     var dataSubmit = $(this).serialize();
@@ -125,6 +126,25 @@ ajaxer = function() {
           + data.quality.description + " Rating: "
           + data.characterquality.affect_rating + "</li>"
         $('#qualities-list').append(newQuality);
+      }
+    });
+  });
+
+  $('#new_connection').on('submit', function(event) {
+    event.preventDefault();
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function(data) {
+        var newQuality = "<li>"+ data.connection.name +": "
+          + data.connection.description + " Loyalty: "
+          + data.connection.loyalty + " Connection: "
+          + data.connection.connection + "</li>"
+        $('#connections-list').append(newQuality);
       }
     });
   });

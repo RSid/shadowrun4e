@@ -14,13 +14,13 @@
 
   <h3><a name = "connections">Connections: </h3>
 
-  <ul>
+  <ul id = 'connections-list'>
   <% @character.connections.each do |connection|%>
 
-  <li>
+  <li id = <%= connection.id %> >
     <%= "#{connection.name}: #{connection.description} Loyalty: #{connection.loyalty}/ Connection: #{connection.connection}" %>
     <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_connection_path(@character,
-    connection), method: :delete, id: connection.id) %>
+    connection), id: connection.id.to_s, class: 'deleter') %>
   </li>
 
   <% end %>
