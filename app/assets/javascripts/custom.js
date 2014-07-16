@@ -173,6 +173,25 @@ ajaxer = function() {
     });
   });
 
+  $('#new_character_tool').on('submit', function(event) {
+    event.preventDefault();
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function(data) {
+        var newTool = "<li>"
+          + data.tool.name +", "
+          + data.tool.description
+          + "</li>"
+        $('#general-gear').append(newTool);
+      }
+    });
+  });
+
     $('.deleter').click(function(event) {
     event.preventDefault();
 
