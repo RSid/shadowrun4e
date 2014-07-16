@@ -58,10 +58,10 @@ $('#die').click(function() {
 
       var returned = results.join();
 
-      var result = $("<li class= 'result'>");
+      var result = $("<li>");
       result.html("Results: " + returned + " Successes: " +
         successes.length + glitch).css("font-weight", "bold");
-      $('#quick-actions').append(result);
+      $('.result').append(result);
 
 
     } else if (dicepoolValue <=0){
