@@ -140,11 +140,35 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function(data) {
-        var newQuality = "<li>"+ data.connection.name +": "
+        var newConnection = "<li>"+ data.connection.name +": "
           + data.connection.description + " Loyalty: "
           + data.connection.loyalty + " Connection: "
           + data.connection.connection + "</li>"
-        $('#connections-list').append(newQuality);
+        $('#connections-list').append(newConnection);
+      }
+    });
+  });
+
+  $('#new_character_weapon').on('submit', function(event) {
+    event.preventDefault();
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function(data) {
+        var newWeapon = "<li> New weapon quick-info: <br> &nbsp;&nbsp;"
+          + data.weapon.name +": "
+          + data.weapon.description + " Damage: "
+          + data.weapon.damage + data.weapon.damage_type
+          // + " Armor piercing: " + data.characterweapon.armor_piercing
+          // + " Rating: " + data.characterweapon.rating
+          // + " Concealability modifier: " + data.characterweapon.concealability
+          // + " Legality: " + data.weapon.legality
+          + "</li>"
+        $('#weapons').append(newWeapon);
       }
     });
   });
