@@ -13,13 +13,13 @@
 </ul>
 
   <h3><a id = "qualities">Qualities: </a></h3>
-  <ul>
+  <ul id = 'qualities-list'>
     <% @character.character_qualities.each do |characterquality| %>
 
-      <li>
+      <li id = <%= characterquality.id %>>
         <%= "#{characterquality.quality.name}: #{characterquality.quality.description} Rating: #{characterquality.affect_rating} #{characterquality.quality.affected_stat}" %>
         <%= link_to( content_tag(:i,nil,class: "fa fa-trash-o"), character_character_quality_path(@character,
-        characterquality), method: :delete,id: characterquality.id) %>
+        characterquality), id: characterquality.id.to_s, class: 'deleter') %>
       </li>
 
     <% end %>

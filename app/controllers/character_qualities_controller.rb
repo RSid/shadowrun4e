@@ -16,12 +16,24 @@ class CharacterQualitiesController < ApplicationController
 
     @character_quality = @character.character_qualities.build(character_quality_params.merge(quality: quality))
 
-    if @character_quality.save
-      redirect_to character_character_qualities_path(@character)
-    else
-      flash.now[:notice] = 'Uh oh! Your quality could not be saved.'
-      generate_empty_form_objects
-      render "/character_qualities/index"
+    respond_to do |format|
+      format.html do
+        if @character_quality.save
+          redirect_to character_character_qualities_path(@character)
+        else
+          flash.now[:notice] = 'Uh oh! Your quality could not be saved.'
+          generate_empty_form_objects
+          render "/character_qualities/index"
+        end
+      end
+
+      format.json do
+        if @character_quality.save
+          render json: {characterquality: @character_quality, quality: @character_quality.quality}
+        else
+          render json: { errors: @character.errors }
+        end
+      end
     end
   end
 
@@ -29,10 +41,21 @@ class CharacterQualitiesController < ApplicationController
     @character = Character.find(params[:character_id])
     @character_quality = CharacterQuality.find(params[:id])
     if current_user == @character.user
-      if @character_quality.destroy
-        flash[:notice] = 'Quality deleted!'
-        redirect_to character_character_qualities_path(@character)
+      respond_to do |format|
+        format.html do
+          if @character_quality.destroy
+            flash[:notice] = 'Quality deleted!'
+            redirect_to character_character_qualities_path(@character)
+          end
+        end
+
+        format.json do
+          if @character_quality.destroy
+            render json: @character_quality
+          end
+        end
       end
+
     else
       flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
       generate_empty_form_objects

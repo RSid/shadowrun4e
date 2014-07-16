@@ -111,9 +111,27 @@ ajaxer = function() {
     });
   });
 
+  $('#new_character_quality').on('submit', function(event) {
+    event.preventDefault();
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function(data) {
+        var newQuality = "<li>"+ data.quality.name +": "
+          + data.quality.description + " Rating: "
+          + data.characterquality.affect_rating + "</li>"
+        $('#qualities-list').append(newQuality);
+      }
+    });
+  });
 
     $('.deleter').click(function(event) {
     event.preventDefault();
+
     var id = "#" + this.id;
 
     $.ajax({
