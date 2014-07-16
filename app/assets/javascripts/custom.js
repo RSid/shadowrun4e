@@ -1,3 +1,10 @@
+function addFlashNotice(message) {
+  var flash = $('<p>')
+    .addClass('notice')
+    .text(message);
+  $('#notifications').html('').append(flash);
+};
+
 var gear;
 gear = function() {
     $('#weapons-input').hide();
@@ -192,7 +199,7 @@ ajaxer = function() {
     });
   });
 
-    $('.deleter').click(function(event) {
+  $('.deleter').click(function(event) {
     event.preventDefault();
 
     var id = "#" + this.id;
@@ -203,6 +210,9 @@ ajaxer = function() {
       dataType: "json",
       success: function() {
         $(id).hide();
+      },
+      error: function() {
+        addFlashNotice('You are not logged in. You must be logged in to edit a character.');
       }
     });
   });
