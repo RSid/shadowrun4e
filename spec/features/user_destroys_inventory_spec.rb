@@ -6,7 +6,7 @@ feature 'user deletes a inventory objects', %Q(
   to reflect things they've used up or lost
 ) do
 
-  scenario 'user deletes a tool' do
+  scenario 'user deletes a tool', :js => true do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
     metatype = FactoryGirl.create(:metatype)
@@ -22,7 +22,7 @@ feature 'user deletes a inventory objects', %Q(
     expect(page).to_not have_content tool.name
   end
 
-  scenario 'user tries to delete a tool for a character they didn\'t create' do
+  scenario 'user tries to delete a tool for a character they didn\'t create', :js => true do
     user = FactoryGirl.create(:user)
 
     metatype = FactoryGirl.create(:metatype)
@@ -40,7 +40,7 @@ feature 'user deletes a inventory objects', %Q(
     # expect(page).to have_content 'You are not logged in. You must be logged in to edit a character.'
   end
 
-  scenario 'user deletes a weapon' do
+  scenario 'user deletes a weapon', :js => true do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
     metatype = FactoryGirl.create(:metatype)
@@ -57,7 +57,7 @@ feature 'user deletes a inventory objects', %Q(
     expect(page).to_not have_content weapon.name
   end
 
-  scenario 'user tries to delete a weapon for a character they didn\'t create' do
+  scenario 'user tries to delete a weapon for a character they didn\'t create', :js => true do
     user = FactoryGirl.create(:user)
     metatype = FactoryGirl.create(:metatype)
     character = FactoryGirl.create(:character, metatype: metatype, user: user)

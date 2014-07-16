@@ -1,6 +1,8 @@
 class CharacterSkillsController < ApplicationController
   include EmptyFormObjects
 
+  before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
+
   def index
     @character = Character.find(params[:character_id])
     @character_skills = @character.character_skills
@@ -39,17 +41,20 @@ class CharacterSkillsController < ApplicationController
 
   def destroy
     @character = Character.find(params[:character_id])
-    @character_skill = CharacterSkill.find(params[:id])
-    if current_user == @character.user
-        if @character_skill.destroy
+
+    render_unauthorized unless @character.user == current_user
+
+    @character_skill = @character.character_skills.destroy(params[:id])
+
+      respond_to do |format|
+        format.html do
           flash[:notice] = 'Skill deleted!'
           redirect_to character_character_skills_path(@character)
         end
-    else
-      flash.now[:notice] = 'You are not logged in. You must be logged in to edit a character.'
-      generate_empty_form_objects
-      render "/character_skills/index"
-    end
+        format.json do
+          render json: @character_skill
+        end
+      end
   end
 
   private

@@ -26,7 +26,7 @@
           <% if @character_inventory.character_weapons[0] != nil %>
             <% @character_inventory.character_weapons.each do |characterweapon| %>
 
-              <li>
+              <li id = <%= characterweapon.id %>>
                 <%= "#{characterweapon.weapon.name}:
                 #{characterweapon.weapon.description}
                 Damage: #{characterweapon.weapon.damage}
@@ -43,7 +43,7 @@
                 <% end %>
 
                 <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_weapon_path(@character,
-                characterweapon), method: :delete, id: characterweapon.id) %>
+                characterweapon), id: characterweapon.id.to_s, class: 'deleter') %>
               </li>
             <% end %>
           <% end %>
@@ -55,10 +55,10 @@
         <ul id = 'general-gear'>
           <% if @character_inventory.character_tools[0] != nil %>
             <% @character_inventory.character_tools.each do |charactertool| %>
-              <li>
+              <li id = <%= charactertool.id %>>
                 <%= "#{charactertool.tool.name}, #{charactertool.tool.description}" %>
                 <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_tool_path(@character,
-                charactertool), method: :delete, id: charactertool.id) %>
+                charactertool), id: charactertool.id.to_s, class: 'deleter') %>
               </li>
             <% end %>
           <% end %>

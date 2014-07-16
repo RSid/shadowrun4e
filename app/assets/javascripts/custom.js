@@ -1,3 +1,10 @@
+function addFlashNotice(message) {
+  var flash = $('<p>')
+    .addClass('notice')
+    .text(message);
+  $('#notifications').html('').append(flash);
+};
+
 var gear;
 gear = function() {
     $('#weapons-input').hide();
@@ -61,7 +68,7 @@ $('#die').click(function() {
       var result = $("<li>");
       result.html("Results: " + returned + " Successes: " +
         successes.length + glitch).css("font-weight", "bold");
-      $('#quick-actions').append(result);
+      $('.result').append(result);
 
 
     } else if (dicepoolValue <=0){
@@ -93,6 +100,7 @@ statChangeForm = function() {
 
 var ajaxer;
 ajaxer = function() {
+
   $('#new_character_skill').on('submit', function(event) {
     event.preventDefault();
     var dataSubmit = $(this).serialize();
@@ -107,6 +115,104 @@ ajaxer = function() {
           + data.characterskill.rating + " Specialization: "
           + data.characterskill.specialization + "</li>"
         $('#skills-list').append(newSkill);
+      }
+    });
+  });
+
+  $('#new_character_quality').on('submit', function(event) {
+    event.preventDefault();
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function(data) {
+        var newQuality = "<li>"+ data.quality.name +": "
+          + data.quality.description + " Rating: "
+          + data.characterquality.affect_rating + "</li>"
+        $('#qualities-list').append(newQuality);
+      }
+    });
+  });
+
+  $('#new_connection').on('submit', function(event) {
+    event.preventDefault();
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function(data) {
+        var newConnection = "<li>"+ data.connection.name +": "
+          + data.connection.description + " Loyalty: "
+          + data.connection.loyalty + " Connection: "
+          + data.connection.connection + "</li>"
+        $('#connections-list').append(newConnection);
+      }
+    });
+  });
+
+  $('#new_character_weapon').on('submit', function(event) {
+    event.preventDefault();
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function(data) {
+        var newWeapon = "<li> New weapon quick-info: <br> &nbsp;&nbsp;"
+          + data.weapon.name +": "
+          + data.weapon.description + " Damage: "
+          + data.weapon.damage + data.weapon.damage_type
+          // + " Armor piercing: " + data.characterweapon.armor_piercing
+          // + " Rating: " + data.characterweapon.rating
+          // + " Concealability modifier: " + data.characterweapon.concealability
+          // + " Legality: " + data.weapon.legality
+          + "</li>"
+        $('#weapons').append(newWeapon);
+      }
+    });
+  });
+
+  $('#new_character_tool').on('submit', function(event) {
+    event.preventDefault();
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function(data) {
+        var newTool = "<li>"
+          + data.tool.name +", "
+          + data.tool.description
+          + "</li>"
+        $('#general-gear').append(newTool);
+      }
+    });
+  });
+
+  $('.deleter').click(function(event) {
+    event.preventDefault();
+
+    var id = "#" + this.id;
+
+    $.ajax({
+      type: "DELETE",
+      url: $(this).attr('href'),
+      dataType: "json",
+      success: function() {
+        $(id).hide();
+      },
+      error: function() {
+        addFlashNotice('You are not logged in. You must be logged in to edit a character.');
       }
     });
   });
@@ -128,6 +234,13 @@ toggleDeletion = function() {
   });
 }
 
+var toggleResults;
+toggleResults = function() {
+  $("#roll-dice").click(function() {
+    $('.result').toggle();
+  });
+}
+
 $( document ).ready(gear);
 $(document).on('page:load', gear);
 
@@ -145,3 +258,6 @@ $(document).on('page:load', toggleEditForms);
 
 $( document ).ready(toggleDeletion);
 $(document).on('page:load', toggleDeletion);
+
+$( document ).ready(toggleResults);
+$(document).on('page:load', toggleResults);

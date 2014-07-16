@@ -6,7 +6,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
   to reflect their changes over time
 ) do
 
-  scenario 'user deletes a skill' do
+  scenario 'user deletes a skill', :js => true do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
 
@@ -22,7 +22,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     expect(page).to_not have_content skill.name
   end
 
-  scenario 'user deletes a quality' do
+  scenario 'user deletes a quality', :js => true do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
 
@@ -39,7 +39,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     expect(page).to_not have_content quality.name
   end
 
-  scenario 'user deletes a connection' do
+  scenario 'user deletes a connection', :js => true do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
 
@@ -53,7 +53,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     expect(page).to_not have_content connection.name
   end
 
-  scenario 'user tries to delete a skill for a character they didn\'t create' do
+  scenario 'user tries to delete a skill for a character they didn\'t create', :js => true do
     user = FactoryGirl.create(:user)
 
     metatype = FactoryGirl.create(:metatype)
@@ -70,7 +70,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     expect(page).to have_content 'You are not logged in. You must be logged in to edit a character.'
   end
 
-  scenario 'user tries to delete a quality for a character they didn\'t create' do
+  scenario 'user tries to delete a quality for a character they didn\'t create', :js => true do
     user = FactoryGirl.create(:user)
 
     metatype = FactoryGirl.create(:metatype)
@@ -87,7 +87,7 @@ feature 'user deletes a skill, quality, or connection', %Q(
     expect(page).to have_content 'You are not logged in. You must be logged in to edit a character.'
   end
 
-  scenario 'user tries to delete a connection for a character they didn\'t create' do
+  scenario 'user tries to delete a connection for a character they didn\'t create', :js => true do
     user = FactoryGirl.create(:user)
 
     metatype = FactoryGirl.create(:metatype)
