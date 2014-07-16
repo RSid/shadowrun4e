@@ -32,9 +32,8 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
     attributes_changing = params['character'].keys
     attributes_params = {}
-
     attributes_changing.each do |attribute|
-      if @character.mutable_attributes.include?(attribute)
+      if @character.mutable_attributes.include?(attribute) && params['character'][attribute][" type="] != ""
           attributes_params.merge!(attribute => params['character'][attribute][" type="])
       end
     end
