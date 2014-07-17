@@ -12,7 +12,6 @@ $('#die').click(function() {
       var successes = [];
       var glitchThreat = [];
 
-      results.sort
       for(i=0; i < results.length; i++) {
         if(results[i] >= 4) {
           successes.push(results[i]);
