@@ -1,9 +1,17 @@
 module CreatorHelper
+  def is_inventory_item(prefix)
+    if prefix == 'tool' || prefix == 'weapon'
+      true
+    else
+      false
+    end
+  end
+
   def respond_to_create(prefix, object_to_create, character)
     respond_to do |format|
       format.html do
         if object_to_create.save
-          if prefix == 'tool' || prefix == 'weapon'
+          if is_inventory_item(prefix)
             redirect_to character_inventory_index_path(@character)
           else
             redirect_to polymorphic_url([@character, object_to_create.class])
@@ -15,7 +23,7 @@ module CreatorHelper
             render "/character_qualities/index"
           elsif prefix == 'connection'
             render "/connections/index"
-          elsif prefix == 'tool' || prefix == 'weapon'
+          elsif is_inventory_item(prefix)
             render 'inventory/index'
           else
             render "character_#{prefix}s/index"

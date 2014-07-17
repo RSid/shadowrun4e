@@ -1,5 +1,6 @@
 class CharacterWeaponsController < ApplicationController
   include EmptyFormObjects
+  include CreatorHelper
 
   before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
 
@@ -9,25 +10,8 @@ class CharacterWeaponsController < ApplicationController
     weapon = Weapon.find_or_create_by(weapon_params["weapon"])
 
     @character_weapon = @character.character_weapons.build(character_weapon_params.merge(weapon: weapon))
-    respond_to do |format|
-      format.html do
-        if @character_weapon.save
-          redirect_to character_inventory_index_path(@character)
-        else
-          flash.now[:notice] = 'Uh oh! Your weapon could not be saved.'
-          generate_empty_form_objects
-          render "inventory/index"
-        end
-      end
 
-      format.json do
-        if @character_weapon.save
-          render json: {characterweapon: @character_weapon, weapon: @character_weapon.weapon}
-        else
-          render json: { errors: @character.errors }
-        end
-      end
-    end
+    respond_to_create('weapon',@character_weapon, @character)
   end
 
   def destroy
