@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Create Character</title>
-  <link rel="stylesheet" href="sr4.css" />
 </head>
 <body>
     <div class="content">
@@ -16,6 +15,15 @@
           <%= f.label :metatype %>
           <%= f.collection_select(:metatype_id, Metatype.all, :id, :name) %>
 
+            <div class = 'mini-push'>
+            </div>
+
+          <div id ='stat-explanation'>Remember, standard attributes range between
+          1 and 6, but various metatypes/augmentations can let some attributes
+           get as high as 15.</div>
+
+            <div class = 'mini-push'>
+            </div>
           <div class = 'stats'>
             <%= f.label :body, class: "creation_label" %>
             <%= f.select :body, (1..15) %>
@@ -44,13 +52,15 @@
             <%= f.label :edge %>
             <%= f.select :edge, (1..15) %>
           </div>
+          <div class = 'mini-push'>
+          </div>
 
           <div class = 'stats'>
             <%= f.label :essence %>
-            <%= f.text_field :essence, as: :float, value: 6 %>
+            <%= f.number_field :essence, step: '0.1', in: 0..6, value: 6 %>
 
             <%= f.label :magic %>
-            <%= f.number_field :magic, value: 0 %>
+            <%= f.number_field :magic, in: 0..15, value: 0 %>
 
             <%= f.label :initiative_passes %>
             <%= f.number_field :initiative_passes, value: 1 %>
@@ -59,6 +69,8 @@
             <%= f.number_field :nuyen, value: 0 %>
           </div>
 
+            <div class = 'mini-push'>
+            </div>
           <%= f.label :bio %>
           <%= f.text_area :bio %>
 

@@ -154,6 +154,7 @@ height: 4em;
 
 .stats {
   display: inline;
+  margin-top: 30px;
 }
 
 .stats select {
@@ -167,6 +168,18 @@ height: 4em;
 #character_essence, #character_magic, #character_initiative_passes, #character_nuyen {
   display: inline;
   width: 10%;
+}
+
+#stat-explanation {
+  margin: 20px;
+  padding: 10px;
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
+  text-align: center;
+}
+
+.mini-push {
+  height: 2em;
 }
 
 /*Character layout*/

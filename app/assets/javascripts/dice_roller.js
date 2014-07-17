@@ -39,7 +39,7 @@ $('#die').click(function() {
 
 
     } else if (dicepoolValue <=0){
-      alert("Please choose a positive number of dice!");
+      alert("Please add some dice to your dice pool!");
     } else {
       alert("Pretty sure you don't have that big a dice pool, champ.");
     }

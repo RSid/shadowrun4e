@@ -24,7 +24,7 @@
     </div>
 
     <div class="push"></div>
-    
+
     <div id = 'notifications'>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
@@ -37,7 +37,7 @@
   <ul id = 'quick-actions'>
     <li id= 'roll-dice'>Roll Dice</li>
     <li>
-      <input type="number" id="dicepool" value = "0" >
+      <input type="number" id="dicepool" value = "0" min = '0'>
       <%= content_tag(:i,nil,class: "fa fa-cube", id: 'die') %>
     </li>
     <div class= 'result'> </div>
