@@ -152,11 +152,6 @@ height: 4em;
 
 /*Character create*/
 
-.stats {
-  display: inline;
-  margin-top: 30px;
-}
-
 .stats select {
   display: inline;
 }
@@ -183,6 +178,11 @@ height: 4em;
 }
 
 /*Character layout*/
+
+input[type="number"] {
+  display: inline;
+  width: 10%;
+}
 
 #login-nav-container {
   @include outer-container;

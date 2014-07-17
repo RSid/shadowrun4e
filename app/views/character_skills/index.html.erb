@@ -41,7 +41,7 @@
           <% end %>
 
           <%= f.label :rating %>
-          <%= f.text_field :rating %>
+          <%= f.number_field :rating, in: 1..100 %>
 
           <%= f.label :specialization %>
           <%= f.text_field :specialization, value: "None" %>
