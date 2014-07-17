@@ -1,5 +1,6 @@
 class CharacterQualitiesController < ApplicationController
   include EmptyFormObjects
+  include CreatorHelper
 
   before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
 
@@ -18,25 +19,7 @@ class CharacterQualitiesController < ApplicationController
 
     @character_quality = @character.character_qualities.build(character_quality_params.merge(quality: quality))
 
-    respond_to do |format|
-      format.html do
-        if @character_quality.save
-          redirect_to character_character_qualities_path(@character)
-        else
-          flash.now[:notice] = 'Uh oh! Your quality could not be saved.'
-          generate_empty_form_objects
-          render "/character_qualities/index"
-        end
-      end
-
-      format.json do
-        if @character_quality.save
-          render json: {characterquality: @character_quality, quality: @character_quality.quality}
-        else
-          render json: { errors: @character.errors }
-        end
-      end
-    end
+    respond_to_create('quality',@character_quality, @character)
   end
 
   def destroy

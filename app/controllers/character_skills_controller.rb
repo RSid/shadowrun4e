@@ -1,5 +1,6 @@
 class CharacterSkillsController < ApplicationController
   include EmptyFormObjects
+  include CreatorHelper
 
   before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
 
@@ -18,25 +19,7 @@ class CharacterSkillsController < ApplicationController
 
     @character_skill = @character.character_skills.build(character_skill_params.merge(skill: skill))
 
-    respond_to do |format|
-      format.html do
-        if @character_skill.save
-          redirect_to character_character_skills_path(@character)
-        else
-          flash.now[:notice] = 'Uh oh! Your skill could not be saved.'
-          generate_empty_form_objects
-          render "/character_skills/index"
-        end
-      end
-
-      format.json do
-        if @character_skill.save
-          render json: {characterskill: @character_skill, skill: @character_skill.skill}
-        else
-          render json: { errors: @character.errors }
-        end
-      end
-    end
+    respond_to_create('skill',@character_skill, @character)
   end
 
   def destroy

@@ -3,7 +3,7 @@ function addFlashNotice(message) {
     .addClass('notice')
     .text(message);
   $('#notifications').html('').append(flash);
-};
+}
 
 var ajaxer;
 ajaxer = function() {
@@ -40,6 +40,9 @@ ajaxer = function() {
           + data.quality.description + " Rating: "
           + data.characterquality.affect_rating + "</li>";
         $('#qualities-list').append(newQuality);
+      },
+      error: function() {
+        addFlashNotice('Uh oh! Your quality could not be saved');
       }
     });
   });
