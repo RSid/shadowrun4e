@@ -79,8 +79,6 @@
   <!-- <div class = "editing-characters"> -->
     <div id = "weapons-input">
       <%= form_for [@character, @character_weapon] do |f| %>
-        <%= f.label :rating %>
-        <%= f.text_field :rating %>
 
         <%= f.fields_for @weapon do |i| %>
           <%= i.label :name %>
@@ -95,26 +93,32 @@
           <%= i.label :damage_type %>
           <%= i.text_field :damage_type %>
 
+          <%= f.label :rating %>
+          <%= f.number_field :rating, in: 0..100 %>
+
           <%= i.label :armor_piercing %>
           <%= i.text_field :armor_piercing %>
 
           <%= i.label :concealability %>
           <%= i.text_field :concealability %>
 
-          <%= i.label :mode %>
-          <%= i.text_field :mode %>
-
-          <%= i.label :recoil %>
-          <%= i.text_field :recoil %>
-
-          <%= i.label :ammo %>
-          <%= i.text_field :ammo %>
-
           <%= i.label :legality %>
-          <%= i.text_field :legality %>
+          <%= i.text_field :legality, value: 'Legal' %>
 
           <%= i.label :melee %>
           <%= i.select :melee, [['Yes', true], ['No', false]] %>
+
+          <div id ='guns-only'>
+            <%= i.label :mode %>
+            <%= i.text_field :mode %>
+
+            <%= i.label :recoil %>
+            <%= i.text_field :recoil %>
+
+            <%= i.label :ammo %>
+            <%= i.text_field :ammo %>
+          </div>
+
         <% end %>
 
         <%= f.submit 'Submit' %>

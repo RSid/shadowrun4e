@@ -1,3 +1,18 @@
+var isMelee;
+isMelee = function () {
+  $('#guns-only').hide();
+
+  $('#character_weapon_weapon_melee').change(function() {
+    var melee = $('#character_weapon_weapon_melee option:selected').val();
+    if(melee==='false') {
+      $('#guns-only').show();
+    } else {
+      $('#guns-only').hide();
+    }
+  });
+}
+
+
 var gear;
 gear = function() {
     $('#weapons-input').hide();
@@ -6,10 +21,10 @@ gear = function() {
     $('#PickGear').change(function() {
 
       var optionValue = $('#PickGear option:selected').val();
-
       if ( optionValue==1 ) {
-        $('#weapons-input').show();
         $('#general-gear-input').hide();
+        $('#weapons-input').show();
+
       } else if ( optionValue==4 ){
           $('#weapons-input').hide();
           $('#general-gear-input').show();
@@ -22,6 +37,7 @@ gear = function() {
       }
   });
 };
+
 
 var statChangeForm;
 statChangeForm = function() {
@@ -44,6 +60,9 @@ statChangeForm = function() {
 
 $( document ).ready(gear);
 $(document).on('page:load', gear);
+
+$( document ).ready(isMelee);
+$(document).on('page:load', isMelee);
 
 $( document ).ready(statChangeForm);
 $(document).on('page:load', statChangeForm);
