@@ -10,7 +10,6 @@ class CharacterWeaponsController < ApplicationController
     weapon = Weapon.find_or_create_by(weapon_params["weapon"])
 
     @character_weapon = @character.character_weapons.build(character_weapon_params.merge(weapon: weapon))
-    binding.pry
     respond_to_create('weapon',@character_weapon, @character)
   end
 
