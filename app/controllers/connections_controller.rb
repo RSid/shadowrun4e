@@ -1,6 +1,9 @@
 class ConnectionsController < ApplicationController
   include EmptyFormObjects
+  include CreatorHelper
+  include DestroyerHelper
 
+  before_action :set_character
   before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
 
   def index
@@ -9,52 +12,24 @@ class ConnectionsController < ApplicationController
   end
 
   def create
-    @character = Character.find(params[:character_id])
+    # @character = Character.find(params[:character_id])
 
     @connection = @character.connections.find_or_create_by(connection_params)
 
-    respond_to do |format|
-      format.html do
-        if @connection.save
-          redirect_to character_connections_path(@character)
-        else
-          flash.now[:notice] = 'Uh oh! Your connection could not be saved.'
-          generate_empty_form_objects
-          render "/connections/index"
-        end
-      end
-
-      format.json do
-        if @connection.save
-          render json: {connection: @connection}
-        else
-          render json: { errors: @character.errors }
-        end
-      end
-    end
+    respond_to_create('connection',@connection, @character)
   end
 
   def destroy
-    @character = Character.find(params[:character_id])
-
-    render_unauthorized unless @character.user == current_user
-
-    @connection = @character.connections.destroy(params[:id])
-
-      respond_to do |format|
-        format.html do
-          flash[:notice] = 'Skill deleted!'
-          redirect_to character_connections_path(@character)
-        end
-        format.json do
-          render json: @connection
-        end
-      end
+    respond_to_destroy('connection', params[:id], @character)
   end
 
   private
 
   def connection_params
     params.require(:connection).permit(:name, :description, :loyalty, :connection)
+  end
+
+  def set_character
+    @character = Character.find(params[:character_id])
   end
 end
