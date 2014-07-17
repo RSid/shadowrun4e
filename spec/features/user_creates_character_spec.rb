@@ -17,15 +17,15 @@ feature 'user creates a character', %Q{
 
     fill_in 'Name', with: character.name
     select(character.metatype.name, from: 'character_metatype_id')
-    fill_in 'Body', with: character.body
-    fill_in 'Agility', with: character.agility
-    fill_in 'Reaction', with: character.reaction
-    fill_in 'Strength', with: character.strength
-    fill_in 'Charisma', with: character.charisma
-    fill_in 'Intuition', with: character.intuition
-    fill_in 'Logic', with: character.logic
-    fill_in 'Willpower', with: character.willpower
-    fill_in 'Edge', with: character.edge
+    select(character.body, from: 'Body')
+    select(character.agility, from: 'Agility')
+    select(character.reaction, from: 'Reaction')
+    select(character.strength, from: 'Strength')
+    select(character.charisma, from: 'Charisma')
+    select(character.intuition, from: 'Intuition')
+    select(character.logic, from: 'Logic')
+    select(character.willpower, from: 'Willpower')
+    select(character.edge, from: 'Edge')
     fill_in 'Essence', with: character.essence
     fill_in 'Magic', with: character.magic
     fill_in 'Initiative passes', with: character.initiative_passes
