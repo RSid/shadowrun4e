@@ -1,6 +1,7 @@
 class CharacterSkillsController < ApplicationController
   include EmptyFormObjects
   include CreatorHelper
+  include DestroyerHelper
 
   before_action :set_character
   before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
@@ -21,19 +22,7 @@ class CharacterSkillsController < ApplicationController
   end
 
   def destroy
-    render_unauthorized unless @character.user == current_user
-
-    @character_skill = @character.character_skills.destroy(params[:id])
-
-      respond_to do |format|
-        format.html do
-          flash[:notice] = 'Skill deleted!'
-          redirect_to character_character_skills_path(@character)
-        end
-        format.json do
-          render json: @character_skill
-        end
-      end
+    respond_to_destroy('skill', params[:id], @character)
   end
 
   private

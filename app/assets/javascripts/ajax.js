@@ -57,10 +57,10 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function(data) {
-        var newConnection = "<li>"+ data.connection.name +": "
-          + data.connection.description + " Loyalty: "
-          + data.connection.loyalty + " Connection: "
-          + data.connection.connection + "</li>";
+        var newConnection = "<li>"+ data.characterconnection.name +": "
+          + data.characterconnection.description + " Loyalty: "
+          + data.characterconnection.loyalty + " Connection: "
+          + data.characterconnection.connection + "</li>";
         $('#connections-list').append(newConnection);
       }
     });

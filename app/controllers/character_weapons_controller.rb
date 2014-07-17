@@ -1,6 +1,7 @@
 class CharacterWeaponsController < ApplicationController
   include EmptyFormObjects
   include CreatorHelper
+  include DestroyerHelper
 
   before_action :set_character
   before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
@@ -14,19 +15,7 @@ class CharacterWeaponsController < ApplicationController
   end
 
   def destroy
-    render_unauthorized unless @character.user == current_user
-
-    @character_weapon = @character.character_weapons.destroy(params[:id])
-
-    respond_to do |format|
-      format.html do
-        flash[:notice] = 'Weapon deleted!'
-        redirect_to character_inventory_index_path(@character)
-      end
-      format.json do
-        render json: @character_weapon
-      end
-    end
+    respond_to_destroy('weapon', params[:id], @character)
   end
 
   private

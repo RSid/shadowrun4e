@@ -1,6 +1,7 @@
 class ConnectionsController < ApplicationController
   include EmptyFormObjects
   include CreatorHelper
+  include DestroyerHelper
 
   before_action :set_character
   before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
@@ -11,7 +12,7 @@ class ConnectionsController < ApplicationController
   end
 
   def create
-    @character = Character.find(params[:character_id])
+    # @character = Character.find(params[:character_id])
 
     @connection = @character.connections.find_or_create_by(connection_params)
 
@@ -19,21 +20,7 @@ class ConnectionsController < ApplicationController
   end
 
   def destroy
-    @character = Character.find(params[:character_id])
-
-    render_unauthorized unless @character.user == current_user
-
-    @connection = @character.connections.destroy(params[:id])
-
-      respond_to do |format|
-        format.html do
-          flash[:notice] = 'Skill deleted!'
-          redirect_to character_connections_path(@character)
-        end
-        format.json do
-          render json: @connection
-        end
-      end
+    respond_to_destroy('connection', params[:id], @character)
   end
 
   private
