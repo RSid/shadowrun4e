@@ -1,8 +1,8 @@
 class CharacterToolsController < ApplicationController
   include EmptyFormObjects
   include CreatorHelper
+  
   before_action :set_character
-
   before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
 
   def create

@@ -2,6 +2,7 @@ class ConnectionsController < ApplicationController
   include EmptyFormObjects
   include CreatorHelper
 
+  before_action :set_character
   before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
 
   def index
@@ -39,5 +40,9 @@ class ConnectionsController < ApplicationController
 
   def connection_params
     params.require(:connection).permit(:name, :description, :loyalty, :connection)
+  end
+
+  def set_character
+    @character = Character.find(params[:character_id])
   end
 end

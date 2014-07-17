@@ -2,10 +2,10 @@ class CharacterSkillsController < ApplicationController
   include EmptyFormObjects
   include CreatorHelper
 
+  before_action :set_character
   before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
 
   def index
-    @character = Character.find(params[:character_id])
     @character_skills = @character.character_skills
 
     @skill = Skill.new
@@ -13,8 +13,6 @@ class CharacterSkillsController < ApplicationController
   end
 
   def create
-    @character = Character.find(params[:character_id])
-
     skill = Skill.find_or_create_by(skill_params["skill"])
 
     @character_skill = @character.character_skills.build(character_skill_params.merge(skill: skill))
@@ -23,8 +21,6 @@ class CharacterSkillsController < ApplicationController
   end
 
   def destroy
-    @character = Character.find(params[:character_id])
-
     render_unauthorized unless @character.user == current_user
 
     @character_skill = @character.character_skills.destroy(params[:id])
@@ -48,5 +44,9 @@ class CharacterSkillsController < ApplicationController
 
   def skill_params
     params.require(:character_skill).permit(:skill => [:name, :skill_group, :default_skill])
+  end
+
+  def set_character
+    @character = Character.find(params[:character_id])
   end
 end
