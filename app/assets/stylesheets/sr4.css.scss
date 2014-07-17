@@ -352,6 +352,7 @@ h6 {
 
 .new-form-field {
   padding-left: 20px;
+  display: block;
 }
 
 .subheading {
@@ -361,6 +362,7 @@ h6 {
 #change {
   @include span-columns(4);
   @include shift(4);
+  margin-right: 4em;
 }
 
 #char-deletion {
