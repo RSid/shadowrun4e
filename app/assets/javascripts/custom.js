@@ -3,7 +3,7 @@ function addFlashNotice(message) {
     .addClass('notice')
     .text(message);
   $('#notifications').html('').append(flash);
-};
+}
 
 var gear;
 gear = function() {
@@ -28,7 +28,7 @@ gear = function() {
         $('#general-gear-input').hide();
       }
   });
-}
+};
 
 var roll;
 roll = function() {
@@ -77,7 +77,7 @@ $('#die').click(function() {
       alert("Pretty sure you don't have that big a dice pool, champ.");
     }
   });
-}
+};
 
 var statChangeForm;
 statChangeForm = function() {
@@ -88,7 +88,7 @@ statChangeForm = function() {
       var html = "<label for='character_" + attributeValue +  "' class = 'new-form-field'>"
       + attributeValue +"</label>" + "<input class = 'new-form-field' id='character_" + attributeValue
       + "' " + "name='character["
-        + attributeValue + "] type='text'>"
+        + attributeValue + "] type='text'>";
 
       $('.edit-input').append(html);
   });
@@ -96,7 +96,7 @@ statChangeForm = function() {
   $("#character-stat-edit").click(function() {
     $('.edit-input').toggle();
   });
-}
+};
 
 var ajaxer;
 ajaxer = function() {
@@ -113,7 +113,7 @@ ajaxer = function() {
       success: function(data) {
         var newSkill = "<li>"+ data.skill.name +" Rating: "
           + data.characterskill.rating + " Specialization: "
-          + data.characterskill.specialization + "</li>"
+          + data.characterskill.specialization + "</li>";
         $('#skills-list').append(newSkill);
       }
     });
@@ -131,7 +131,7 @@ ajaxer = function() {
       success: function(data) {
         var newQuality = "<li>"+ data.quality.name +": "
           + data.quality.description + " Rating: "
-          + data.characterquality.affect_rating + "</li>"
+          + data.characterquality.affect_rating + "</li>";
         $('#qualities-list').append(newQuality);
       }
     });
@@ -150,7 +150,7 @@ ajaxer = function() {
         var newConnection = "<li>"+ data.connection.name +": "
           + data.connection.description + " Loyalty: "
           + data.connection.loyalty + " Connection: "
-          + data.connection.connection + "</li>"
+          + data.connection.connection + "</li>";
         $('#connections-list').append(newConnection);
       }
     });
@@ -174,7 +174,7 @@ ajaxer = function() {
           // + " Rating: " + data.characterweapon.rating
           // + " Concealability modifier: " + data.characterweapon.concealability
           // + " Legality: " + data.weapon.legality
-          + "</li>"
+          + "</li>";
         $('#weapons').append(newWeapon);
       }
     });
@@ -193,7 +193,7 @@ ajaxer = function() {
         var newTool = "<li>"
           + data.tool.name +", "
           + data.tool.description
-          + "</li>"
+          + "</li>";
         $('#general-gear').append(newTool);
       }
     });
@@ -216,7 +216,7 @@ ajaxer = function() {
       }
     });
   });
-}
+};
 
 var toggleEditForms;
 toggleEditForms = function() {
@@ -224,7 +224,7 @@ toggleEditForms = function() {
   $(".edit-character-hover").click(function() {
     $('.editing-characters').toggle();
   });
-}
+};
 
 var toggleDeletion;
 toggleDeletion = function() {
@@ -232,14 +232,14 @@ toggleDeletion = function() {
   $("#character-name").mouseover(function() {
     $('#char-deletion').toggle();
   });
-}
+};
 
 var toggleResults;
 toggleResults = function() {
   $("#roll-dice").click(function() {
     $('.result').toggle();
   });
-}
+};
 
 $( document ).ready(gear);
 $(document).on('page:load', gear);
