@@ -81,7 +81,7 @@ ajaxer = function() {
           + data.weapon.description + " Damage: "
           + data.weapon.damage + data.weapon.damage_type
           // + " Armor piercing: " + data.characterweapon.armor_piercing
-          // + " Rating: " + data.characterweapon.rating
+          + " Rating: " + data.characterweapon.rating
           // + " Concealability modifier: " + data.characterweapon.concealability
           // + " Legality: " + data.weapon.legality
           + "</li>";

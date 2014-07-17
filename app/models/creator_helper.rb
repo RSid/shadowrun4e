@@ -32,7 +32,6 @@ module CreatorHelper
       end
 
       format.json do
-        binding.pry
         if object_to_create.save
           response = {}
           response['character' + prefix] = object_to_create

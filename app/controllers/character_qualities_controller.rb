@@ -22,7 +22,7 @@ class CharacterQualitiesController < ApplicationController
   end
 
   def destroy
-    respond_to_destroy('Quality', params[:id], @character)
+    respond_to_destroy('quality', params[:id], @character)
   end
 
   private

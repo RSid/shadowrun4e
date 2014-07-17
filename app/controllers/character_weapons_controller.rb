@@ -10,7 +10,7 @@ class CharacterWeaponsController < ApplicationController
     weapon = Weapon.find_or_create_by(weapon_params["weapon"])
 
     @character_weapon = @character.character_weapons.build(character_weapon_params.merge(weapon: weapon))
-
+    binding.pry
     respond_to_create('weapon',@character_weapon, @character)
   end
 
@@ -21,12 +21,12 @@ class CharacterWeaponsController < ApplicationController
   private
 
   def character_weapon_params
-    params.require(:character_weapon).permit(:character_id, :affect_rating)
+    params.require(:character_weapon).permit(:character_id, :rating)
   end
 
   def weapon_params
     params.require(:character_weapon).permit(:weapon => [:name,
-      :description, :damage, :damage_type, :rating, :armor_piercing,
+      :description, :damage, :damage_type, :armor_piercing,
       :concealability, :mode, :recoil, :ammo, :legality, :melee])
   end
 
