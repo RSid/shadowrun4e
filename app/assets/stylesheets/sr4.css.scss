@@ -150,6 +150,25 @@ height: 4em;
   display: inline;
 }
 
+/*Character create*/
+
+.stats {
+  display: inline;
+}
+
+.stats select {
+  display: inline;
+}
+
+.stats label {
+  display: inline;
+}
+
+#character_essence, #character_magic, #character_initiative_passes, #character_nuyen {
+  display: inline;
+  width: 10%;
+}
+
 /*Character layout*/
 
 #login-nav-container {

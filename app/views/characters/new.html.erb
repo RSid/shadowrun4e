@@ -6,62 +6,66 @@
   <link rel="stylesheet" href="sr4.css" />
 </head>
 <body>
-
     <div class="content">
     <h2>Create a new character</h2>
+      <div id 'character-create-container'>
+        <%= form_for @character do |f| %>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
 
-    <%= form_for @character do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-      <br>
-      <%= f.label :metatype %>
-      <%= f.collection_select(:metatype_id, Metatype.all, :id, :name) %>
-      <br>
-      <%= f.label :body %>
-      <%= f.text_field :body %>
-      <br>
-      <%= f.label :agility %>
-      <%= f.text_field :agility %>
-      <br>
-      <%= f.label :reaction %>
-      <%= f.text_field :reaction %>
-      <br>
-      <%= f.label :strength %>
-      <%= f.text_field :strength %>
-      <br>
-      <%= f.label :charisma %>
-      <%= f.text_field :charisma %>
-      <br>
-      <%= f.label :intuition %>
-      <%= f.text_field :intuition %>
-      <br>
-      <%= f.label :logic %>
-      <%= f.text_field :logic %>
-      <br>
-      <%= f.label :willpower %>
-      <%= f.text_field :willpower %>
-      <br>
-      <%= f.label :edge %>
-      <%= f.text_field :edge %>
-      <br>
-      <%= f.label :essence %>
-      <%= f.text_field :essence %>
-      <br>
-      <%= f.label :magic %>
-      <%= f.text_field :magic %>
-      <br>
-      <%= f.label :initiative_passes %>
-      <%= f.text_field :initiative_passes %>
-      <br>
-      <%= f.label :nuyen %>
-      <%= f.text_field :nuyen %>
-      <br>
-      <%= f.label :bio %>
-      <%= f.text_field :bio %>
-      <br>
-      <%= f.submit 'Create' %>
-    <% end %>
+          <%= f.label :metatype %>
+          <%= f.collection_select(:metatype_id, Metatype.all, :id, :name) %>
 
+          <div class = 'stats'>
+            <%= f.label :body, class: "creation_label" %>
+            <%= f.select :body, (1..15) %>
+
+            <%= f.label :agility %>
+            <%= f.select :agility, (1..15) %>
+
+            <%= f.label :reaction %>
+            <%= f.select :reaction, (1..15) %>
+
+            <%= f.label :strength %>
+            <%= f.select :strength, (1..15) %>
+
+            <%= f.label :charisma %>
+            <%= f.select :charisma, (1..15) %>
+
+            <%= f.label :intuition %>
+            <%= f.select :intuition, (1..15) %>
+
+            <%= f.label :logic %>
+            <%= f.select :logic, (1..15) %>
+
+            <%= f.label :willpower %>
+            <%= f.select :willpower, (1..15) %>
+
+            <%= f.label :edge %>
+            <%= f.select :edge, (1..15) %>
+          </div>
+
+          <div class = 'stats'>
+            <%= f.label :essence %>
+            <%= f.text_field :essence, as: :float, value: 6 %>
+
+            <%= f.label :magic %>
+            <%= f.number_field :magic, value: 0 %>
+
+            <%= f.label :initiative_passes %>
+            <%= f.number_field :initiative_passes, value: 1 %>
+
+            <%= f.label :nuyen %>
+            <%= f.number_field :nuyen, value: 0 %>
+          </div>
+
+          <%= f.label :bio %>
+          <%= f.text_area :bio %>
+
+          <%= f.submit 'Create' %>
+        <% end %>
+      </div>
+    </div>
 
 </body>
 </html>
