@@ -3,7 +3,11 @@ module CreatorHelper
     respond_to do |format|
       format.html do
         if object_to_create.save
-          redirect_to polymorphic_url([@character, object_to_create.class])
+          if prefix == 'tool' || prefix == 'weapon'
+            redirect_to character_inventory_index_path(@character)
+          else
+            redirect_to polymorphic_url([@character, object_to_create.class])
+          end
         else
           flash.now[:notice] = "Uh oh! Your #{prefix} could not be saved."
           generate_empty_form_objects
