@@ -12,7 +12,6 @@ isMelee = function () {
   });
 }
 
-
 var gear;
 gear = function() {
     $('#weapons-input').hide();

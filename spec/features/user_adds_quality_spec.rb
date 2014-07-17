@@ -21,7 +21,7 @@ feature 'user adds a quality to their character', %Q{
 
     within("#add-quality") do
       fill_in 'Name', with: quality.name
-      fill_in 'Affect rating', with: character_quality.affect_rating
+      find(:css, '#character_quality_affect_rating').set(character_quality.affect_rating)
       fill_in 'Description', with: quality.description
 
       click_on 'Submit'

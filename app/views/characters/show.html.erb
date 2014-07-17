@@ -60,11 +60,13 @@
   <div id='character-stat-edit'> Edit Character's: </div>
       <%= form_for @character, html: { id: "change_character" },
         method: :patch do |f| %>
-        <%= select_tag "change", options_for_select(@attributes),
-        prompt: "Select attribute to edit" %>
+        <div id = 'option-selector-container'>
+          <%= select_tag "change", options_for_select(@attributes),
+          prompt: "Select attribute to edit" %>
+        </div>
         <div id="base-edits">
           <div class="edit-input">
-            
+
           </div>
         <%= f.button :submit %>
       </div>

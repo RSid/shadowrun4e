@@ -76,7 +76,6 @@
       </select>
     </form>
 
-  <!-- <div class = "editing-characters"> -->
     <div id = "weapons-input">
       <%= form_for [@character, @character_weapon] do |f| %>
 
@@ -90,14 +89,14 @@
           <%= i.label :damage, class: 'small-input-label' %>
           <%= i.number_field :damage, in: 0..100, value: '0' %>
 
-          <%= i.label :damage_type, value: 'P', class: 'small-input-label' %>
-          <%= i.text_field :damage_type %>
+          <%= i.label :damage_type, class: 'small-input-label' %>
+          <%= i.text_field :damage_type, value: 'P'  %>
 
           <%= f.label :rating, class: 'small-input-label' %>
-          <%= f.number_field :rating, in: 0..100, value: '0' %>
+          <%= f.number_field :rating, in: 0..100 %>
 
-          <%= i.label :armor_piercing, class: 'small-input-label', value: '0' %>
-          <%= i.number_field :armor_piercing %>
+          <%= i.label :armor_piercing, class: 'small-input-label' %>
+          <%= i.number_field :armor_piercing, value: '0' %>
 
           <%= i.label :concealability %>
           <%= i.text_field :concealability %>

@@ -345,6 +345,9 @@ h2 {
   border-radius: 10px;
 }
 
+#PickGear {
+  width: 100%;
+}
 
 h6 {
   margin-top: 15px;
@@ -361,6 +364,10 @@ h6 {
 
 .subheading {
   margin-left: 20px;
+}
+
+#option-selector-container {
+  @include span-columns(12);
 }
 
 #change {
