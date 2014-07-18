@@ -122,13 +122,43 @@ height: 4em;
   @include shift(3);
   border-radius: 15px;
   margin: 25%;
-  background-color: rgba(65,200,255,.3)
+  background-color: rgba(165,197,196,.3)
 }
 
 /*About*/
 
-#about-me{
-  color:white;
+#about-container{
+  background-color: rgba(8,24,39,.7);
+  color:black;
+  border-radius: 10px;
+}
+
+#text-container {
+  @include outer-container;
+  margin: 50px;
+}
+
+#me, #shadowrun {
+  @include span-columns(6);
+  background-color: #F0F8FF;
+  padding: 15px;
+  box-shadow: 0 2px 4px darken(#000000, 10);
+  margin-bottom: 20px;
+  border: 1px solid grey;
+}
+
+.about-headers {
+  border-bottom: 1px solid grey;
+  margin-bottom: 5px;
+}
+#social-media {
+  text-align: center;
+  padding: 3%;
+}
+
+#social-media iframe{
+  margin-right: 3%;
+  margin-left: 3%;
 }
 
 /*Login*/
