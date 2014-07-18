@@ -5,18 +5,13 @@
   <title>Homepage</title>
 </head>
 <body>
-
-<!doctype html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <title>Homepage</title>
-    </head>
-    <body>
       <div class="push"></div>
 
-      <div class = 'content'>
-    <div id="new-char"><%= link_to 'Create Character', new_character_path %></div>
+  <% if user_signed_in? %>
+    <div id="new-char">
+      <%= link_to 'Create Character', new_character_path %>
+    </div>
+  <% end %>
 
       <h2>List of Stored Characters</h2>
 
@@ -26,16 +21,12 @@
               <li><%= link_to character.name, character_path(character) %></li>
               <% end %>
             <% else %>
-              <li>
+              <p>
                 Sign up to create and maintain character information for Shadowrun 4th Edition! <br>
-                Site currently in progress.
-              </li>
+                To see an example character, click <a href='http://clubpenumbra.herokuapp.com/characters/1'>here</a>.
+              </p>
             <% end %>
           </ul>
-</div>
-    </body>
-    </html>
-
 
 </body>
 </html>
