@@ -42,6 +42,12 @@ body {
   padding: 10px;
 }
 
+#panel > h1 {
+  color: white;
+  text-align: center;
+  padding :10px;
+}
+
 .wrapper {
   min-height: 100%;
   height: auto !important;
@@ -122,6 +128,8 @@ height: 4em;
   @include shift(3);
   border-radius: 15px;
   margin: 25%;
+  margin-bottom: 10%;
+  margin-top: 13%;
   background-color: rgba(165,197,196,.3)
 }
 
@@ -135,16 +143,32 @@ height: 4em;
 
 #text-container {
   @include outer-container;
+  padding: 30px;
   margin: 50px;
 }
 
 #me, #shadowrun {
   @include span-columns(6);
+  @include omega();
   background-color: #F0F8FF;
-  padding: 15px;
-  box-shadow: 0 2px 4px darken(#000000, 10);
-  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 0 2px 4px black;
   border: 1px solid grey;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+#me {
+  margin-bottom: 20px;
+}
+
+#shadowrun {
+  margin-left: 25px;
+}
+
+#me, #shadowrun img {
+  display: block;
+  margin: auto;
 }
 
 .about-headers {
