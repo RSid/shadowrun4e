@@ -275,7 +275,8 @@ input[type="number"], #character_weapon_weapon_damage_type {
 #new-char {
   text-align: center;
   padding: 20px 0px;
-  margin-top: 10px;
+  margin-top: 7%;
+  min-width:175px;
 }
 
 #new-char a {
@@ -285,6 +286,7 @@ input[type="number"], #character_weapon_weapon_damage_type {
   border: 2px ridge #029870;
   border-radius: 15px;
   background-color: rgba(2,152,112,0.1);
+
 }
 
 .content {
