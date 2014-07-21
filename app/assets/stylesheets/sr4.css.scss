@@ -235,7 +235,7 @@ height: 4em;
 
 input[type="number"], #character_weapon_weapon_damage_type {
   display: inline;
-  width: 10%;
+  width: 63px;
 }
 
 .small-input-label {
@@ -248,8 +248,8 @@ input[type="number"], #character_weapon_weapon_damage_type {
 }
 
 #login-nav {
-  @include span-columns(6);
-  @include shift(3);
+  @include span-columns(10);
+  @include shift(1);
   text-align: center;
 }
 
@@ -263,16 +263,19 @@ input[type="number"], #character_weapon_weapon_damage_type {
   padding: 10px;
 }
 
-
-
-#dicepool {
-  width: 70px;
+#die, #modal-die {
+  color: white;
   display: inline;
   margin: 10px;
 }
 
-#die, #modal-die {
-  color: black;
+.dice-roller {
+  color: white;
+  display: inline;
+}
+
+.dice-roller form {
+  display: inline;
 }
 
 /*Character show page*/
@@ -495,8 +498,4 @@ select {
 
 #simplemodal-container h3 {
   color:#84b8d9;
-}
-
-.dice-roller {
-  width: 800px;
 }
