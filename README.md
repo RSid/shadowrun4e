@@ -23,5 +23,5 @@ framework.
 GIF of app in action:
 
 ![GIF of App in use]
-(https://s3.amazonaws.com/img0.recordit.co/gifs/lt9JUpFJ9s.gif?AWSAccessKeyId=AKIAJ6C24MUFYLHXOTTQ&Expires=1405983255&Signature=EH0TXcTQOprMSfU%2BaNagvXquPIQ%3D)
+(https://github.com/RSid/shadowrun4e/blob/master/screencast.gif)
 
