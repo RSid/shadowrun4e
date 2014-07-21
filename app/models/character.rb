@@ -35,6 +35,6 @@ class Character < ActiveRecord::Base
   validates :initiative_passes, presence: true
 
   def mutable_attributes
-    attributes.to_a.map{|x| x[0]}.reject!{|x| (x=="user_id" || x =="id" || x == "metatype_id")}
+    attributes.to_a.map{|x| x[0]}.reject!{|x| (x=="user_id" || x =="id"|| x =="gm_id" || x == "metatype_id")}
   end
 end

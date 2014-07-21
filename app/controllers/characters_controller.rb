@@ -9,7 +9,7 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
-    @attributes = @character.mutable_attributes
+    @attributes = @character.mutable_attributes.map {|word| word.capitalize.gsub('_'," ")}
     @roller = DiceRoller.new
   end
 
