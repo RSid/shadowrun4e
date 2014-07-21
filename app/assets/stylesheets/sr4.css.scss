@@ -208,6 +208,7 @@ height: 4em;
 
 #character-create-container {
   @include outer-container;
+  margin-top: 30px;
 }
 
 #new-character {
@@ -222,16 +223,23 @@ height: 4em;
   text-align: center;
 }
 
+#character_metatype_id {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .stats {
   @include span-columns(10 of 12);
   @include shift(1);
   @include omega();
+  margin-top: 50px;
 }
 
 #bio-submit {
-@include span-columns(12);
-
-@include omega();
+  @include span-columns(11);
+  @include shift(1);
+  @include omega();
+  margin-top: 25px;
 }
 
 .stats select {
@@ -245,6 +253,7 @@ height: 4em;
 #character_essence, #character_magic, #character_initiative_passes, #character_nuyen {
   display: inline;
   width: 10%;
+  margin-top: 25px;
 }
 
 #stat-explanation {
@@ -259,7 +268,7 @@ height: 4em;
 }
 
 .big-push {
-  height: 35em;
+  height: 40em;
 }
 
 /*Character layout*/
