@@ -1,11 +1,3 @@
-<div class="push"></div>
-
-  <% if user_signed_in? %>
-    <div id="new-char">
-      <%= link_to 'Create Character', new_character_path %>
-    </div>
-  <% end %>
-
   <% if current_user %>
     <h2>List of Characters</h2>
     <ul class="char-list">
@@ -20,5 +12,11 @@
       <br>
       <br>
       To see an example character, click <a href='http://clubpenumbra.herokuapp.com/characters/1'>here</a>.
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <div id="new-char">
+      <%= link_to 'Create Character', new_character_path %>
     </div>
   <% end %>
