@@ -33,8 +33,7 @@ body {
 #header > h1 > a > img {
   @include span-columns(6);
   @include shift(3);
-
-  }
+}
 
 #panel > h1 > a > img {
   display: block;
@@ -58,7 +57,7 @@ body {
 }
 
 .footer, .push {
-height: 4em;
+  height: 4em;
 }
 
 .footer {
@@ -121,7 +120,7 @@ height: 4em;
   text-align: center;
   padding: 0px;
   margin: 0px;
-  }
+}
 
 #panel {
   @include span-columns(6);
@@ -492,7 +491,7 @@ h6 {
   margin-right: 4em;
 }
 
-#char-deletion {
+#char-deletion, #welcome {
   text-align: center;
 }
 
