@@ -41,21 +41,22 @@
   <tr>
 </table>
 
-<table>
-  <tr><td>Metatype:</td><td><%= "#{@character.metatype.name}" %></td></tr>
-  <tr><td>Metatype special: </td><td><%= "#{@character.metatype.special_ability}" %></td></tr>
-</table>
-
-<table>
-  <tr><td>Physical damage track:</td><td> <%= "#{8 + (@character.body.to_f/2).ceil}" %></td></tr>
-  <tr><td>Stun damage track:</td><td> <%="#{8 + (@character.willpower.to_f/2).ceil}" %></td></tr>
-  <tr><td>Initiative:</td><td> <%= "#{@character.reaction + @character.intuition}"%></td></tr>
-  <tr><td>Initiative passes</td><td><%= "#{@character.initiative_passes}" %></td></tr>
-  <tr><td>Nuyen</td><td><%= "#{@character.nuyen}" %></tr>
-  <tr><td>Essence:</td><td><%= "#{@character.essence}" %></tr>
-  <tr><td>Magic/Resonance:</td><td> <%= "#{@character.magic}" %></tr>
-  <tr><td>Biography:</td><td><%= "#{@character.bio}" %></tr>
-</table>
+<div class = 'character-info'>
+  <ul class='sub-stats' >
+    <li><div class = 'label'>Physical damage track: </div><div class = 'label'><%= "#{8 + (@character.body.to_f/2).ceil}" %></li>
+    <li><div class = 'label'>Stun damage track: </div><%="#{8 + (@character.willpower.to_f/2).ceil}" %></li>
+    <li><div class = 'label'>Initiative: </div><%= "#{@character.reaction + @character.intuition}"%></li>
+    <li><div class = 'label'>Initiative passes: </div><%= "#{@character.initiative_passes}" %></li>
+    <li><div class = 'label'>Nuyen: </div><%= "#{@character.nuyen}" %></li>
+    <li><div class = 'label'>Essence: </div><%= "#{@character.essence}" %></li>
+    <li><div class = 'label'>Magic/Resonance:  </div><%= "#{@character.magic}" %></li>
+  </ul>
+  <ul class='sub-stats'>
+    <li><div class = 'label'>Metatype: </div><%= "#{@character.metatype.name}" %></li>
+    <li><div class = 'label'>Metatype special: </div><%= "#{@character.metatype.special_ability}" %></li>
+    <li><div class = 'label'>Biography: </div><%= "#{@character.bio}" %></li>
+  </ul>
+</div>
 
   <div id='character-stat-edit'> Edit Character's: </div>
       <%= form_for @character, html: { id: "change_character" },

@@ -33,8 +33,7 @@ body {
 #header > h1 > a > img {
   @include span-columns(6);
   @include shift(3);
-
-  }
+}
 
 #panel > h1 > a > img {
   display: block;
@@ -58,7 +57,7 @@ body {
 }
 
 .footer, .push {
-height: 4em;
+  height: 4em;
 }
 
 .footer {
@@ -121,7 +120,7 @@ height: 4em;
   text-align: center;
   padding: 0px;
   margin: 0px;
-  }
+}
 
 #panel {
   @include span-columns(6);
@@ -175,6 +174,7 @@ height: 4em;
   border-bottom: 1px solid grey;
   margin-bottom: 5px;
 }
+
 #social-media {
   text-align: center;
   padding: 3%;
@@ -323,7 +323,25 @@ input[type="number"], #character_weapon_weapon_damage_type {
 /*Character show page*/
 
 .character-info {
+  @include outer-container;
   padding: 20px;
+  border-top: 1px solid grey;
+  margin-top: 20px;
+}
+
+.sub-stats {
+  @include span-columns(5);
+  @include shift(1);
+  display: table;
+}
+
+.sub-stats li {
+  display: table-row;
+}
+
+.label {
+  display: table-cell;
+  width: 200px;
 }
 
 #character-name {
@@ -337,6 +355,9 @@ input[type="number"], #character_weapon_weapon_damage_type {
 
 .char-nav {
   text-align: center;
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
 }
 
 .char-nav li  {
@@ -352,14 +373,16 @@ input[type="number"], #character_weapon_weapon_damage_type {
 
 #barscilwe {
   width: 100%;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 20px;
 }
 
 #barscilwe tr td{
-  padding-left: 5%;
-  padding-right: 5%;
-
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  padding-top: 5px;
+  display: inline;
 }
 
 #new-char {
@@ -468,7 +491,7 @@ h6 {
   margin-right: 4em;
 }
 
-#char-deletion {
+#char-deletion, #welcome {
   text-align: center;
 }
 
