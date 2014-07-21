@@ -22,7 +22,7 @@ ajaxer = function() {
           + data.characterskill.rating + " Specialization: "
           + data.characterskill.specialization + "</li>";
         $('#skills-list').append(newSkill);
-      }
+      },
       error: function() {
         addFlashNotice('Uh oh! Your skill could not be saved');
       }
@@ -65,7 +65,7 @@ ajaxer = function() {
           + data.characterconnection.loyalty + " Connection: "
           + data.characterconnection.connection + "</li>";
         $('#connections-list').append(newConnection);
-      }
+      },
       error: function() {
         addFlashNotice('Uh oh! Your connection could not be saved');
       }
@@ -92,7 +92,7 @@ ajaxer = function() {
           // + " Legality: " + data.weapon.legality
           + "</li>";
         $('#weapons').append(newWeapon);
-      }
+      },
       error: function() {
         addFlashNotice('Uh oh! Your weapon could not be saved');
       }
@@ -114,7 +114,7 @@ ajaxer = function() {
           + data.tool.description
           + "</li>";
         $('#general-gear').append(newTool);
-      }
+      },
       error: function() {
         addFlashNotice('Uh oh! Your gear could not be saved');
       }

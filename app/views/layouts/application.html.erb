@@ -19,6 +19,14 @@
             <li><%= link_to 'Sign Up', new_user_registration_path, method: :get %></li>
           <% end %>
           <li><%= link_to 'About', about_path %></li>
+          <li>
+            <div class="dice-roller">
+            <form>
+            Roll dice: <input type="number" class="dice-pool" name="dice_pool" value = "0" min = '0'>
+            <%= content_tag(:i,nil,class: "fa fa-cube", id: 'die') %>
+          </form>
+        </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -30,18 +38,18 @@
       <p class="alert"><%= alert %></p>
     </div>
 
-    <div class = "content">
-      <%= yield %>
+    <div id="basic-modal-content">
+
     </div>
 
-  <ul id = 'quick-actions'>
-    <li id= 'roll-dice'>Roll Dice</li>
-    <li>
-      <input type="number" id="dicepool" value = "0" min = '0'>
-      <%= content_tag(:i,nil,class: "fa fa-cube", id: 'die') %>
-    </li>
-    <div class= 'result'> </div>
-  </ul>
+      <div style='display:none'>
+        <%= image_tag('x.png') %>
+		  </div>
+
+
+    <div class='content'>
+      <%= yield %>
+    </div>
 
     <div class="push"></div>
 

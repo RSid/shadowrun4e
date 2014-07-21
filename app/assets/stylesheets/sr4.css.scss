@@ -263,17 +263,7 @@ input[type="number"], #character_weapon_weapon_damage_type {
   padding: 10px;
 }
 
-#quick-actions {
-  display: block;
-  border: solid 1px grey;
-  border-radius: 15px;
-  position: relative;
-  bottom: 10%;
-  margin-left: 82%;
-  margin-right: 2%;
-  margin-bottom: 2%;
-  padding: 10px;
-}
+
 
 #dicepool {
   width: 70px;
@@ -281,7 +271,7 @@ input[type="number"], #character_weapon_weapon_damage_type {
   margin: 10px;
 }
 
-#die {
+#die, #modal-die {
   color: black;
 }
 
@@ -329,7 +319,7 @@ input[type="number"], #character_weapon_weapon_damage_type {
 #new-char {
   text-align: center;
   padding: 20px 0px;
-  margin-top: 7%;
+  /* margin-top: 7%; */
   min-width:175px;
 }
 
@@ -340,7 +330,7 @@ input[type="number"], #character_weapon_weapon_damage_type {
   border: 2px ridge #029870;
   border-radius: 15px;
   background-color: rgba(2,152,112,0.1);
-
+  margin-top: 100px;
 }
 
 .content {
@@ -452,3 +442,58 @@ select {
   border-color: black;
   font: FrizQuadrata;
 }
+
+/* modal */
+
+#results {display:none;}
+
+/* Overlay */
+#simplemodal-overlay {background-color:#000;}
+
+/* Container */
+#simplemodal-container {
+  height:250px;
+  width:530px;
+  color:#bbb;
+  background-color:#333;
+  border:4px solid #444;
+  padding:12px;
+  }
+
+#simplemodal-container .simplemodal-data {
+  padding:8px;
+  }
+
+#simplemodal-container code {
+  background:#141414;
+  border-left:3px solid #65B43D;
+  color:#bbb;
+  display:block;
+  font-size:12px;
+  margin-bottom:12px;
+  padding:4px 6px 6px;
+  }
+
+#simplemodal-container a {
+  color:#ddd;
+  }
+
+#simplemodal-container a.modalCloseImg {
+  background: image-url('x.png') no-repeat;
+  width:25px;
+  height:29px;
+  display:inline;
+  z-index:3200;
+  position:absolute;
+  top:-15px;
+  right:-16px;
+  cursor:pointer;
+  }
+
+#simplemodal-container h3 {
+  color:#84b8d9;
+  }
+
+  .dice-roller {
+    width: 800px;
+  }
