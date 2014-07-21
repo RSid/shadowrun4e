@@ -9,21 +9,18 @@
     <h2>Create a new character</h2>
       <div id 'character-create-container'>
         <%= form_for @character do |f| %>
-          <%= f.label :name %>
-          <%= f.text_field :name %>
+          <div id = "name-metatype-inputs">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
 
-          <%= f.label :metatype %>
-          <%= f.collection_select(:metatype_id, Metatype.all, :id, :name) %>
-
-            <div class = 'mini-push'>
-            </div>
+            <%= f.label :metatype %>
+            <%= f.collection_select(:metatype_id, Metatype.all, :id, :name) %>
+          </div>
 
           <div id ='stat-explanation'>Remember, standard attributes range between
           1 and 6, but various metatypes/augmentations can let some attributes
            get as high as 15.</div>
 
-            <div class = 'mini-push'>
-            </div>
           <div class = 'stats'>
             <%= f.label :body, class: "creation_label" %>
             <%= f.select :body, (1..15) %>
@@ -52,8 +49,6 @@
             <%= f.label :edge %>
             <%= f.select :edge, (1..15) %>
           </div>
-          <div class = 'mini-push'>
-          </div>
 
           <div class = 'stats'>
             <%= f.label :essence %>
@@ -69,14 +64,16 @@
             <%= f.number_field :nuyen, value: 0 %>
           </div>
 
-            <div class = 'mini-push'>
-            </div>
-          <%= f.label :bio %>
-          <%= f.text_area :bio %>
+          <div id ='bio-submit'>
+            <%= f.label :bio %>
+            <%= f.text_area :bio %>
 
-          <%= f.submit 'Create' %>
+            <%= f.submit 'Create' %>
+          </div>
         <% end %>
       </div>
+    </div>
+    <div class = 'big-push'>
     </div>
 
 </body>

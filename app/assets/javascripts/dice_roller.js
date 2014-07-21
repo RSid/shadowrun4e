@@ -1,50 +1,92 @@
-var roll;
-roll = function() {
-$('#die').click(function() {
-    var dicepoolValue = $('#dicepool').val();
+function DiceRoller(element) {
+  this.$element = $(element);
+  this.$form = this.$element.find('form');
+  this.$dicePool = this.$element.find('.dice-pool').val();
+}
 
-    if(dicepoolValue > 0 && dicepoolValue < 60) {
-      var results = [];
-      for (i = 0; i < dicepoolValue; i++) {
-        results.push(Math.floor(Math.random() * (6 - 1 + 1)) + 1);
-      }
+DiceRoller.prototype = {
+  roll: function(dicePool) {
 
-      var successes = [];
-      var glitchThreat = [];
+    if (dicePool < 0 || dicePool > 60) { return; }
 
-      for(i=0; i < results.length; i++) {
-        if(results[i] >= 4) {
-          successes.push(results[i]);
-        } else if (results[i]===1) {
-          glitchThreat.push(results[i]);
-        }
-      }
+    var results = this.getResults(dicePool).join();
 
-      var glitch = "";
+    var glitchThreatCount = $.grep(results, function(result) {
+      return result < 2;
+    }).length;
 
-      if(glitchThreat.length >= (dicepoolValue/2)) {
-        if(successes.length === 0) {
-          glitch = " Critical glitch!";
-        } else {
-          glitch = " Glitch!";
-        }
-      }
+    var successCount = $.grep(results, function(result) {
+      return result >= 4;
+    }).length;
 
-      var returned = results.join();
+    var glitch = this.checkForGlitch(dicePool, successCount, glitchThreatCount);
 
-      var result = $("<li>");
-      result.html("Results: " + returned + " Successes: " +
-        successes.length + glitch).css("font-weight", "bold");
-      $('.result').append(result);
+    return 'Results: ' + results + ' Successes: ' + successCount + glitch;
 
+  },
 
-    } else if (dicepoolValue <=0){
-      alert("Please add some dice to your dice pool!");
-    } else {
-      alert("Pretty sure you don't have that big a dice pool, champ.");
+  rollFromForm: function(event) {
+    event.preventDefault();
+    var dicePool = this.$dicePool.val();
+    this.roll(dicePool);
+  },
+
+  getResults: function(dicePool) {
+    var results = [];
+
+    for (i = 0; i < dicePool; i++) {
+      results.push(Math.floor(Math.random() * (6 - 1 + 1)) + 1);
     }
-  });
+
+    return results;
+  },
+
+  checkForGlitch: function(dicePool, successCount, glitchThreatCount) {
+    var glitch;
+
+    if (glitchThreatCount > 0 && glitchThreatCount >= (Math.round(dicePool/2))) {
+
+      if (successCount === 0) {
+        glitch = " Critical glitch!";
+      } else {
+        glitch = " Glitch!";
+      }
+    } else {
+      glitch = ""
+    }
+
+    return glitch;
+  }
 };
 
-$( document ).ready(roll);
-$(document).on('page:load', roll);
+var rollDice;
+var rollDice = function() {
+
+  $('.dice-roller').on('click','#die', function() {
+
+    var diceRoller = new DiceRoller('.dice-roller');
+
+  var firstResults = diceRoller.roll(diceRoller.$dicePool);
+
+  var roller = "<div class='modal-dice-roller'><form>Roll dice: <input type='number' class='dice-pool' value = '0'" +
+    "min = '0'><i class='fa fa-cube' id='modal-die'></i></form></div><br>";
+
+  $.modal(roller + "<ul class = results><li>" + firstResults
+    + "</li></ul>");
+
+    $('.modal-dice-roller').on('click','#modal-die', function() {
+
+      var modalDiceRoller = new DiceRoller('.modal-dice-roller');
+      var ongoingResults = modalDiceRoller.roll(modalDiceRoller.$dicePool);
+      $('.results').prepend("<li>" + ongoingResults+"</li>")
+
+    });
+
+  });
+
+}
+
+
+
+$( document ).ready(rollDice);
+$(document).on('page:load', rollDice);

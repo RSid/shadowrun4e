@@ -10,6 +10,7 @@
   <div class='wrapper' id = 'background'>
     <div id = "panel">
       <h1><%= link_to image_tag('logo.png'), characters_path %></h1>
+      <h1>Welcome To Club Penumbra</h1>
       <div id = "login-nav-container">
         <ul id = "login-nav">
           <% if user_signed_in? %>
@@ -22,10 +23,6 @@
         </ul>
       </div>
     </div>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
 
     <%= yield %>
 
