@@ -325,6 +325,8 @@ input[type="number"], #character_weapon_weapon_damage_type {
 .character-info {
   @include outer-container;
   padding: 20px;
+  border-top: 1px solid grey;
+  margin-top: 20px;
 }
 
 .sub-stats {
@@ -352,6 +354,7 @@ input[type="number"], #character_weapon_weapon_damage_type {
 
 .char-nav {
   text-align: center;
+  border-bottom: 1px solid grey;
 }
 
 .char-nav li  {
@@ -367,14 +370,17 @@ input[type="number"], #character_weapon_weapon_damage_type {
 
 #barscilwe {
   width: 100%;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
+/*   border-top: 1px solid grey; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 20px;
 }
 
 #barscilwe tr td{
-  padding-left: 5%;
-  padding-right: 5%;
-
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  padding-top: 5px;
+  display: inline;
 }
 
 #new-char {
