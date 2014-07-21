@@ -15,14 +15,13 @@ Club Penumbra is a character-keeper app for the table-top rpg Shadowrun 4th Edit
 
 It allows users to keep track of their characters with an intuitive interface, while still accurately modeling the characters' skills, qualities, connections, and all their different kinds of gear. It calculates derived stats for the user and has an in-app dice roller that counts successes and notes glitches for you.
 
-Club Penumbra built in Rails 4 on a Postgresql database that looks like this: 
+Club Penumbra was built in Rails 4, on a Postgresql database that is structured like this: 
 
 ![Image of ER Diagram]
 (https://github.com/RSid/shadowrun4e/blob/master/btshadowrun.jpg)
 
 On the front end, it makes use of JQuery and AJAX to streamline the user's experience and uses the Bourbon/Neat/Bitters
 framework.
-
 
 GIF of app in action:
 
