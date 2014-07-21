@@ -12,13 +12,12 @@ DiceRoller.prototype = {
     var results = this.getResults(dicePool).join();
 
     var glitchThreatCount = $.grep(results, function(result) {
-      return result === 1;
+      return result < 2;
     }).length;
 
     var successCount = $.grep(results, function(result) {
       return result >= 4;
     }).length;
-
 
     var glitch = this.checkForGlitch(dicePool, successCount, glitchThreatCount);
 
@@ -79,7 +78,7 @@ var rollDice = function() {
 
       var modalDiceRoller = new DiceRoller('.modal-dice-roller');
       var ongoingResults = modalDiceRoller.roll(modalDiceRoller.$dicePool);
-      $('.results').append("<li>" + ongoingResults+"</li>")
+      $('.results').prepend("<li>" + ongoingResults+"</li>")
 
     });
 
