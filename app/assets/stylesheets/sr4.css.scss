@@ -206,6 +206,34 @@ height: 4em;
 
 /*Character create*/
 
+#character-create-container {
+  @include outer-container;
+}
+
+#new-character {
+  @include span-columns(12);
+  @include omega();
+}
+
+#name-metatype-inputs {
+  @include span-columns(6 of 12);
+  @include shift(3);
+  @include omega();
+  text-align: center;
+}
+
+.stats {
+  @include span-columns(10 of 12);
+  @include shift(1);
+  @include omega();
+}
+
+#bio-submit {
+@include span-columns(12);
+
+@include omega();
+}
+
 .stats select {
   display: inline;
 }
@@ -225,10 +253,13 @@ height: 4em;
   border-bottom: 1px solid grey;
   border-top: 1px solid grey;
   text-align: center;
+  @include span-columns(10 of 12);
+  @include shift(1);
+  @include omega();
 }
 
-.mini-push {
-  height: 2em;
+.big-push {
+  height: 35em;
 }
 
 /*Character layout*/
@@ -272,6 +303,8 @@ input[type="number"], #character_weapon_weapon_damage_type {
 .dice-roller {
   color: white;
   display: inline;
+  padding-left: 20px;
+  border-left: 1px solid white;
 }
 
 .dice-roller form {
@@ -322,7 +355,6 @@ input[type="number"], #character_weapon_weapon_damage_type {
 #new-char {
   text-align: center;
   padding: 20px 0px;
-  /* margin-top: 7%; */
   min-width:175px;
 }
 
