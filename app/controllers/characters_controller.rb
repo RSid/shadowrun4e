@@ -9,7 +9,8 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
-    @attributes = @character.mutable_attributes.map { |word| word.capitalize.gsub('_'," ") }
+    @attributes = {}
+    @character.mutable_attributes.each { |word| @attributes[(word.capitalize.gsub('_'," "))]=word  }
     @roller = DiceRoller.new
   end
 
@@ -29,6 +30,7 @@ class CharactersController < ApplicationController
   end
 
   def update
+    binding.pry
     @character = Character.find(params[:id])
     attributes_changing = params['character'].keys
     attributes_params = {}

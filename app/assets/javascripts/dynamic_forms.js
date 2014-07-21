@@ -43,9 +43,10 @@ statChangeForm = function() {
 
     $('#change').change(function() {
       var attributeValue = $('#change option:selected').val();
+      var attributeShow = $('#change option:selected').text();
 
       var html = "<label for='character_" + attributeValue +  "' class = 'new-form-field'>"
-      + attributeValue +"</label>" + "<input class = 'new-form-field' id='character_" + attributeValue
+      + attributeShow +"</label>" + "<input class = 'new-form-field' id='character_" + attributeValue
       + "' " + "name='character["
         + attributeValue + "] type='text'>";
 
