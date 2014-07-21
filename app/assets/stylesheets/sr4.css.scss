@@ -323,7 +323,22 @@ input[type="number"], #character_weapon_weapon_damage_type {
 /*Character show page*/
 
 .character-info {
+  @include outer-container;
   padding: 20px;
+}
+
+.sub-stats {
+  @include span-columns(6);
+  display: table;
+}
+
+.sub-stats li {
+  display: table-row;
+}
+
+.label {
+  display: table-cell;
+  width: 200px;
 }
 
 #character-name {
