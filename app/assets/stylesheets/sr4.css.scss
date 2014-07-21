@@ -330,7 +330,8 @@ input[type="number"], #character_weapon_weapon_damage_type {
 }
 
 .sub-stats {
-  @include span-columns(6);
+  @include span-columns(5);
+  @include shift(1);
   display: table;
 }
 
@@ -372,7 +373,6 @@ input[type="number"], #character_weapon_weapon_damage_type {
 
 #barscilwe {
   width: 100%;
-/*   border-top: 1px solid grey; */
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 20px;
