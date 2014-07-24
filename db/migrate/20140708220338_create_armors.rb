@@ -1,4 +1,4 @@
-class CreateArmor < ActiveRecord::Migration
+class CreateArmors < ActiveRecord::Migration
   def change
     create_table :armors do |table|
       table.string :name, null: false

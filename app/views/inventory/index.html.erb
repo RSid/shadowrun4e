@@ -138,6 +138,26 @@
       <% end %>
     </div>
 
+    <div id = "armor-input">
+      <%= form_for [@character, @character_armor] do |f| %>
+        <%= f.fields_for @armor do |i| %>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
+
+          <%= i.label :description %>
+          <%= i.text_field :description %>
+
+          <%= i.label :ballistic %>
+          <%= i.text_field :ballistic %>
+
+          <%= i.label :impact %>
+          <%= i.text_field :impact %>
+        <% end %>
+
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </div>
+
   <div id = 'under-constructon'>
     <p><em>Still under construction.</em></p>
   </div>

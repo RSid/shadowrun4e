@@ -1,4 +1,4 @@
-class CharacterArmorController < ApplicationController
+class CharacterArmorsController < ApplicationController
   include EmptyFormObjects
   include CreatorHelper
   include DestroyerHelper
