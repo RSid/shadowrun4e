@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(version: 20140708220400) do
     t.string "name",        null: false
     t.string "description"
     t.string "ballistic"
-    t.string "email"
+    t.string "impact"
+    t.string "legality"
   end
 
   create_table "character_armors", force: true do |t|

@@ -23,6 +23,10 @@ Rails.application.routes.draw do
 
     resources :character_tools, only: [:new, :create, :destroy, :index]
 
+    resources :armor, only: [:new, :create]
+
+    resources :character_armor, only: [:new, :create, :destroy, :index]
+
     resources :weapons, only: [:new, :create]
 
     resources :character_weapons, only: [:new, :create, :destroy, :index]
