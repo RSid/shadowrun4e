@@ -16,6 +16,9 @@ class Character < ActiveRecord::Base
   has_many :character_tools, dependent: :destroy
   has_many :tools, through: :character_tools
 
+  has_many :character_armor, dependent: :destroy
+  has_many :armor, through: :character_armor
+
   belongs_to :metatype
 
   validates :name, presence: true
