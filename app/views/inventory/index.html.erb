@@ -91,7 +91,7 @@
       </select>
     </form>
 
-    <div id = "weapons-input">
+    <div class = "gear-input" id = "weapons-input">
       <%= form_for [@character, @character_weapon] do |f| %>
 
         <%= f.fields_for @weapon do |i| %>
@@ -139,7 +139,7 @@
       <% end %>
     </div>
 
-    <div id = "general-gear-input">
+    <div class = "gear-input" id = "general-gear-input">
       <%= form_for [@character, @character_tool] do |f| %>
         <%= f.fields_for @tool do |i| %>
           <%= i.label :name %>
@@ -153,7 +153,7 @@
       <% end %>
     </div>
 
-    <div id = "armor-input">
+    <div class = "gear-input" id = "armor-input">
       <%= form_for [@character, @character_armor] do |f| %>
         <%= f.fields_for @armor do |i| %>
           <%= i.label :name %>
