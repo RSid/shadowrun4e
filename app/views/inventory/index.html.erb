@@ -50,6 +50,21 @@
         </ul>
       </div>
 
+    <h6><a name = "armor">&nbsp;Armor and Clothes: </h6>
+      <div class = 'subheading'>
+        <ul id = 'armor'>
+          <% if @character_inventory.character_armors[0] != nil %>
+            <% @character_inventory.character_armors.each do |characterarmor| %>
+              <li id = <%= characterarmor.id %>>
+                <%= "#{characterarmor.armor.name}, #{characterarmor.armor.description}" %>
+                <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_armor_path(@character,
+                characterarmor), id: characterarmor.id.to_s, class: 'deleter') %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+
     <h6><a name = "general-gear">&nbsp;General: </h6>
       <div class = 'subheading'>
         <ul id = 'general-gear'>

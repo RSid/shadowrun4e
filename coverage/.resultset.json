@@ -867,6 +867,10 @@
         null,
         1,
         null,
+        1,
+        null,
+        1,
+        null,
         null,
         null,
         null,
@@ -963,7 +967,7 @@
         1,
         null,
         1,
-        3322,
+        3268,
         null,
         null,
         null,
@@ -1708,6 +1712,9 @@
         16,
         16,
         null,
+        16,
+        16,
+        null,
         null
       ],
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/character.rb": [
@@ -1721,6 +1728,9 @@
         1,
         1,
         null,
+        1,
+        null,
+        1,
         1,
         null,
         1,
@@ -1912,6 +1922,10 @@
         1,
         15,
         null,
+        null,
+        1,
+        0,
+        null,
         null
       ],
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/skill.rb": [
@@ -1994,6 +2008,26 @@
         null
       ],
       "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/character_weapon.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/armor.rb": [
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/alla/Dropbox/launchacademy/shadowrun_4e/app/models/character_armor.rb": [
         1,
         1,
         null,
@@ -2253,6 +2287,6 @@
         null
       ]
     },
-    "timestamp": 1405976273
+    "timestamp": 1406397468
   }
 }
