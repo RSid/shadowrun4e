@@ -31,7 +31,8 @@ feature 'user deletes a inventory objects', %Q(
 
     tool = FactoryGirl.create(:tool)
 
-    character_tool = FactoryGirl.create(:character_tool, character: character, tool: tool)
+    character_tool = FactoryGirl.create(:character_tool, character: character,
+      tool: tool)
 
     visit character_inventory_index_path(character)
 
