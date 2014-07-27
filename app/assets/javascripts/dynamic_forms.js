@@ -16,23 +16,34 @@ var gear;
 gear = function() {
     $('#weapons-input').hide();
     $('#general-gear-input').hide();
+    $('#armor-input').hide();
 
     $('#PickGear').change(function() {
 
       var optionValue = $('#PickGear option:selected').val();
       if ( optionValue==1 ) {
         $('#general-gear-input').hide();
-        $('#weapons-input').show();
+        $('#armor-input').hide();
 
+        $('#weapons-input').show();
+      } else if ( optionValue==2 ){
+          $('#weapons-input').hide();
+          $('#general-gear-input').hide();
+
+          $('#armor-input').show();
       } else if ( optionValue==4 ){
           $('#weapons-input').hide();
+          $('#armor-input').hide();
+
           $('#general-gear-input').show();
       } else if ( optionValue==0 ){
           $('#weapons-input').hide();
           $('#general-gear-input').hide();
+          $('#armor-input').hide();
       } else {
-        $('#weapons-input').hide();
-        $('#general-gear-input').hide();
+          $('#weapons-input').hide();
+          $('#general-gear-input').hide();
+          $('#armor-input').hide();
       }
   });
 };

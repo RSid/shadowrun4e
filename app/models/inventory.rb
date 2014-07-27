@@ -12,4 +12,8 @@ class Inventory
   def character_weapons
     @character.character_weapons
   end
+
+  def character_armors
+    @character.character_armors
+  end
 end

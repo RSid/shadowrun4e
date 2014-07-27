@@ -50,6 +50,21 @@
         </ul>
       </div>
 
+    <h6><a name = "armor">&nbsp;Armor and Clothes: </h6>
+      <div class = 'subheading'>
+        <ul id = 'armor'>
+          <% if @character_inventory.character_armors[0] != nil %>
+            <% @character_inventory.character_armors.each do |characterarmor| %>
+              <li id = <%= characterarmor.id %>>
+                <%= "#{characterarmor.armor.name}, #{characterarmor.armor.description}" %>
+                <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_armor_path(@character,
+                characterarmor), id: characterarmor.id.to_s, class: 'deleter') %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+
     <h6><a name = "general-gear">&nbsp;General: </h6>
       <div class = 'subheading'>
         <ul id = 'general-gear'>
@@ -70,13 +85,13 @@
       <select id = "PickGear">
         <option value = '0'> Gear type </option>
         <option value = '1'> Weapons </option>
-        <option value = '2'> Armour </option>
+        <option value = '2'> Armor </option>
         <option value = '3'> Vehicles </option>
         <option value = '4'> General </option>
       </select>
     </form>
 
-    <div id = "weapons-input">
+    <div class = "gear-input" id = "weapons-input">
       <%= form_for [@character, @character_weapon] do |f| %>
 
         <%= f.fields_for @weapon do |i| %>
@@ -124,7 +139,7 @@
       <% end %>
     </div>
 
-    <div id = "general-gear-input">
+    <div class = "gear-input" id = "general-gear-input">
       <%= form_for [@character, @character_tool] do |f| %>
         <%= f.fields_for @tool do |i| %>
           <%= i.label :name %>
@@ -132,6 +147,26 @@
 
           <%= i.label :description %>
           <%= i.text_field :description %>
+        <% end %>
+
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </div>
+
+    <div class = "gear-input" id = "armor-input">
+      <%= form_for [@character, @character_armor] do |f| %>
+        <%= f.fields_for @armor do |i| %>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
+
+          <%= i.label :description %>
+          <%= i.text_field :description %>
+
+          <%= i.label :ballistic %>
+          <%= i.text_field :ballistic %>
+
+          <%= i.label :impact %>
+          <%= i.text_field :impact %>
         <% end %>
 
         <%= f.submit 'Submit' %>

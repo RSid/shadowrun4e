@@ -121,6 +121,28 @@ ajaxer = function() {
     });
   });
 
+  $('#new_character_armor').on('submit', function(event) {
+    event.preventDefault();
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function(data) {
+        var newArmor = "<li>"
+          + data.armor.name +", "
+          + data.armor.description
+          + "</li>";
+        $('#armor').append(newArmor);
+      },
+      error: function() {
+        addFlashNotice('Uh oh! Your armor could not be saved');
+      }
+    });
+  });
+
   $('.deleter').click(function(event) {
     event.preventDefault();
 
