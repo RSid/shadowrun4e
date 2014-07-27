@@ -19,6 +19,9 @@ class Character < ActiveRecord::Base
   has_many :character_armors, dependent: :destroy
   has_many :armors, through: :character_armors
 
+  has_many :character_crafts, dependent: :destroy
+  has_many :crafts, through: :character_crafts
+
   belongs_to :metatype
 
   validates :name, presence: true
