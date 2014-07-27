@@ -30,6 +30,10 @@ Rails.application.routes.draw do
     resources :weapons, only: [:new, :create]
 
     resources :character_weapons, only: [:new, :create, :destroy, :index]
+
+    resources :crafts, only: [:new, :create]
+
+    resources :character_crafts, only: [:new, :create, :destroy, :index]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
