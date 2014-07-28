@@ -26,5 +26,8 @@ module EmptyFormObjects
 
     @armor = Armor.new
     @character_armor = CharacterArmor.new
+
+    @craft = Craft.new
+    @character_craft = CharacterCraft.new
   end
 end
