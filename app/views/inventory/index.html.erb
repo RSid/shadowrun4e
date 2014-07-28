@@ -65,6 +65,21 @@
         </ul>
       </div>
 
+    <h6><a name = "crafts">&nbsp;Vehicles and Drones: </h6>
+      <div class = 'subheading'>
+        <ul id = 'crafts'>
+          <% if @character_inventory.character_crafts[0] != nil %>
+            <% @character_inventory.character_crafts.each do |charactercraft| %>
+              <li id = <%= charactercraft.id %>>
+                <%= "#{charactercraft.craft.name}, #{charactercraft.craft.description}" %>
+                <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_craft_path(@character,
+                charactercraft), id: charactercraft.id.to_s, class: 'deleter') %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+    </div>
+
     <h6><a name = "general-gear">&nbsp;General: </h6>
       <div class = 'subheading'>
         <ul id = 'general-gear'>
@@ -86,7 +101,7 @@
         <option value = '0'> Gear type </option>
         <option value = '1'> Weapons </option>
         <option value = '2'> Armor </option>
-        <option value = '3'> Vehicles </option>
+        <option value = '3'> Vehicles and drones </option>
         <option value = '4'> General </option>
       </select>
     </form>
@@ -167,6 +182,41 @@
 
           <%= i.label :impact %>
           <%= i.text_field :impact %>
+        <% end %>
+
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </div>
+
+    <div class = "gear-input" id = "crafts-input">
+      <%= form_for [@character, @character_craft] do |f| %>
+        <%= f.fields_for @craft do |i| %>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
+
+          <%= i.label :description %>
+          <%= i.text_field :description %>
+
+          <%= i.label :handling %>
+          <%= i.text_field :handling %>
+
+          <%= i.label :acceleration %>
+          <%= i.text_field :acceleration %>
+
+          <%= i.label :pilot %>
+          <%= i.number_field :pilot, in: 0..100 %>
+
+          <%= i.label :speed %>
+          <%= i.number_field :speed, in: 0..100 %>
+
+          <%= i.label :body %>
+          <%= i.number_field :body, in: 0..100 %>
+
+          <%= i.label :armor %>
+          <%= i.number_field :armor, in: 0..100 %>
+
+          <%= i.label :sensor %>
+          <%= i.number_field :sensor, in: 0..100 %>
         <% end %>
 
         <%= f.submit 'Submit' %>
