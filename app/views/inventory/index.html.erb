@@ -56,7 +56,7 @@
           <% if @character_inventory.character_armors[0] != nil %>
             <% @character_inventory.character_armors.each do |characterarmor| %>
               <li id = <%= characterarmor.id %>>
-                <%= "#{characterarmor.armor.name}, #{characterarmor.armor.description}" %>
+                <%= "#{characterarmor.armor.name}, #{characterarmor.armor.description} #{characterarmor.armor.impact}/#{characterarmor.armor.ballistic}" %>
                 <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_armor_path(@character,
                 characterarmor), id: characterarmor.id.to_s, class: 'deleter') %>
               </li>
