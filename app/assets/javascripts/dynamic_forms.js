@@ -17,6 +17,7 @@ gear = function() {
     $('#weapons-input').hide();
     $('#general-gear-input').hide();
     $('#armor-input').hide();
+    $('#crafts-input').hide();
 
     $('#PickGear').change(function() {
 
@@ -24,26 +25,37 @@ gear = function() {
       if ( optionValue==1 ) {
         $('#general-gear-input').hide();
         $('#armor-input').hide();
+        $('#crafts-input').hide();
 
         $('#weapons-input').show();
       } else if ( optionValue==2 ){
           $('#weapons-input').hide();
           $('#general-gear-input').hide();
+          $('#crafts-input').hide();
 
           $('#armor-input').show();
+      } else if ( optionValue==3 ){
+          $('#weapons-input').hide();
+          $('#general-gear-input').hide();
+          $('#armor-input').hide();
+
+          $('#crafts-input').show();
       } else if ( optionValue==4 ){
           $('#weapons-input').hide();
           $('#armor-input').hide();
+          $('#crafts-input').hide();
 
           $('#general-gear-input').show();
       } else if ( optionValue==0 ){
           $('#weapons-input').hide();
           $('#general-gear-input').hide();
           $('#armor-input').hide();
+          $('#crafts-input').hide();
       } else {
           $('#weapons-input').hide();
           $('#general-gear-input').hide();
           $('#armor-input').hide();
+          $('#crafts-input').hide();
       }
   });
 };
