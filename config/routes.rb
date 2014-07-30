@@ -34,6 +34,10 @@ Rails.application.routes.draw do
     resources :crafts, only: [:new, :create]
 
     resources :character_crafts, only: [:new, :create, :destroy, :index]
+
+    resources :cyberbiowares, only: [:new, :create]
+
+    resources :character_cyberbiowares, only: [:new, :create, :destroy, :index]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
