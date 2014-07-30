@@ -18,9 +18,9 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function(data) {
-        var newSkill = "<li>"+ data.skill.name +" Rating: "
-          + data.characterskill.rating + " Specialization: "
-          + data.characterskill.specialization + "</li>";
+        var newSkill = "<li>"+ data.skill.name +" Rating: " +
+          data.characterskill.rating + " Specialization: " +
+          data.characterskill.specialization + "</li>";
         $('#skills-list').append(newSkill);
       },
       error: function() {
@@ -39,9 +39,9 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function(data) {
-        var newQuality = "<li>"+ data.quality.name +": "
-          + data.quality.description + " Rating: "
-          + data.characterquality.affect_rating + "</li>";
+        var newQuality = "<li>"+ data.quality.name +": " +
+          data.quality.description + " Rating: " +
+          data.characterquality.affect_rating + "</li>";
         $('#qualities-list').append(newQuality);
       },
       error: function() {
@@ -60,10 +60,10 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function(data) {
-        var newConnection = "<li>"+ data.characterconnection.name +": "
-          + data.characterconnection.description + " Loyalty: "
-          + data.characterconnection.loyalty + " Connection: "
-          + data.characterconnection.connection + "</li>";
+        var newConnection = "<li>"+ data.characterconnection.name +": " +
+          data.characterconnection.description + " Loyalty: " +
+          data.characterconnection.loyalty + " Connection: " +
+          data.characterconnection.connection + "</li>";
         $('#connections-list').append(newConnection);
       },
       error: function() {
@@ -82,15 +82,15 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function(data) {
-        var newWeapon = "<li> New weapon quick-info: <br> &nbsp;&nbsp;"
-          + data.weapon.name +": "
-          + data.weapon.description + " Damage: "
-          + data.weapon.damage + data.weapon.damage_type
-          // + " Armor piercing: " + data.characterweapon.armor_piercing
-          + " Rating: " + data.characterweapon.rating
-          // + " Concealability modifier: " + data.characterweapon.concealability
-          // + " Legality: " + data.weapon.legality
-          + "</li>";
+        var newWeapon = "<li> New weapon quick-info: <br> &nbsp;&nbsp;" +
+          data.weapon.name +": " +
+          data.weapon.description + " Damage: " +
+          data.weapon.damage + data.weapon.damage_type +
+          // " Armor piercing: " + data.characterweapon.armor_piercing +
+          " Rating: " + data.characterweapon.rating +
+          // " Concealability modifier: " + data.characterweapon.concealability +
+          // " Legality: " + data.weapon.legality +
+          "</li>";
         $('#weapons').append(newWeapon);
       },
       error: function() {
@@ -109,10 +109,10 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function(data) {
-        var newTool = "<li>"
-          + data.tool.name +", "
-          + data.tool.description
-          + "</li>";
+        var newTool = "<li>" +
+          data.tool.name +", " +
+          data.tool.description +
+          "</li>";
         $('#general-gear').append(newTool);
       },
       error: function() {
@@ -132,11 +132,11 @@ ajaxer = function() {
       data: dataSubmit,
       success: function(data) {
         var newArmor = "<li>"
-          + data.armor.name +", "
-          + data.armor.description + " "
-          + data.armor.ballistic + "/"
-          + data.armor.impact
-          + "</li>";
+          data.armor.name +", " +
+          data.armor.description + " " +
+          data.armor.ballistic + "/" +
+          data.armor.impact +
+          "</li>";
         $('#armor').append(newArmor);
       },
       error: function() {
@@ -155,17 +155,17 @@ ajaxer = function() {
       dataType: "json",
       data: dataSubmit,
       success: function(data) {
-        var newCraft = "<li>"
-          + data.craft.name +", "
-          + data.craft.description
-          + "Handling: "+ data.craft.handling + " "
-          + "Acceleration: "+ data.craft.acceleration + " "
-          + "Pilot: "+ data.craft.pilot + " "
-          + "Speed: "+ data.craft.speed + " "
-          + "Body: "+ data.craft.body + " "
-          + "Armor: "+ data.craft.armor + " "
-          + "Sensor: "+ data.craft.sensor + " "
-          + "</li>";
+        var newCraft = "<li>" +
+          data.craft.name +", " +
+          data.craft.description +
+          "Handling: "+ data.craft.handling + " " +
+          "Acceleration: "+ data.craft.acceleration + " " +
+          "Pilot: "+ data.craft.pilot + " " +
+          "Speed: "+ data.craft.speed + " " +
+          "Body: "+ data.craft.body + " " +
+          "Armor: "+ data.craft.armor + " " +
+          "Sensor: "+ data.craft.sensor + " " +
+          "</li>";
         $('#crafts').append(newCraft);
       },
       error: function() {
