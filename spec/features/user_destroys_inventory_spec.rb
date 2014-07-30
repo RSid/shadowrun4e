@@ -112,4 +112,40 @@ feature 'user deletes a inventory objects', %Q(
 
     # expect(page).to have_content 'You are not logged in. You must be logged in to edit a character.'
   end
+
+  scenario 'user deletes a craft', :js => true do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+    metatype = FactoryGirl.create(:metatype)
+    character = FactoryGirl.create(:character, metatype: metatype, user: user)
+
+    craft = FactoryGirl.create(:craft)
+
+    character_craft = FactoryGirl.create(:character_craft, character: character,
+      craft: craft)
+
+    visit character_inventory_index_path(character)
+
+    click_on (character_craft.id.to_s)
+    expect(page).to_not have_content craft.name
+  end
+
+  scenario 'user tries to delete a craft for a character they didn\'t create', :js => true do
+    user = FactoryGirl.create(:user)
+
+    metatype = FactoryGirl.create(:metatype)
+    character = FactoryGirl.create(:character, metatype: metatype, user: user)
+
+    craft = FactoryGirl.create(:craft)
+
+    character_craft = FactoryGirl.create(:character_craft, character: character,
+      craft: craft)
+
+    visit character_inventory_index_path(character)
+
+    click_on (character_craft.id.to_s)
+    expect(page).to have_content craft.name
+
+    # expect(page).to have_content 'You are not logged in. You must be logged in to edit a character.'
+  end
 end
