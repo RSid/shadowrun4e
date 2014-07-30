@@ -71,7 +71,14 @@
           <% if @character_inventory.character_crafts[0] != nil %>
             <% @character_inventory.character_crafts.each do |charactercraft| %>
               <li id = <%= charactercraft.id %>>
-                <%= "#{charactercraft.craft.name}, #{charactercraft.craft.description}" %>
+                <%= "#{charactercraft.craft.name}, #{charactercraft.craft.description}
+                Handling: #{charactercraft.craft.handling}
+                Acceleration: #{charactercraft.craft.acceleration}
+                Pilot: #{charactercraft.craft.pilot}
+                Speed: #{charactercraft.craft.speed}
+                Body: #{charactercraft.craft.body}
+                Armor: #{charactercraft.craft.armor}
+                Sensor: #{charactercraft.craft.sensor}" %>
                 <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_craft_path(@character,
                 charactercraft), id: charactercraft.id.to_s, class: 'deleter') %>
               </li>

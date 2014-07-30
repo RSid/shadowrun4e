@@ -145,7 +145,7 @@ ajaxer = function() {
     });
   });
 
-  $('#new_character_crafts').on('submit', function(event) {
+  $('#new_character_craft').on('submit', function(event) {
     event.preventDefault();
     var dataSubmit = $(this).serialize();
 
@@ -158,7 +158,13 @@ ajaxer = function() {
         var newCraft = "<li>"
           + data.craft.name +", "
           + data.craft.description
-          + data.craft.acceleration
+          + "Handling: "+ data.craft.handling + " "
+          + "Acceleration: "+ data.craft.acceleration + " "
+          + "Pilot: "+ data.craft.pilot + " "
+          + "Speed: "+ data.craft.speed + " "
+          + "Body: "+ data.craft.body + " "
+          + "Armor: "+ data.craft.armor + " "
+          + "Sensor: "+ data.craft.sensor + " "
           + "</li>";
         $('#crafts').append(newCraft);
       },
