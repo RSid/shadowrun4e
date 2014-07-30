@@ -108,7 +108,8 @@ ActiveRecord::Schema.define(version: 20140730203830) do
   end
 
   create_table "cyberbiowares", force: true do |t|
-    t.string "name",     null: false
+    t.string "name",        null: false
+    t.string "description"
     t.string "capacity"
     t.string "legality"
   end
