@@ -204,28 +204,28 @@
           <%= i.label :description %>
           <%= i.text_field :description %>
 
-          <%= i.label :handling %>
+          <%= i.label :handling, class: 'small-input-label' %>
           <%= i.text_field :handling %>
 
-          <%= i.label :acceleration %>
+          <%= i.label :acceleration, class: 'small-input-label' %>
           <%= i.text_field :acceleration %>
 
-          <%= i.label :pilot %>
+          <%= i.label :pilot, class: 'small-input-label' %>
           <%= i.number_field :pilot, in: 0..100 %>
 
-          <%= i.label :speed %>
+          <%= i.label :speed, class: 'small-input-label' %>
           <%= i.number_field :speed, in: 0..100 %>
 
-          <%= i.label :body %>
+          <%= i.label :body, class: 'small-input-label' %>
           <%= i.number_field :body, in: 0..100 %>
 
-          <%= i.label :armor %>
+          <%= i.label :armor, class: 'small-input-label' %>
           <%= i.number_field :armor, in: 0..100 %>
 
-          <%= i.label :sensor %>
+          <%= i.label :sensor, class: 'small-input-label' %>
           <%= i.number_field :sensor, in: 0..100 %>
         <% end %>
-
+        <br>
         <%= f.submit 'Submit' %>
       <% end %>
     </div>
