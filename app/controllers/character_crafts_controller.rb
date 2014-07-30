@@ -13,7 +13,7 @@ class CharacterCraftsController < ApplicationController
 
     @character_craft = @character.character_crafts.build(character_craft_params.merge(craft: craft))
 
-    respond_to_create('craft',@character_craft, @character)
+    respond_to_create('craft', @character_craft, @character)
   end
 
   def destroy

@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-feature 'user adds a craft to their character', %Q{
+feature 'user adds a craft to their character', %Q(
   As a Shadowrun 4E player
   I want to add craft to my character
   So that they can drive around
-} do
+) do
 
   scenario 'user adds a craft' do
     user = FactoryGirl.create(:user)
@@ -13,8 +13,6 @@ feature 'user adds a craft to their character', %Q{
     character = FactoryGirl.create(:character, metatype: metatype, user: user)
 
     craft = FactoryGirl.build(:craft)
-
-    character_craft = FactoryGirl.build(:character_craft, character: character, craft: craft)
 
     visit character_inventory_index_path(character)
 
