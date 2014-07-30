@@ -133,12 +133,43 @@ ajaxer = function() {
       success: function(data) {
         var newArmor = "<li>"
           + data.armor.name +", "
-          + data.armor.description
+          + data.armor.description + " "
+          + data.armor.ballistic + "/"
+          + data.armor.impact
           + "</li>";
         $('#armor').append(newArmor);
       },
       error: function() {
         addFlashNotice('Uh oh! Your armor could not be saved');
+      }
+    });
+  });
+
+  $('#new_character_craft').on('submit', function(event) {
+    event.preventDefault();
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function(data) {
+        var newCraft = "<li>"
+          + data.craft.name +", "
+          + data.craft.description
+          + "Handling: "+ data.craft.handling + " "
+          + "Acceleration: "+ data.craft.acceleration + " "
+          + "Pilot: "+ data.craft.pilot + " "
+          + "Speed: "+ data.craft.speed + " "
+          + "Body: "+ data.craft.body + " "
+          + "Armor: "+ data.craft.armor + " "
+          + "Sensor: "+ data.craft.sensor + " "
+          + "</li>";
+        $('#crafts').append(newCraft);
+      },
+      error: function() {
+        addFlashNotice('Uh oh! Your craft could not be saved');
       }
     });
   });

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708220400) do
+ActiveRecord::Schema.define(version: 20140727160209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 20140708220400) do
   create_table "character_armors", force: true do |t|
     t.integer "character_id", null: false
     t.integer "armor_id",     null: false
+  end
+
+  create_table "character_crafts", force: true do |t|
+    t.integer "character_id", null: false
+    t.integer "craft_id",     null: false
+    t.string  "mods"
   end
 
   create_table "character_qualities", force: true do |t|
@@ -80,6 +86,18 @@ ActiveRecord::Schema.define(version: 20140708220400) do
     t.integer "loyalty",      null: false
     t.integer "connection",   null: false
     t.integer "character_id", null: false
+  end
+
+  create_table "crafts", force: true do |t|
+    t.string  "name",         null: false
+    t.string  "description"
+    t.string  "handling"
+    t.string  "acceleration"
+    t.integer "pilot"
+    t.integer "speed"
+    t.integer "body"
+    t.integer "armor"
+    t.integer "sensor"
   end
 
   create_table "installs", force: true do |t|

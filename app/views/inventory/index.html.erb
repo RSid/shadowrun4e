@@ -56,7 +56,7 @@
           <% if @character_inventory.character_armors[0] != nil %>
             <% @character_inventory.character_armors.each do |characterarmor| %>
               <li id = <%= characterarmor.id %>>
-                <%= "#{characterarmor.armor.name}, #{characterarmor.armor.description}" %>
+                <%= "#{characterarmor.armor.name}, #{characterarmor.armor.description} #{characterarmor.armor.impact}/#{characterarmor.armor.ballistic}" %>
                 <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_armor_path(@character,
                 characterarmor), id: characterarmor.id.to_s, class: 'deleter') %>
               </li>
@@ -64,6 +64,28 @@
           <% end %>
         </ul>
       </div>
+
+    <h6><a name = "crafts">&nbsp;Vehicles and Drones: </h6>
+      <div class = 'subheading'>
+        <ul id = 'crafts'>
+          <% if @character_inventory.character_crafts[0] != nil %>
+            <% @character_inventory.character_crafts.each do |charactercraft| %>
+              <li id = <%= charactercraft.id %>>
+                <%= "#{charactercraft.craft.name}, #{charactercraft.craft.description}
+                Handling: #{charactercraft.craft.handling}
+                Acceleration: #{charactercraft.craft.acceleration}
+                Pilot: #{charactercraft.craft.pilot}
+                Speed: #{charactercraft.craft.speed}
+                Body: #{charactercraft.craft.body}
+                Armor: #{charactercraft.craft.armor}
+                Sensor: #{charactercraft.craft.sensor}" %>
+                <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_craft_path(@character,
+                charactercraft), id: charactercraft.id.to_s, class: 'deleter') %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+    </div>
 
     <h6><a name = "general-gear">&nbsp;General: </h6>
       <div class = 'subheading'>
@@ -86,7 +108,7 @@
         <option value = '0'> Gear type </option>
         <option value = '1'> Weapons </option>
         <option value = '2'> Armor </option>
-        <option value = '3'> Vehicles </option>
+        <option value = '3'> Vehicles and drones </option>
         <option value = '4'> General </option>
       </select>
     </form>
@@ -169,6 +191,41 @@
           <%= i.text_field :impact %>
         <% end %>
 
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </div>
+
+    <div class = "gear-input" id = "crafts-input">
+      <%= form_for [@character, @character_craft] do |f| %>
+        <%= f.fields_for @craft do |i| %>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
+
+          <%= i.label :description %>
+          <%= i.text_field :description %>
+
+          <%= i.label :handling, class: 'small-input-label' %>
+          <%= i.text_field :handling %>
+
+          <%= i.label :acceleration, class: 'small-input-label' %>
+          <%= i.text_field :acceleration %>
+
+          <%= i.label :pilot, class: 'small-input-label' %>
+          <%= i.number_field :pilot, in: 0..100 %>
+
+          <%= i.label :speed, class: 'small-input-label' %>
+          <%= i.number_field :speed, in: 0..100 %>
+
+          <%= i.label :body, class: 'small-input-label' %>
+          <%= i.number_field :body, in: 0..100 %>
+
+          <%= i.label :armor, class: 'small-input-label' %>
+          <%= i.number_field :armor, in: 0..100 %>
+
+          <%= i.label :sensor, class: 'small-input-label' %>
+          <%= i.number_field :sensor, in: 0..100 %>
+        <% end %>
+        <br>
         <%= f.submit 'Submit' %>
       <% end %>
     </div>

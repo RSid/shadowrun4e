@@ -1,6 +1,6 @@
 module CreatorHelper
   def is_inventory_item(prefix)
-    if prefix == 'tool' || prefix == 'weapon' || prefix == 'armor'
+    if prefix == 'tool' || prefix == 'weapon' || prefix == 'armor' || prefix == 'craft'
       true
     else
       false
