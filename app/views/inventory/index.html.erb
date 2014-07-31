@@ -124,6 +124,7 @@
         <option value = '1'> Weapons </option>
         <option value = '2'> Armor </option>
         <option value = '3'> Vehicles and drones </option>
+        <option value = '5'> Cyberware and Bioware </option>
         <option value = '4'> General </option>
       </select>
     </form>
@@ -241,6 +242,20 @@
           <%= i.number_field :sensor, in: 0..100 %>
         <% end %>
         <br>
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </div>
+
+    <div class = "cyberbioware-input" id = "cyberbioware-input">
+      <%= form_for [@character, @character_cyberbioware] do |f| %>
+        <%= f.fields_for @cyberbioware do |i| %>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
+
+          <%= i.label :description %>
+          <%= i.text_field :description %>
+        <% end %>
+
         <%= f.submit 'Submit' %>
       <% end %>
     </div>

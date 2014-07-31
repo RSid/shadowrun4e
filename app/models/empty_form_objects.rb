@@ -29,5 +29,8 @@ module EmptyFormObjects
 
     @craft = Craft.new
     @character_craft = CharacterCraft.new
+
+    @cyberbioware = Cyberbioware.new
+    @character_cyberbioware = CharacterCyberbioware.new
   end
 end
