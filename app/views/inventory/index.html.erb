@@ -246,7 +246,7 @@
       <% end %>
     </div>
 
-    <div class = "cyberbioware-input" id = "cyberbioware-input">
+    <div class = "gear-input" id = "cyberbioware-input">
       <%= form_for [@character, @character_cyberbioware] do |f| %>
         <%= f.fields_for @cyberbioware do |i| %>
           <%= i.label :name %>
@@ -254,8 +254,20 @@
 
           <%= i.label :description %>
           <%= i.text_field :description %>
+
+          <%= i.label :capacity %>
+          <%= i.text_field :capacity %>
+
+          <%= i.label :legality %>
+          <%= i.text_field :legality %>
         <% end %>
 
+        <%= f.label :rating, class: 'small-input-label' %>
+        <%= f.number_field :rating %>
+
+        <%= f.label :essence_cost, class: 'small-input-label' %>
+        <%= f.number_field :essence_cost, step: '0.1', in: 0..6 %>
+        <br>
         <%= f.submit 'Submit' %>
       <% end %>
     </div>
