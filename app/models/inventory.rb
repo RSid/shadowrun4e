@@ -22,6 +22,6 @@ class Inventory
   end
 
   def character_cyberbiowares
-    @character.character_cyberwares
+    @character.character_cyberbiowares
   end
 end

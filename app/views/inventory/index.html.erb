@@ -87,6 +87,21 @@
         </ul>
     </div>
 
+    <h6><a name = "cyberbioware">&nbsp;Cyberware and Bioware: </h6>
+      <div class = 'subheading'>
+        <ul id = 'cyberbioware'>
+          <% if @character_inventory.character_cyberbiowares[0] != nil %>
+            <% @character_inventory.character_cyberbiowares.each do |charactercyberbioware| %>
+              <li id = <%= charactercyberbioware.id %>>
+                <%= "#{charactercyberbioware.cyberbioware.name}, #{charactercyberbioware.cyberbioware.description}" %>
+                <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_cyberbioware_path(@character,
+                charactercyberbioware), id: charactercyberbioware.id.to_s, class: 'deleter') %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+    </div>
+
     <h6><a name = "general-gear">&nbsp;General: </h6>
       <div class = 'subheading'>
         <ul id = 'general-gear'>
