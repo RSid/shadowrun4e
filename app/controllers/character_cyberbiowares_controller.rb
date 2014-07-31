@@ -11,7 +11,7 @@ class CharacterCyberbiowaresController < ApplicationController
 
     cyberbioware = Cyberbioware.find_or_create_by(cyberbioware_params["cyberbioware"])
 
-    @character_cyberbioware = @character.character_cyberbioware.build(character_cyberbioware_params.merge(cyberbioware: cyberbioware))
+    @character_cyberbioware = @character.character_cyberbiowares.build(character_cyberbioware_params.merge(cyberbioware: cyberbioware))
 
     respond_to_create('cyberbioware',@character_cyberbioware, @character)
   end
