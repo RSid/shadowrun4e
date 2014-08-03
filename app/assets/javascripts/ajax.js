@@ -174,6 +174,31 @@ ajaxer = function() {
     });
   });
 
+  $('#new_character_cyberbioware').on('submit', function(event) {
+    event.preventDefault();
+    var dataSubmit = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      dataType: "json",
+      data: dataSubmit,
+      success: function(data) {
+        var newCyberbioware = "<li>" +
+          data.cyberbioware.name +", " +
+          data.cyberbioware.description +
+          "Capacity: "+ data.cyberbioware.capacity + " " +
+          "Rating: "+ data.charactercyberbioware.rating + " " +
+          "Legality: "+ data.cyberbioware.legality + " " +
+          "</li>";
+        $('#cyberbioware').append(newCyberbioware);
+      },
+      error: function() {
+        addFlashNotice('Uh oh! Your cyberware/bioware could not be saved');
+      }
+    });
+  });
+
   $('.deleter').click(function(event) {
     event.preventDefault();
 
