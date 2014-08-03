@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727160209) do
+ActiveRecord::Schema.define(version: 20140730203830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20140727160209) do
     t.integer "character_id", null: false
     t.integer "craft_id",     null: false
     t.string  "mods"
+  end
+
+  create_table "character_cyberbiowares", force: true do |t|
+    t.integer "character_id",    null: false
+    t.integer "cyberbioware_id", null: false
+    t.integer "rating"
+    t.float   "essence_cost",    null: false
   end
 
   create_table "character_qualities", force: true do |t|
@@ -98,6 +105,13 @@ ActiveRecord::Schema.define(version: 20140727160209) do
     t.integer "body"
     t.integer "armor"
     t.integer "sensor"
+  end
+
+  create_table "cyberbiowares", force: true do |t|
+    t.string "name",        null: false
+    t.string "description"
+    t.string "capacity"
+    t.string "legality"
   end
 
   create_table "installs", force: true do |t|

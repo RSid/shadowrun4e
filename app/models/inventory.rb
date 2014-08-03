@@ -20,4 +20,8 @@ class Inventory
   def character_crafts
     @character.character_crafts
   end
+
+  def character_cyberbiowares
+    @character.character_cyberbiowares
+  end
 end

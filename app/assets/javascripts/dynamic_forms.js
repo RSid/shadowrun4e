@@ -18,6 +18,7 @@ gear = function() {
     $('#general-gear-input').hide();
     $('#armor-input').hide();
     $('#crafts-input').hide();
+    $('#cyberbioware-input').hide();
 
     $('#PickGear').change(function() {
 
@@ -26,24 +27,28 @@ gear = function() {
         $('#general-gear-input').hide();
         $('#armor-input').hide();
         $('#crafts-input').hide();
+        $('#cyberbioware-input').hide();
 
         $('#weapons-input').show();
       } else if ( optionValue==2 ){
           $('#weapons-input').hide();
           $('#general-gear-input').hide();
           $('#crafts-input').hide();
+          $('#cyberbioware-input').hide();
 
           $('#armor-input').show();
       } else if ( optionValue==3 ){
           $('#weapons-input').hide();
           $('#general-gear-input').hide();
           $('#armor-input').hide();
+          $('#cyberbioware-input').hide();
 
           $('#crafts-input').show();
       } else if ( optionValue==4 ){
           $('#weapons-input').hide();
           $('#armor-input').hide();
           $('#crafts-input').hide();
+          $('#cyberbioware-input').hide();
 
           $('#general-gear-input').show();
       } else if ( optionValue==0 ){
@@ -51,11 +56,20 @@ gear = function() {
           $('#general-gear-input').hide();
           $('#armor-input').hide();
           $('#crafts-input').hide();
+          $('#cyberbioware-input').hide();
+      } else if ( optionValue==5 ){
+          $('#weapons-input').hide();
+          $('#general-gear-input').hide();
+          $('#armor-input').hide();
+          $('#crafts-input').hide();
+
+          $('#cyberbioware-input').show();
       } else {
           $('#weapons-input').hide();
           $('#general-gear-input').hide();
           $('#armor-input').hide();
           $('#crafts-input').hide();
+          $('#cyberbioware-input').hide();
       }
   });
 };

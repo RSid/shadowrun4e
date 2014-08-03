@@ -22,6 +22,9 @@ class Character < ActiveRecord::Base
   has_many :character_crafts, dependent: :destroy
   has_many :crafts, through: :character_crafts
 
+  has_many :character_cyberbiowares, dependent: :destroy
+  has_many :cyberbiowares, through: :character_cyberbiowares
+
   belongs_to :metatype
 
   validates :name, presence: true

@@ -87,6 +87,22 @@
         </ul>
     </div>
 
+    <h6><a name = "cyberbioware">&nbsp;Cyberware and Bioware: </h6>
+      <div class = 'subheading'>
+        <ul id = 'cyberbioware'>
+          <% if @character_inventory.character_cyberbiowares[0] != nil %>
+            <% @character_inventory.character_cyberbiowares.each do |charactercyberbioware| %>
+              <li id = <%= charactercyberbioware.id %>>
+                <%= "#{charactercyberbioware.cyberbioware.name}, #{charactercyberbioware.cyberbioware.description}
+                  Capacity: #{charactercyberbioware.cyberbioware.capacity} Rating: #{charactercyberbioware.rating} Legality: #{charactercyberbioware.cyberbioware.legality}" %>
+                <%= link_to(content_tag(:i,nil,class: "fa fa-trash-o"), character_character_cyberbioware_path(@character,
+                charactercyberbioware), id: charactercyberbioware.id.to_s, class: 'deleter') %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+    </div>
+
     <h6><a name = "general-gear">&nbsp;General: </h6>
       <div class = 'subheading'>
         <ul id = 'general-gear'>
@@ -109,6 +125,7 @@
         <option value = '1'> Weapons </option>
         <option value = '2'> Armor </option>
         <option value = '3'> Vehicles and drones </option>
+        <option value = '5'> Cyberware and Bioware </option>
         <option value = '4'> General </option>
       </select>
     </form>
@@ -230,6 +247,28 @@
       <% end %>
     </div>
 
-  <div id = 'under-constructon'>
-    <p><em>Still under construction.</em></p>
-  </div>
+    <div class = "gear-input" id = "cyberbioware-input">
+      <%= form_for [@character, @character_cyberbioware] do |f| %>
+        <%= f.fields_for @cyberbioware do |i| %>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
+
+          <%= i.label :description %>
+          <%= i.text_field :description %>
+
+          <%= i.label :capacity %>
+          <%= i.text_field :capacity %>
+
+          <%= i.label :legality %>
+          <%= i.text_field :legality %>
+        <% end %>
+
+        <%= f.label :rating, class: 'small-input-label' %>
+        <%= f.number_field :rating %>
+
+        <%= f.label :essence_cost, class: 'small-input-label' %>
+        <%= f.number_field :essence_cost, step: '0.1', in: 0..6 %>
+        <br>
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </div>

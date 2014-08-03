@@ -1,6 +1,6 @@
 module DestroyerHelper
   def is_inventory_item(prefix)
-    if prefix == 'tool' || prefix == 'weapon' || prefix == 'armor' || prefix == 'craft'
+    if prefix == 'tool' || prefix == 'weapon' || prefix == 'armor' || prefix == 'craft' || prefix == 'cyberbioware'
       true
     else
       false

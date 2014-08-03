@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-feature 'user creates a character', %Q{
+feature 'user adds weapons to a character', %Q(
   As a Shadowrun 4E player
   I want to add weapons to my character's arsenal
   So that my character can get better gear
-} do
+) do
 
   scenario 'user adds a weapon' do
     user = FactoryGirl.create(:user)
