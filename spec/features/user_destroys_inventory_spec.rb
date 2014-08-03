@@ -148,4 +148,40 @@ feature 'user deletes a inventory objects', %Q(
 
     # expect(page).to have_content 'You are not logged in. You must be logged in to edit a character.'
   end
+
+  scenario 'user deletes a cyberbioware', :js => true do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+    metatype = FactoryGirl.create(:metatype)
+    character = FactoryGirl.create(:character, metatype: metatype, user: user)
+
+    cyberbioware = FactoryGirl.create(:cyberbioware)
+
+    character_cyberbioware = FactoryGirl.create(:character_cyberbioware, character: character,
+      cyberbioware: cyberbioware)
+
+    visit character_inventory_index_path(character)
+
+    click_on (character_cyberbioware.id.to_s)
+    expect(page).to_not have_content cyberbioware.name
+  end
+
+  scenario 'user tries to delete a cyberbioware for a character they didn\'t create', :js => true do
+    user = FactoryGirl.create(:user)
+
+    metatype = FactoryGirl.create(:metatype)
+    character = FactoryGirl.create(:character, metatype: metatype, user: user)
+
+    cyberbioware = FactoryGirl.create(:cyberbioware)
+
+    character_cyberbioware = FactoryGirl.create(:character_cyberbioware, character: character,
+      cyberbioware: cyberbioware)
+
+    visit character_inventory_index_path(character)
+
+    click_on (character_cyberbioware.id.to_s)
+    expect(page).to have_content cyberbioware.name
+
+    # expect(page).to have_content 'You are not logged in. You must be logged in to edit a character.'
+  end
 end
