@@ -1,6 +1,7 @@
 {<img alt='Stories in Ready' src='https://badge.waffle.io/rsid/shadowrun4e.png?label=ready&title=Ready' />}[https://waffle.io/rsid/shadowrun4e]
 {<img alt='Stories in Ready' src='https://badge.waffle.io/rsid/shadowrun4e.png?label=ready&title=Ready' />}[https://waffle.io/rsid/shadowrun4e]
 {<img alt='Stories in Ready' src='https://badge.waffle.io/rsid/shadowrun4e.png?label=ready&title=Ready' />}[https://waffle.io/rsid/shadowrun4e]
+{<img alt='Stories in Ready' src='https://badge.waffle.io/rsid/shadowrun4e.png?label=ready&title=Ready' />}[https://waffle.io/rsid/shadowrun4e]
 == README
 
 This README would normally document whatever steps are necessary to get the
