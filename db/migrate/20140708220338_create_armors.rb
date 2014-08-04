@@ -4,7 +4,7 @@ class CreateArmors < ActiveRecord::Migration
       table.string :name, null: false
       table.string :description
       table.string :ballistic
-      table.string :impact
+      table.string :email
       table.string :legality
     end
   end
