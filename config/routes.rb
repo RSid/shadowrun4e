@@ -2,6 +2,20 @@ Rails.application.routes.draw do
   devise_for :views
   devise_for :users
 
+  namespace :admin do
+    resources :users
+    resources :characters
+
+    resources :skills
+    resources :qualities
+    resources :connections
+    resources :tools
+    resources :armors
+    resources :weapons
+    resources :crafts
+    resources :cyberbiowares
+  end
+
   get '/about' => 'pages#about'
   root 'pages#landing'
 
