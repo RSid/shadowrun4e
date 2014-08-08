@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
-    resources :users
-    resources :characters
+    resources :users, only: [:index, :edit, :update, :destroy]
+    resources :characters, only: [:index, :edit, :update, :destroy]
 
     resources :skills
     resources :qualities

@@ -1,0 +1,8 @@
+All Characters:
+
+<% @admin_characters.joins(:user).order('email').each do |character| %>
+  <ul>
+    <li><%= link_to character.name, character_path(character) %>
+      <%= " - #{character.user.email}" %><li>
+  <ul>
+<% end %>

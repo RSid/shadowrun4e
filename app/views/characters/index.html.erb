@@ -20,3 +20,7 @@
       <%= link_to 'Create Character', new_character_path %>
     </div>
   <% end %>
+
+  <% if current_user.admin %>
+    <%= link_to 'Admin Dash', admin_characters_path %>
+  <% end %>
