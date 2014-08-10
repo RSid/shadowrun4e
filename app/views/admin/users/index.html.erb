@@ -1,0 +1,7 @@
+All Users:
+
+<% @admin_users.order('email').each do |user| %>
+  <ul>
+    <li><%= "#{user.email} - #{user.characters.count} characters" %><li>
+  <ul>
+<% end %>
