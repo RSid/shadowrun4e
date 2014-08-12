@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  layout "static"
+  layout "static", only: [:landing, :about]
 
   def landing
     if user_signed_in?
@@ -8,6 +8,8 @@ class PagesController < ApplicationController
   end
 
   def about
+  end
 
+  def admin_dash
   end
 end

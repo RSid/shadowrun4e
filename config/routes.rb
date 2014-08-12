@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   get '/about' => 'pages#about'
+  get '/admin-dash' => 'pages#admin_dash'
   root 'pages#landing'
 
   resources :characters, only: [:index, :show, :new, :create, :destroy, :update, :edit] do
