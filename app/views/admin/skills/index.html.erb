@@ -1,0 +1,7 @@
+All Skills:
+
+<% @admin_skills.order('name').each do |skill| %>
+  <ul>
+    <li><%= "#{skill.name} - used by #{@use_count[@admin_skills.index(skill)]} characters" %><li>
+  <ul>
+<% end %>
