@@ -6,10 +6,4 @@ class PagesController < ApplicationController
       redirect_to(characters_path)
     end
   end
-
-  def about
-  end
-
-  def admin_dash
-  end
 end
