@@ -1,7 +1,7 @@
 All Skills:
 
-<% @admin_skills.order('name').each do |skill| %>
+<% @admin_skills.sort_by {|hash| hash[:name]}.each do |skill| %>
   <ul>
-    <li><%= "#{skill.name} - used by #{@use_count[@admin_skills.index(skill)]} characters" %><li>
+    <li><%= "#{skill["name"]}, #{skill["default_skill"]}, #{skill["skill_group"]} - used by #{skill["count"]} characters" %><li>
   <ul>
 <% end %>

@@ -1,9 +1,6 @@
 class Admin::SkillsController < ApplicationController
   def index
-    @admin_skills = Skill.all
-    @use_count = []
-    @admin_skills.each do |skill|
-      @use_count << CharacterSkill.all.count(skill: skill)
-    end
+    sql = "SELECT skills.name, skills.default_skill, skills.skill_group, COUNT(character_skills.skill_id) FROM skills LEFT JOIN character_skills ON skills.id = character_skills.skill_id GROUP BY skills.name,skills.default_skill, skills.skill_group"
+    @admin_skills = ActiveRecord::Base.connection.execute(sql).to_a
   end
 end

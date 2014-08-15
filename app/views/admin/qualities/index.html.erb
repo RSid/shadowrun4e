@@ -1,0 +1,7 @@
+All Qualities:
+
+<% @admin_qualities.order('name').each do |quality| %>
+  <ul>
+    <li><%= "#{quality.name} " %><li>
+  <ul>
+<% end %>
