@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :edit, :update, :destroy]
     resources :characters, only: [:index, :edit, :update, :destroy]
 
+    resources :inventory, only: [:index]
     resources :skills
     resources :qualities
     resources :connections
