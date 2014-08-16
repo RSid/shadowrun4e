@@ -24,4 +24,14 @@ class Inventory
   def character_cyberbiowares
     @character.character_cyberbiowares
   end
+
+  def self.tools
+    sql = "SELECT tools.name, tools.description,
+    COUNT(character_tools.tool_id)
+    FROM tools
+    LEFT JOIN character_tools
+    ON tools.id = character_tools.tool_id
+    GROUP BY tools.name,tools.description"
+    @admin_tools = ActiveRecord::Base.connection.execute(sql).to_a.sort_by{|tool| tool["count"]}.reverse!
+  end
 end

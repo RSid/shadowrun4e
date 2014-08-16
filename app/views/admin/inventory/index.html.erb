@@ -1,0 +1,11 @@
+All Inventory Items:
+
+<div id=admin-tools>
+  All Tools:
+
+  <% @admin_tools.each do |tool| %>
+    <ul>
+      <li><%= "#{tool["name"]}, #{tool["description"]} - used by #{tool["count"]} characters" %><li>
+    <ul>
+  <% end %>
+</div>
