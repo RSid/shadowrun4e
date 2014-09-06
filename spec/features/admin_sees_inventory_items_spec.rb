@@ -1,4 +1,8 @@
 require 'rails_helper'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
 
 feature 'admin sees all inventory items', %Q(
   As an administrator, I want to be able to see a list
