@@ -54,4 +54,24 @@ class Inventory
     GROUP BY armors.name,armors.description"
     @admin_armors = ActiveRecord::Base.connection.execute(sql).to_a.sort_by{|armors| armors["count"]}.reverse!
   end
+
+  def self.crafts
+    sql = "SELECT crafts.name, crafts.description,
+    COUNT(character_crafts.craft_id)
+    FROM crafts
+    LEFT JOIN character_crafts
+    ON crafts.id = character_crafts.craft_id
+    GROUP BY crafts.name,crafts.description"
+    @admin_crafts = ActiveRecord::Base.connection.execute(sql).to_a.sort_by{|crafts| crafts["count"]}.reverse!
+  end
+
+  def self.cyberbiowares
+    sql = "SELECT cyberbiowares.name, cyberbiowares.description,
+    COUNT(character_cyberbiowares.cyberbioware_id)
+    FROM cyberbiowares
+    LEFT JOIN character_cyberbiowares
+    ON cyberbiowares.id = character_cyberbiowares.cyberbioware_id
+    GROUP BY cyberbiowares.name,cyberbiowares.description"
+    @admin_cyberbiowares = ActiveRecord::Base.connection.execute(sql).to_a.sort_by{|cyberbiowares| cyberbiowares["count"]}.reverse!
+  end
 end
