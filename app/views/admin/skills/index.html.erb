@@ -1,0 +1,7 @@
+All Skills:
+
+<% @admin_skills.each do |skill| %>
+  <ul>
+    <li><%= "#{skill["name"]}, #{skill["default_skill"]}, #{skill["skill_group"]} - used by #{skill["count"]} characters" %><li>
+  <ul>
+<% end %>

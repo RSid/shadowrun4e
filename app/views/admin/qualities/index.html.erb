@@ -1,0 +1,7 @@
+All Qualities:
+
+<% @admin_qualities.each do |quality| %>
+  <ul>
+    <li><%= "#{quality["name"]}, #{quality["description"]}, #{quality["affected_stat"]} - used by #{quality["count"]} characters" %><li>
+  <ul>
+<% end %>

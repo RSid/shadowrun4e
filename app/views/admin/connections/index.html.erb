@@ -1,0 +1,7 @@
+All Connections:
+
+<% @admin_connections.each do |connection| %>
+  <ul>
+    <li><%= "#{connection["name"]}, #{connection["description"]} - used by #{connection["count"]} characters" %><li>
+  <ul>
+<% end %>

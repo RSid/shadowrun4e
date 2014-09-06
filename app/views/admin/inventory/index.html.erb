@@ -1,0 +1,51 @@
+All Inventory Items:
+
+<div id=admin-tools>
+  All Tools:
+
+  <% @admin_tools.each do |tool| %>
+    <ul>
+      <li><%= "#{tool["name"]}, #{tool["description"]} - used by #{tool["count"]} characters" %><li>
+    <ul>
+  <% end %>
+</div>
+
+<div id=admin-weapons>
+  All Weapons:
+
+  <% @admin_weapons.each do |weapon| %>
+    <ul>
+      <li><%= "#{weapon["name"]}, #{weapon["description"]} - used by #{weapon["count"]} characters" %><li>
+    <ul>
+  <% end %>
+</div>
+
+<div id=admin-armors>
+  All Armor:
+
+  <% @admin_armors.each do |armor| %>
+    <ul>
+      <li><%= "#{armor["name"]}, #{armor["description"]} - used by #{armor["count"]} characters" %><li>
+    <ul>
+  <% end %>
+</div>
+
+<div id=admin-crafts>
+  All Craft:
+
+  <% @admin_crafts.each do |craft| %>
+    <ul>
+      <li><%= "#{craft["name"]}, #{craft["description"]} - used by #{craft["count"]} characters" %><li>
+    <ul>
+  <% end %>
+</div>
+
+<div id=admin-cyberbiowares>
+  All Cyber-/Bio-ware:
+
+  <% @admin_cyberbiowares.each do |cyberbioware| %>
+    <ul>
+      <li><%= "#{cyberbioware["name"]}, #{cyberbioware["description"]} - used by #{cyberbioware["count"]} characters" %><li>
+    <ul>
+  <% end %>
+</div>

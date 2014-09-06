@@ -2,7 +2,23 @@ Rails.application.routes.draw do
   devise_for :views
   devise_for :users
 
+  namespace :admin do
+    resources :users, only: [:index, :edit, :update, :destroy]
+    resources :characters, only: [:index, :edit, :update, :destroy]
+
+    resources :inventory, only: [:index]
+    resources :skills
+    resources :qualities
+    resources :connections
+    resources :tools
+    resources :armors
+    resources :weapons
+    resources :crafts
+    resources :cyberbiowares
+  end
+
   get '/about' => 'pages#about'
+  get '/admin-dash' => 'pages#admin_dash'
   root 'pages#landing'
 
   resources :characters, only: [:index, :show, :new, :create, :destroy, :update, :edit] do
