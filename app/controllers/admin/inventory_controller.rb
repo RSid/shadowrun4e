@@ -3,5 +3,7 @@ class Admin::InventoryController < ApplicationController
     @admin_tools = Inventory.tools
     @admin_weapons = Inventory.weapons
     @admin_armors = Inventory.armors
+    @admin_crafts = Inventory.crafts
+    @admin_cyberbiowares = Inventory.cyberbiowares
   end
 end
