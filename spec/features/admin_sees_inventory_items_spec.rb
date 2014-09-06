@@ -66,4 +66,38 @@ feature 'admin sees all inventory items', %Q(
     expect(page).to have_content armor2.name
     expect(page).to have_content '2'
   end
+
+  scenario 'admin user sees all crafts' do
+
+    craft1 = FactoryGirl.create(:craft)
+    craft2 = FactoryGirl.create(:craft)
+
+    charactercraft1 = FactoryGirl.create(:character_craft, character: jack, craft: craft1)
+    charactercraft2 = FactoryGirl.create(:character_craft, character: jill, craft: craft2)
+
+    sign_in_as(admin)
+
+    visit admin_inventory_index_path
+
+    expect(page).to have_content craft1.name
+    expect(page).to have_content craft2.name
+    expect(page).to have_content '2'
+  end
+
+  scenario 'admin user sees all cyber/bioware' do
+
+    cyberbioware1 = FactoryGirl.create(:cyberbioware)
+    cyberbioware2 = FactoryGirl.create(:cyberbioware)
+
+    charactercyberbioware1 = FactoryGirl.create(:character_cyberbioware, character: jack, cyberbioware: cyberbioware1)
+    charactercyberbioware2 = FactoryGirl.create(:character_cyberbioware, character: jill, cyberbioware: cyberbioware2)
+
+    sign_in_as(admin)
+
+    visit admin_inventory_index_path
+
+    expect(page).to have_content cyberbioware1.name
+    expect(page).to have_content cyberbioware2.name
+    expect(page).to have_content '2'
+  end
 end
