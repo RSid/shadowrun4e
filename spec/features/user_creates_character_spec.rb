@@ -1,4 +1,8 @@
 require 'rails_helper'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
 
 feature 'user creates a character', %Q{
   As a Shadowrun 4E player
