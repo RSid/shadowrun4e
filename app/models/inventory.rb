@@ -34,4 +34,14 @@ class Inventory
     GROUP BY tools.name,tools.description"
     @admin_tools = ActiveRecord::Base.connection.execute(sql).to_a.sort_by{|tool| tool["count"]}.reverse!
   end
+
+  def self.weapons
+    sql = "SELECT weapons.name, weapons.description,
+    COUNT(character_weapons.weapon_id)
+    FROM weapons
+    LEFT JOIN character_weapons
+    ON weapons.id = character_weapons.weapon_id
+    GROUP BY weapons.name,weapons.description"
+    @admin_weapons = ActiveRecord::Base.connection.execute(sql).to_a.sort_by{|weapon| weapon["count"]}.reverse!
+  end
 end

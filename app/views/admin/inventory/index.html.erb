@@ -9,3 +9,13 @@ All Inventory Items:
     <ul>
   <% end %>
 </div>
+
+<div id=admin-weapons>
+  All Weapons:
+
+  <% @admin_weapons.each do |weapon| %>
+    <ul>
+      <li><%= "#{weapon["name"]}, #{weapon["description"]} - used by #{weapon["count"]} characters" %><li>
+    <ul>
+  <% end %>
+</div>
