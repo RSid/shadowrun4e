@@ -32,4 +32,21 @@ feature 'admin sees all inventory items', %Q(
     expect(page).to have_content tool2.name
     expect(page).to have_content '2'
   end
+
+  scenario 'admin user sees all weapons' do
+
+    weapon1 = FactoryGirl.create(:weapon)
+    weapon2 = FactoryGirl.create(:weapon)
+
+    characterweapon1 = FactoryGirl.create(:character_weapon, character: jack, weapon: weapon1)
+    characterweapon2 = FactoryGirl.create(:character_weapon, character: jill, weapon: weapon2)
+
+    sign_in_as(admin)
+
+    visit admin_inventory_index_path
+
+    expect(page).to have_content weapon1.name
+    expect(page).to have_content weapon2.name
+    expect(page).to have_content '2'
+  end
 end
