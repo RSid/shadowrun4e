@@ -25,8 +25,8 @@ feature 'admin sees all inventory items', %Q(
     tool1 = FactoryGirl.create(:tool)
     tool2 = FactoryGirl.create(:tool)
 
-    charactertool1 = FactoryGirl.create(:character_tool, character: jack, tool: tool1)
-    charactertool2 = FactoryGirl.create(:character_tool, character: jill, tool: tool2)
+    FactoryGirl.create(:character_tool, character: jack, tool: tool1)
+    FactoryGirl.create(:character_tool, character: jill, tool: tool2)
 
     sign_in_as(admin)
 
@@ -42,8 +42,8 @@ feature 'admin sees all inventory items', %Q(
     weapon1 = FactoryGirl.create(:weapon)
     weapon2 = FactoryGirl.create(:weapon)
 
-    characterweapon1 = FactoryGirl.create(:character_weapon, character: jack, weapon: weapon1)
-    characterweapon2 = FactoryGirl.create(:character_weapon, character: jill, weapon: weapon2)
+    FactoryGirl.create(:character_weapon, character: jack, weapon: weapon1)
+    FactoryGirl.create(:character_weapon, character: jill, weapon: weapon2)
 
     sign_in_as(admin)
 
@@ -59,8 +59,8 @@ feature 'admin sees all inventory items', %Q(
     armor1 = FactoryGirl.create(:armor)
     armor2 = FactoryGirl.create(:armor)
 
-    characterarmor1 = FactoryGirl.create(:character_armor, character: jack, armor: armor1)
-    characterarmor2 = FactoryGirl.create(:character_armor, character: jill, armor: armor2)
+    FactoryGirl.create(:character_armor, character: jack, armor: armor1)
+    FactoryGirl.create(:character_armor, character: jill, armor: armor2)
 
     sign_in_as(admin)
 
@@ -76,8 +76,8 @@ feature 'admin sees all inventory items', %Q(
     craft1 = FactoryGirl.create(:craft)
     craft2 = FactoryGirl.create(:craft)
 
-    charactercraft1 = FactoryGirl.create(:character_craft, character: jack, craft: craft1)
-    charactercraft2 = FactoryGirl.create(:character_craft, character: jill, craft: craft2)
+    FactoryGirl.create(:character_craft, character: jack, craft: craft1)
+    FactoryGirl.create(:character_craft, character: jill, craft: craft2)
 
     sign_in_as(admin)
 
@@ -93,8 +93,8 @@ feature 'admin sees all inventory items', %Q(
     cyberbioware1 = FactoryGirl.create(:cyberbioware)
     cyberbioware2 = FactoryGirl.create(:cyberbioware)
 
-    charactercyberbioware1 = FactoryGirl.create(:character_cyberbioware, character: jack, cyberbioware: cyberbioware1)
-    charactercyberbioware2 = FactoryGirl.create(:character_cyberbioware, character: jill, cyberbioware: cyberbioware2)
+    FactoryGirl.create(:character_cyberbioware, character: jack, cyberbioware: cyberbioware1)
+    FactoryGirl.create(:character_cyberbioware, character: jill, cyberbioware: cyberbioware2)
 
     sign_in_as(admin)
 
