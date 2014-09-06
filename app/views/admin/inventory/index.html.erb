@@ -19,3 +19,13 @@ All Inventory Items:
     <ul>
   <% end %>
 </div>
+
+<div id=admin-armors>
+  All Armor:
+
+  <% @admin_armors.each do |armor| %>
+    <ul>
+      <li><%= "#{armor["name"]}, #{armor["description"]} - used by #{armor["count"]} characters" %><li>
+    <ul>
+  <% end %>
+</div>
