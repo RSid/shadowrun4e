@@ -9,7 +9,11 @@
 <body id = 'background'>
   <div class='wrapper' id = 'background'>
     <div id = "panel">
-      <h1><%= link_to image_tag('logo.png'), characters_path %></h1>
+      <% if user_signed_in? %>
+        <h1><%= link_to image_tag('logo.png'), characters_path %></h1>
+      <% else %>
+        <h1><%= link_to image_tag('logo.png'), root_path %></h1>
+      <% end %>
       <h1>Welcome To Club Penumbra</h1>
       <div id = "login-nav-container">
         <ul id = "login-nav">
