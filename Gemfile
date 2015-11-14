@@ -40,7 +40,7 @@ gem 'neat'
 
 gem 'bitters'
 
-gem 'poltergeist'
+gem 'poltergeist', '>= 1.6'
 
 group :development, :test do
   gem 'coveralls', require: false
