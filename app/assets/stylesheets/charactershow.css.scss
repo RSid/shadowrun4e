@@ -1,0 +1,247 @@
+/*Character show page*/
+
+.character-info {
+  @include outer-container;
+  padding: 20px;
+  border-top: 1px solid grey;
+  margin-top: 20px;
+}
+
+.sub-stats {
+  @include span-columns(5);
+  @include shift(1);
+  display: table;
+}
+
+.sub-stats li {
+  display: table-row;
+}
+
+.label {
+  display: table-cell;
+  width: 200px;
+}
+
+#character-name {
+  text-align: center;
+  font-size: 1.6em;
+  padding-top: 10px;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.char-nav {
+  text-align: center;
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+
+.char-nav li {
+  list-style: none;
+  display: inline-block;
+
+}
+
+.char-nav li a {
+  text-decoration: none;
+  color: black;
+}
+
+#barscilwe {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+
+#barscilwe tr td {
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  padding-top: 5px;
+  display: inline;
+}
+
+#new-char {
+  text-align: center;
+  padding: 20px 0px;
+  min-width:175px;
+  margin-top: 5%;
+}
+
+#new-char a {
+  text-decoration: none;
+  color: black;
+  padding: 5px 15px;
+  border: 2px ridge #029870;
+  border-radius: 15px;
+  background-color: rgba(2,152,112,0.1);
+  margin-top: 100px;
+}
+
+.content {
+  margin: 50px;
+}
+
+.char-list {
+  @extend %default-ul;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.char-list li a {
+  text-decoration: none;
+  color: black;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.8em;
+}
+
+.user-status {
+  text-align: right;
+  display: inline;
+}
+
+.sub-heading {
+  font-weight: bold;
+}
+
+.edit-container {
+  @include outer-container;
+}
+
+.editing-characters {
+  @include editing-character;
+  font-size: .7em;
+}
+
+.editing-characters p {
+  font-size: 1.7em;
+}
+
+.edit-character-hover, #character-stat-edit, #gear-type {
+  padding: 10px;
+  text-align: center;
+  width: 15%;
+  min-width: 110px;
+  margin-left: 42.5%;
+  margin-right: 42.5%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: solid 2px black;
+  border-radius: 10px;
+}
+
+#PickGear {
+  width: 100%;
+}
+
+h6 {
+  margin-top: 15px;
+}
+
+.gear-input, #base-edits {
+  @include editing-character;
+}
+
+.new-form-field {
+  padding-left: 20px;
+  display: block;
+}
+
+.subheading {
+  margin-left: 20px;
+}
+
+.subheading > ul > li {
+  margin-bottom: 10px;
+}
+
+#option-selector-container {
+  @include span-columns(12);
+}
+
+#change {
+  @include span-columns(4);
+  @include shift(4);
+  margin-right: 4em;
+}
+
+#char-deletion, #welcome {
+  text-align: center;
+}
+
+.submit-button {
+  background-color: gray;
+  border-color: black;
+  color: white;
+}
+
+.delete-button {
+  background-color: #D63333;
+  border-color: black;
+  color: white;
+}
+
+select {
+  border-color: black;
+  font: FrizQuadrata;
+}
+
+/* modal */
+
+#results {
+  display: none;
+}
+
+#simplemodal-overlay {
+  background-color: #000;
+}
+
+#simplemodal-container {
+  height: 250px;
+  width: 530px;
+  color: #bbb;
+  background-color: #333;
+  border: 4px solid #444;
+  padding: 12px;
+  overflow: hidden;
+}
+
+#simplemodal-container .simplemodal-data {
+  padding: 8px;
+}
+
+#simplemodal-container code {
+  background: #141414;
+  border-left: 3px solid #65B43D;
+  color: #bbb;
+  display: block;
+  font-size: 12px;
+  margin-bottom: 12px;
+  padding: 4px 6px 6px;
+}
+
+#simplemodal-container a {
+  color: #ddd;
+}
+
+#simplemodal-container a.modalCloseImg {
+  background: image-url('x.png') no-repeat;
+  width: 25px;
+  height: 29px;
+  display: inline;
+  z-index: 3200;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+}
+
+#simplemodal-container h3 {
+  color: #84b8d9;
+}
