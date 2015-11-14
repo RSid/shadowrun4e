@@ -27,8 +27,8 @@
   font-size: 1.6em;
   padding-top: 10px;
   width: 30%;
-  margin-left:35%;
-  margin-right:35%;
+  margin-left: 35%;
+  margin-right: 35%;
 }
 
 .char-nav {
@@ -46,7 +46,7 @@
 
 .char-nav li  a {
   text-decoration: none;
-  color:black;
+  color: black;
 }
 
 #barscilwe {
@@ -86,9 +86,9 @@
 
 .char-list {
   @extend %default-ul;
-  width:50%;
-  margin-left:auto;
-  margin-right:auto;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .char-list li a {
@@ -195,53 +195,53 @@ select {
 /* modal */
 
 #results {
-  display:none;
+  display: none;
 }
 
 #simplemodal-overlay {
-  background-color:#000;
+  background-color: #000;
 }
 
 #simplemodal-container {
-  height:250px;
-  width:530px;
-  color:#bbb;
-  background-color:#333;
-  border:4px solid #444;
-  padding:12px;
+  height: 250px;
+  width: 530px;
+  color: #bbb;
+  background-color: #333;
+  border: 4px solid #444;
+  padding: 12px;
   overflow: hidden;
 }
 
 #simplemodal-container .simplemodal-data {
-  padding:8px;
+  padding: 8px;
 }
 
 #simplemodal-container code {
-  background:#141414;
-  border-left:3px solid #65B43D;
-  color:#bbb;
-  display:block;
-  font-size:12px;
-  margin-bottom:12px;
-  padding:4px 6px 6px;
+  background: #141414;
+  border-left: 3px solid #65B43D;
+  color: #bbb;
+  display: block;
+  font-size: 12px;
+  margin-bottom: 12px;
+  padding: 4px 6px 6px;
 }
 
 #simplemodal-container a {
-  color:#ddd;
+  color: #ddd;
 }
 
 #simplemodal-container a.modalCloseImg {
   background: image-url('x.png') no-repeat;
-  width:25px;
-  height:29px;
-  display:inline;
-  z-index:3200;
-  position:absolute;
-  top:0px;
-  right:0px;
-  cursor:pointer;
+  width: 25px;
+  height: 29px;
+  display: inline;
+  z-index: 3200;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
 }
 
 #simplemodal-container h3 {
-  color:#84b8d9;
+  color: #84b8d9;
 }
